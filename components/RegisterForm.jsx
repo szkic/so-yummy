@@ -91,7 +91,7 @@ const RegisterForm = () => {
                   {/* Email */}
                   <div>
                     <div className="relative opacity-80 hover:opacity-100">
-                      <label for="email"></label>
+                      <label htmlFor="email"></label>
                       <div className="absolute inset-y-0 left-0 flex items-center pl-3.5">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -130,7 +130,7 @@ const RegisterForm = () => {
                   {/* Password */}
                   <div>
                     <div className="relative opacity-80 hover:opacity-100">
-                      <label for="password"></label>
+                      <label htmlFor="password"></label>
                       <div className="absolute inset-y-0 left-0 flex items-center pl-3.5">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -171,10 +171,10 @@ const RegisterForm = () => {
 
                 <button
                   type="submit"
-                  className={`mt-7 h-[45px] w-full rounded-lg bg-primary-color text-sm text-primary-text-color  tablet:mt-[50px] tablet:h-[56px] tablet:text-lg ${
+                  className={`mt-7 h-[45px] w-full rounded-lg bg-inactive-color text-sm  tablet:mt-[50px] tablet:h-[56px] tablet:text-lg ${
                     !(dirty && isValid)
-                      ? "cursor-not-allowed bg-inactive-color text-black"
-                      : "transition-colors duration-300 ease-in-out hover:bg-[#6c8828]"
+                      ? "cursor-not-allowed "
+                      : "bg-primary-color text-primary-text-color transition-colors duration-300 ease-in-out hover:bg-[#6c8828]"
                   }`}
                   disabled={!(dirty && isValid)}
                 >
