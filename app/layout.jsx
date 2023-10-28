@@ -1,5 +1,6 @@
 import React from "react";
 import "@styles/globals.css";
+import { poppins } from "@styles/fonts";
 
 export const metadata = {
   title: "So Yummy",
@@ -9,7 +10,7 @@ export const metadata = {
 const RootLayout = ({ children }) => {
   return (
     <html lang="en">
-      <body className="font-poppins">
+      <body className={`${poppins.className} antialiased`}>
         <div className="main">
           <main>{children}</main>
         </div>

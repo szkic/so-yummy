@@ -76,7 +76,7 @@ const RegisterForm = () => {
                         id="name"
                         name="name"
                         className={`${classes.input} ${
-                          errors.name && touched.name ? " border-red-500" : ""
+                          errors.name && touched.name ? "border-red-500" : ""
                         }`}
                         placeholder="Name"
                       />
