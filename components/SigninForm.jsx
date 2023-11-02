@@ -31,8 +31,8 @@ const SigninForm = () => {
   return (
     <>
       <div className="z-10 px-7 pb-10 pt-8 tablet:px-[50px] tablet:py-11">
-        <h2 className="pb-[18px] text-2xl font-semibold text-primary-text-color tablet:pb-8 desktop:text-[28px]">
-          Registration
+        <h2 className="pb-[18px] text-2xl font-semibold text-primary-text-color tablet:pb-8 desktop:pb-[50px] desktop:text-[28px]">
+          Sign In
         </h2>
         <Formik
           initialValues={initialValues}
