@@ -9,12 +9,12 @@ export const metadata = {
 };
 
 const RootLayout = ({ children }) => {
-  const isLoggedIn = false;
+  const isLoggedIn = true;
 
   return (
     <html lang="en">
       <body className={`${poppins.className} antialiased`}>
-        <div className="main">
+        <div className="main flex-col">
           {isLoggedIn && (
             <header>
               <Header />
