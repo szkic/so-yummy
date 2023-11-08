@@ -5,6 +5,7 @@ import Logo from "./Logo";
 import Navigation from "./Navigation";
 import UserLogo from "./UserLogo";
 import ThemeToggler from "./ThemeToggler";
+import Image from "next/image";
 
 const Header = () => {
   const [isActive, setIsActive] = useState(false);
@@ -57,18 +58,36 @@ const Header = () => {
 
       {/* mobilne menu */}
       <section
-        id="mobile-menu"
-        className={`animate-open-menu absolute top-0 w-full origin-top flex-col justify-center bg-blue-300 ${
+        className={`bg-light-primary-color absolute top-0 w-full origin-top animate-open-menu flex-col justify-center ${
           isActive ? "flex" : "hidden"
         }
         desktop:hidden`}
       >
-        <button
-          className="self-end px-6 text-6xl text-white"
-          onClick={handleOpenMenu}
-        >
-          &times;
-        </button>
+        <div className="fixed bottom-[90.6%] left-0 right-0 top-0 flex justify-between px-4 pt-[18px]">
+          <div className="">
+            <Logo />
+          </div>
+          <button
+            className="self-end px-6 text-5xl text-black"
+            onClick={handleOpenMenu}
+          >
+            &times;
+          </button>
+        </div>
+        <Image
+          src="/../assets/images/modal_mobile.png"
+          width={360}
+          height={550}
+          alt="leaves"
+          className="fixed bottom-0 right-0 tablet:hidden"
+        />
+        <Image
+          src="/../assets/images/modal_tablet.png"
+          width={558}
+          height={852}
+          alt="leaves"
+          className="fixed bottom-0 right-0 hidden tablet:block"
+        />
         <Navigation />
       </section>
     </>
