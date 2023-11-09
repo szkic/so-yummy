@@ -1,0 +1,12 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="logo">
+<rect width="32" height="32" rx="6" fill="#EBF3D4"/>
+<g id="Group 139">
+<g id="Group">
+<path id="Vector" d="M7 7.08392V11.546V11.636V11.546C7 12.82 7.55588 13.948 8.41776 14.678C8.83918 15.035 9.11765 15.517 9.11765 16.052V23.5001C9.11765 24.3281 9.82918 25.0001 10.7059 25.0001C11.5826 25.0001 12.2941 24.3281 12.2941 23.5001V16.052C12.2941 15.517 12.5726 15.035 12.994 14.678C13.8559 13.948 14.4118 12.82 14.4118 11.546V7.08392V11.546" stroke="#8BAA36" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_2" d="M10.7051 12.0001V7" stroke="#8BAA36" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_3" d="M24.9992 8.05153C24.9992 7.49952 24.5248 7.05151 23.9404 7.05151H22.8815C21.1271 7.05151 19.7051 8.39453 19.7051 10.0515V16.0516C19.7051 17.3556 20.5913 18.4546 21.8227 18.8677V23.4997C21.8227 24.3277 22.5343 24.9997 23.411 24.9997C24.2877 24.9997 24.9992 24.3277 24.9992 23.4997V19.0517V8.05153Z" stroke="#8BAA36" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+</g>
+</svg>

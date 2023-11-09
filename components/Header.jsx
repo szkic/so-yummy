@@ -58,12 +58,12 @@ const Header = () => {
 
       {/* mobilne menu */}
       <section
-        className={`bg-light-primary-color absolute top-0 w-full origin-top animate-open-menu flex-col justify-center ${
+        className={`absolute top-0 w-full origin-top animate-open-menu flex-col justify-center bg-light-primary-color ${
           isActive ? "flex" : "hidden"
         }
         desktop:hidden`}
       >
-        <div className="fixed bottom-[90.6%] left-0 right-0 top-0 flex justify-between px-4 pt-[18px]">
+        <div className="fixed left-0 right-0 top-0 flex justify-between px-4 pt-[18px]">
           <div className="">
             <Logo />
           </div>
