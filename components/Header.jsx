@@ -61,7 +61,7 @@ const Header = () => {
         className={`absolute top-0 w-full origin-top animate-open-menu flex-col justify-center bg-light-primary-color ${
           isActive ? "flex" : "hidden"
         }
-        desktop:hidden`}
+        z-10 desktop:hidden`}
       >
         <div className="fixed left-0 right-0 top-0 flex justify-between px-4 pt-[18px]">
           <div className="">
