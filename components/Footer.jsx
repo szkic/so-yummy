@@ -28,9 +28,9 @@ const Footer = () => {
               </h3>
             </div>
 
-            <ul className="hidden list-inside list-outside list-disc text-sm tracking-[-0.28px] text-primary-text-color tablet:block desktop:max-w-[458px] desktop:text-lg">
+            <ul className="hidden list-outside list-disc text-sm tracking-[-0.28px] text-primary-text-color tablet:block desktop:max-w-[458px] desktop:text-lg">
               <li className="mb-[10px] desktop:mb-3">
-                Database of recipes that can be replenished{" "}
+                Database of recipes that can be replenished
               </li>
               <li className="mb-[10px] desktop:mb-3">
                 Flexible search for desired and unwanted ingredients
