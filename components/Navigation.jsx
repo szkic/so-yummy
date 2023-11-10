@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { usePathname } from "next/navigation";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 
 const active = "font-semibold text-primary-color";
 
@@ -45,7 +46,10 @@ const Navigation = () => {
       </li>
       <li>
         <Link href="/search" className={pathname === "/search" ? active : ""}>
-          Search
+          <div className="flex">
+            <MagnifyingGlassIcon className="h-5 w-5 tablet:h-6 tablet:w-6" />
+            <span className="ml-2 desktop:hidden">Search</span>
+          </div>
         </Link>
       </li>
     </ul>
