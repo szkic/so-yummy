@@ -5,8 +5,8 @@ import React from "react";
 const Footer = () => {
   return (
     <>
-      <section className="flex flex-col items-center justify-start bg-secondary-color pt-7 tablet:flex-row tablet:flex-wrap tablet:items-start tablet:pl-8 tablet:pt-[50px]">
-        <div className="mb-8 tablet:mb-[72px] tablet:flex tablet:basis-3/4 tablet:flex-col tablet:gap-6 ">
+      <section className="flex flex-col items-center justify-start bg-secondary-color pb-5 pt-7 tablet:flex-row tablet:flex-wrap tablet:items-start tablet:pb-6 tablet:pl-8 tablet:pt-[50px] desktop:px-[100px] desktop:pb-[50px] desktop:pt-16">
+        <div className="mb-8 tablet:mb-[72px] tablet:flex tablet:basis-3/4 tablet:flex-col tablet:gap-6 desktop:basis-2/5 desktop:gap-10">
           <div className="flex items-center gap-[9px] tablet:gap-3">
             <Image
               src="/../assets/images/footer_logo.svg"
@@ -27,14 +27,14 @@ const Footer = () => {
             </h3>
           </div>
 
-          <ul className="hidden list-inside list-disc text-sm tracking-[-0.28px] text-primary-text-color tablet:block">
-            <li className="mb-[10px]">
+          <ul className="hidden list-inside list-outside list-disc text-sm tracking-[-0.28px] text-primary-text-color tablet:block desktop:max-w-[458px] desktop:text-lg">
+            <li className="mb-[10px] desktop:mb-3">
               Database of recipes that can be replenished{" "}
             </li>
-            <li className="mb-[10px]">
+            <li className="mb-[10px] desktop:mb-3">
               Flexible search for desired and unwanted ingredients
             </li>
-            <li className="mb-[10px]">
+            <li className="mb-[10px] desktop:mb-3">
               Ability to add your own recipes with photos
             </li>
             <li>Convenient and easy to use</li>
@@ -42,8 +42,8 @@ const Footer = () => {
         </div>
 
         {/* sprawdzić czy nav może być w footerze */}
-        <div className="mb-8 text-center text-sm font-medium tracking-[-0.28px] text-primary-text-color tablet:basis-1/4 tablet:items-end tablet:pr-[94px]">
-          <nav className="flex flex-col gap-3.5 tablet:gap-5 tablet:text-start">
+        <div className="o mb-8 text-center text-sm font-medium tracking-[-0.28px] text-primary-text-color tablet:basis-1/4 tablet:items-end tablet:pr-[94px] desktop:m-0 desktop:flex desktop:basis-1/5 desktop:justify-center desktop:p-0">
+          <nav className="flex flex-col gap-3.5 tablet:gap-5 tablet:text-start desktop:gap-6">
             <Link href="">Ingredients</Link>
             <Link href="">Add recipes</Link>
             <Link href="">My recipes</Link>
@@ -52,16 +52,27 @@ const Footer = () => {
           </nav>
         </div>
 
+        <div className="hidden desktop:block desktop:grow" />
+
         {/* subscription */}
-        <div className="m-auto mb-11 flex flex-col gap-2 tablet:mb-10 tablet:basis-full tablet:flex-row tablet:justify-center">
-          <div className="relative opacity-80 hover:opacity-100">
+        <div className="m-auto mb-11 flex flex-col gap-2 tablet:mb-10 tablet:basis-full tablet:flex-row tablet:justify-center desktop:m-0 desktop:max-w-[339px] desktop:basis-2/5 desktop:flex-col desktop:gap-0">
+          <div className="hidden text-primary-text-color desktop:mb-7 desktop:block">
+            <h4 className="mb-3.5 text-lg font-bold">
+              Subscribe to our Newsletter
+            </h4>
+            <p className="text-sm">
+              Subscribe up to our newsletter. Be in touch with latest news and
+              special offers, etc.
+            </p>
+          </div>
+          <div className="relative opacity-80 hover:opacity-100 desktop:mb-4">
             <label htmlFor="email"></label>
             <div className="absolute inset-y-0 left-0 flex items-center pl-3.5">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 25"
                 fill="none"
-                className="h-[12px] w-[16px] tablet:h-4 tablet:w-5"
+                className="h-[12px] w-[16px] tablet:h-4 tablet:w-5 desktop:h-5 desktop:w-6"
               >
                 <g>
                   <path
@@ -78,14 +89,14 @@ const Footer = () => {
               type="email"
               id="email"
               name="email"
-              className="block h-[38px] w-[204px] rounded-lg border border-primary-text-color border-opacity-50 bg-secondary-light-color stroke-1 p-3.5 pl-[42px] text-[10px] text-primary-text-color outline-none placeholder:text-[10px] placeholder:tracking-[-0.2px] placeholder:text-primary-text-color focus:border-primary-text-color  tablet:h-[50px] tablet:w-[259px] tablet:text-sm tablet:placeholder:text-sm"
+              className="block h-[38px] w-[204px] rounded-lg border border-primary-text-color border-opacity-50 bg-secondary-light-color stroke-1 p-3.5 pl-[42px] text-[10px] text-primary-text-color outline-none placeholder:text-[10px] placeholder:tracking-[-0.2px] placeholder:text-primary-text-color focus:border-primary-text-color tablet:h-[50px] tablet:w-[259px] tablet:text-sm tablet:placeholder:text-sm desktop:h-[60px] desktop:w-full desktop:pl-[51px] desktop:placeholder:text-lg"
               placeholder="Enter your email address"
             />
           </div>
           <button
             type="submit"
             className="h-[38px] w-full rounded-md  bg-primary-color text-sm text-primary-text-color transition-colors
-                duration-300 ease-in-out hover:bg-[#6c8828] tablet:h-[50px] tablet:w-[187px] tablet:text-base"
+                duration-300 ease-in-out hover:bg-[#6c8828] tablet:h-[50px] tablet:w-[187px] tablet:text-base desktop:h-[60px] desktop:w-full"
           >
             Subscribe
           </button>
@@ -93,7 +104,7 @@ const Footer = () => {
 
         {/* social networks */}
         <div className="flex justify-center tablet:basis-full">
-          <ul className="flex items-center gap-3.5 pb-5 text-primary-text-color">
+          <ul className="flex items-center gap-3.5 text-primary-text-color">
             <li>
               <a
                 href="http://www.facebook.com"
@@ -141,7 +152,7 @@ const Footer = () => {
           </ul>
         </div>
       </section>
-      <section className="flex justify-center gap-3.5 py-7 text-[10px] opacity-50 tablet:gap-7 tablet:text-sm">
+      <section className="flex justify-center gap-3.5 py-7 text-[10px] opacity-50 tablet:gap-7 tablet:py-8 tablet:text-sm desktop:gap-10 desktop:py-[50px]">
         {/* <Image
           src="/../assets/images/footer_mobile_leaf.png"
           width={160}
