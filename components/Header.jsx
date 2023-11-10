@@ -13,46 +13,48 @@ const Header = () => {
 
   return (
     <>
-      <div className="m-auto flex w-screen items-center justify-between bg-blue-300 px-4 pb-3 pt-[18px] tablet:px-8 desktop:px-[100px] desktop:pt-3.5">
-        <div className="desktop:mr-[187px]">
-          <Logo />
-        </div>
+      <div className="bg-blue-300 ">
+        <div className="m-auto flex w-screen items-center justify-between px-4 pb-3 pt-[18px] tablet:max-w-screen-tablet tablet:px-8 desktop:max-w-screen-desktop desktop:px-[100px] desktop:pt-3.5">
+          <div className="desktop:mr-[187px]">
+            <Logo />
+          </div>
 
-        <nav className="hidden desktop:flex">
-          <Navigation />
-        </nav>
+          <nav className="hidden desktop:flex">
+            <Navigation />
+          </nav>
 
-        {/* trzeba to dać w jakiś inny sposób do diva na górze albo na dole */}
-        <div className="grow"></div>
+          {/* trzeba to dać w jakiś inny sposób do diva na górze albo na dole */}
+          <div className="grow"></div>
 
-        <div className="mr-6">
-          <UserLogo />
-        </div>
+          <div className="mr-6">
+            <UserLogo />
+          </div>
 
-        <div className="hidden desktop:flex">
-          <ThemeToggler />
-        </div>
+          <div className="hidden desktop:flex">
+            <ThemeToggler />
+          </div>
 
-        <button
-          type="button"
-          className="pointer desktop:hidden"
-          onClick={handleOpenMenu}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 28 28"
-            fill="none"
-            className="h-7 w-7 tablet:h-8 tablet:w-8"
+          <button
+            type="button"
+            className="pointer desktop:hidden"
+            onClick={handleOpenMenu}
           >
-            <path
-              d="M3.5 14H24.5M3.5 7H24.5M3.5 21H17.5"
-              stroke="#22252A"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </button>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 28 28"
+              fill="none"
+              className="h-7 w-7 tablet:h-8 tablet:w-8"
+            >
+              <path
+                d="M3.5 14H24.5M3.5 7H24.5M3.5 21H17.5"
+                stroke="#22252A"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
         {/* <button className="ml-2">Logout</button> */}
       </div>
 
