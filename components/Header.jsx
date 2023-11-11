@@ -13,8 +13,8 @@ const Header = () => {
 
   return (
     <>
-      <div className="bg-blue-300 ">
-        <div className="m-auto flex w-screen items-center justify-between px-4 pb-3 pt-[18px] tablet:max-w-screen-tablet tablet:px-8 desktop:max-w-screen-desktop desktop:px-[100px] desktop:pt-3.5">
+      <div className="">
+        <div className="m-auto flex w-screen items-center justify-between px-4 pt-[18px] tablet:max-w-screen-tablet tablet:px-8 desktop:max-w-screen-desktop desktop:px-[100px] desktop:pt-3.5">
           <div className="desktop:mr-[187px]">
             <Logo />
           </div>

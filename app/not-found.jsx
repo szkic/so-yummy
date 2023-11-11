@@ -9,15 +9,9 @@ const NotFound = () => {
           src="/../assets/images/404.svg"
           width={259}
           height={170}
+          priority={true}
           alt="not found"
-          className="tablet:hidden"
-        />
-        <Image
-          src="/../assets/images/404.svg"
-          width={498}
-          height={327}
-          alt="not found"
-          className="hidden tablet:block"
+          className="tablet:h-[327px] tablet:w-[498px]"
         />
       </div>
       <h2 className="mb-2 text-lg font-semibold leading-5 tracking-[-0.36px] tablet:mb-3.5 tablet:text-2xl tablet:leading-7 tablet:tracking-[-0.48px]">
