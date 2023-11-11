@@ -63,7 +63,7 @@ const Header = () => {
         className={`absolute top-0 w-full origin-top animate-open-menu flex-col justify-center bg-light-primary-color ${
           isActive ? "flex" : "hidden"
         }
-        z-10 desktop:hidden`}
+        z-20 desktop:hidden`}
       >
         <div className="fixed left-0 right-0 top-0 flex justify-between px-4 pt-[18px]">
           <div className="">
@@ -81,14 +81,14 @@ const Header = () => {
           width={360}
           height={550}
           alt="leaves"
-          className="fixed bottom-0 right-0 tablet:hidden"
+          className="fixed bottom-0 right-0 -z-10 tablet:hidden"
         />
         <Image
           src="/../assets/images/modal_tablet.png"
           width={558}
           height={852}
           alt="leaves"
-          className="fixed bottom-0 right-0 hidden tablet:block"
+          className="fixed bottom-0 right-0 -z-10 hidden tablet:block"
         />
         <Navigation />
       </section>
