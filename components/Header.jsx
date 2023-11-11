@@ -55,7 +55,6 @@ const Header = () => {
             </svg>
           </button>
         </div>
-        {/* <button className="ml-2">Logout</button> */}
       </div>
 
       {/* mobilne menu */}
