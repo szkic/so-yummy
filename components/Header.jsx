@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "./Logo";
 import Navigation from "./Navigation";
 import UserLogo from "./UserLogo";
@@ -10,6 +10,19 @@ import Image from "next/image";
 const Header = () => {
   const [isActive, setIsActive] = useState(false);
   const handleOpenMenu = () => setIsActive(!isActive);
+
+  useEffect(() => {
+    isActive
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "auto");
+
+    const keyDownHandler = (e) => {
+      if (e.key === "Escape") setIsActive(false);
+    };
+    document.addEventListener("keydown", keyDownHandler);
+
+    return () => document.removeEventListener("keydown", keyDownHandler);
+  }, [isActive]);
 
   return (
     <>
@@ -59,7 +72,7 @@ const Header = () => {
 
       {/* mobilne menu */}
       <section
-        className={`absolute top-0 w-full origin-top animate-open-menu flex-col justify-center bg-light-primary-color ${
+        className={`fixed top-0 w-full origin-top animate-open-menu flex-col justify-center bg-light-primary-color ${
           isActive ? "flex" : "hidden"
         }
         z-20 desktop:hidden`}
@@ -74,6 +87,9 @@ const Header = () => {
           >
             &times;
           </button>
+        </div>
+        <div className="absolute bottom-[18px] left-4 tablet:bottom-8 tablet:left-8">
+          <ThemeToggler />
         </div>
         <Image
           src="/../assets/images/modal_mobile.png"
