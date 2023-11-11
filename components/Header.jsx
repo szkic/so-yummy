@@ -28,16 +28,13 @@ const Header = () => {
     <>
       <div className="">
         <div className="m-auto flex w-screen items-center justify-between px-4 pt-[18px] tablet:max-w-screen-tablet tablet:px-8 desktop:max-w-screen-desktop desktop:px-[100px] desktop:pt-3.5">
-          <div className="desktop:mr-[187px]">
+          <div className="grow desktop:mr-[187px] desktop:grow-0">
             <Logo />
           </div>
 
-          <nav className="hidden desktop:flex">
+          <nav className="hidden grow desktop:flex">
             <Navigation />
           </nav>
-
-          {/* trzeba to dać w jakiś inny sposób do diva na górze albo na dole */}
-          <div className="grow"></div>
 
           <div className="mr-6">
             <UserLogo />
