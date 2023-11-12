@@ -1,11 +1,16 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+const withMT = require("@material-tailwind/react/utils/withMT");
+
+module.exports = withMT({
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    fontFamily: {
+      Poppins: ["Poppins"],
+    },
     extend: {
       colors: {
         "primary-text-color": "#FAFAFA",
@@ -38,4 +43,4 @@ module.exports = {
     },
   },
   plugins: [],
-};
+});
