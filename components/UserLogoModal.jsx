@@ -29,14 +29,23 @@ const UserLogoModal = () => {
         <ArrowRightIcon className="h-[18px] w-[18px]" />
       </Button>
 
-      <Dialog open={openEdit} handler={handleOpenEdit}>
-        <DialogBody>
+      <Dialog
+        open={openEdit}
+        size={"xs"}
+        handler={handleOpenEdit}
+        className="min-w-[330px] max-w-[330px] rounded-[30px] tablet:min-w-[480px] tablet:max-w-[480px] desktop:min-w-[500px] desktop:max-w-[500px]"
+      >
+        <DialogBody className="px-6 py-8 tablet:px-10 tablet:py-[50px]">
           <UserInfoModal />
         </DialogBody>
       </Dialog>
 
-      <Dialog open={openLogout} handler={handleOpenLogout}>
-        <DialogBody>
+      <Dialog
+        open={openLogout}
+        handler={handleOpenLogout}
+        className="min-w-[330px] max-w-[330px] rounded-[30px] tablet:min-w-[480px] tablet:max-w-[480px] desktop:min-w-[500px] desktop:max-w-[500px]"
+      >
+        <DialogBody className="px-6 py-11 tablet:px-10 tablet:py-[50px]">
           <LogoutBtn />
         </DialogBody>
       </Dialog>

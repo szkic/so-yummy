@@ -29,6 +29,8 @@ module.exports = withMT({
       screens: {
         tablet: "768px",
         desktop: "1440px",
+        md: "768px",
+        "2xl": "1440px",
       },
       keyframes: {
         "open-menu": {
