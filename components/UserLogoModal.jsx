@@ -5,12 +5,14 @@ import { PencilIcon } from "@heroicons/react/24/outline";
 import UserInfoModal from "./UserInfoModal";
 import LogoutBtn from "./LogoutBtn";
 
-const UserLogoModal = () => {
+const UserLogoModal = ({ handlePopover }) => {
   const [openEdit, setOpenEdit] = useState(false);
   const [openLogout, setOpenLogout] = useState(false);
 
   const handleOpenEdit = () => setOpenEdit(!openEdit);
   const handleOpenLogout = () => setOpenLogout(!openLogout);
+  const closeModalEdit = () => setOpenEdit(false);
+  const closeModalLogout = () => setOpenLogout(false);
 
   return (
     <>
@@ -36,7 +38,10 @@ const UserLogoModal = () => {
         className="min-w-[330px] max-w-[330px] rounded-[30px] tablet:min-w-[480px] tablet:max-w-[480px] desktop:min-w-[500px] desktop:max-w-[500px]"
       >
         <DialogBody className="px-6 py-8 tablet:px-10 tablet:py-[50px]">
-          <UserInfoModal />
+          <UserInfoModal
+            handleClose={closeModalEdit}
+            handlePopover={handlePopover}
+          />
         </DialogBody>
       </Dialog>
 
@@ -46,7 +51,10 @@ const UserLogoModal = () => {
         className="min-w-[330px] max-w-[330px] rounded-[30px] tablet:min-w-[480px] tablet:max-w-[480px] desktop:min-w-[500px] desktop:max-w-[500px]"
       >
         <DialogBody className="px-6 py-11 tablet:px-10 tablet:py-[50px]">
-          <LogoutBtn />
+          <LogoutBtn
+            handleClose={closeModalLogout}
+            handlePopover={handlePopover}
+          />
         </DialogBody>
       </Dialog>
     </>
