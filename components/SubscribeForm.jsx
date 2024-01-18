@@ -42,8 +42,8 @@ const SubscribeForm = () => {
           const { errors, touched, isValid, dirty } = formik;
 
           return (
-            <Form>
-              <div className="relative opacity-80 hover:opacity-100 desktop:mb-4">
+            <Form className="flex flex-col gap-2 tablet:flex-row tablet:gap-3 desktop:flex-col desktop:gap-4">
+              <div className="relative opacity-80 hover:opacity-100">
                 <label htmlFor="email"></label>
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3.5">
                   <svg
@@ -80,7 +80,7 @@ const SubscribeForm = () => {
               </div>
               <Button
                 type="submit"
-                className="h-[38px] w-full rounded-md  bg-primary-color text-sm text-primary-text-color transition-colors
+                className=" h-[38px] w-full rounded-md bg-primary-color text-sm text-primary-text-color transition-colors
                   duration-300 ease-in-out hover:bg-[#6c8828] tablet:h-[50px] tablet:w-[187px] tablet:text-base desktop:h-[60px] desktop:w-full"
               >
                 Subscribe
