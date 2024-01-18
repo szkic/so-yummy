@@ -10,11 +10,22 @@ export const metadata = {
   description: "Cooking recipes app",
 };
 
+/* 
+dodać czcionke w ten sposób???
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+})
+
+https://nextjs.org/docs/app/building-your-application/optimizing/fonts#with-tailwind-css
+*/
+
 const RootLayout = ({ children }) => {
   const isLoggedIn = true;
 
   return (
-    <html lang="en">
+    <html lang="pl">
       <body className={`${poppins.className} antialiased`}>
         <div className="main min-h-screen flex-col">
           <div className="w-full flex-1">
