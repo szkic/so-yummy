@@ -1,3 +1,4 @@
+import Search from "@components/Search";
 import React from "react";
 
 const MainPage = () => {
@@ -13,6 +14,7 @@ const MainPage = () => {
           cookbook. You can add your own recipes to save them for the future.
         </p>
       </div>
+      <Search />
     </section>
   );
 };
