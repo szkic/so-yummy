@@ -1,3 +1,4 @@
+import ChooseYourBreakfast from "@components/ChooseYourBreakfast";
 import Search from "@components/Search";
 import React from "react";
 
@@ -14,6 +15,7 @@ const MainPage = () => {
           cookbook. You can add your own recipes to save them for the future.
         </p>
       </div>
+      <ChooseYourBreakfast />
       <Search />
     </section>
   );
