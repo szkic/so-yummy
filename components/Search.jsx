@@ -15,7 +15,7 @@ const Search = () => {
           type="search"
           id="search"
           className="block w-full rounded-lg rounded-bl-[35px] rounded-br-[15px] rounded-tl-[15px] rounded-tr-[35px] border border-gray-300 bg-gray-50 p-4 ps-10 text-sm text-gray-900 outline-none focus:border-[#23262a33] focus:ring-[#23262a33] dark:border-gray-600 "
-          placeholder=""
+          placeholder="Search"
           required
         />
         <button
