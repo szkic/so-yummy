@@ -21,6 +21,7 @@ module.exports = withMT({
         "secondary-light-color": "#2A2C36",
         "inactive-color": "#D9D9D9",
         "inactive-text": "#BDBDBD",
+        "inactive-text-light": "#E0E0E0",
         "input-primary": "#FFFFFF",
         "input-error": "#E74A3B",
         "input-correct": "#3CBC81",

@@ -31,7 +31,7 @@ const MainPage = () => {
       />
 
       {/* usunąć tablet:pb-48 */}
-      <section className="relative flex flex-col flex-wrap items-end tablet:flex-row tablet:pb-48 desktop:px-14">
+      <section className="relative flex flex-col flex-wrap items-center tablet:flex-row tablet:pb-48 desktop:px-14">
         <Image
           src="/../assets/images/bowl.png"
           width={320}

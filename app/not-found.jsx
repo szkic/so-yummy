@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const NotFound = () => {
   return (
-    <>
+    <section className="flex flex-col items-center">
       <div className="mb-3.5 tablet:mb-8">
         <Image
           src="/../assets/images/404.svg"
@@ -20,7 +20,7 @@ const NotFound = () => {
       <p className="max-w-[206px] text-center text-sm leading-[18px] tracking-[-0.26px] opacity-50 tablet:max-w-[440px] tablet:text-lg tablet:leading-6 tablet:tracking-[-0.36px]">
         but the page you were looking for can’t be found...
       </p>
-    </>
+    </section>
   );
 };
 

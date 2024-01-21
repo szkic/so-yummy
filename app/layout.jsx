@@ -38,7 +38,7 @@ const RootLayout = ({ children }) => {
               <div
                 className={
                   isLoggedIn &&
-                  " m-auto flex flex-col items-center px-10 pb-[100px] pt-[50px] tablet:max-w-screen-tablet desktop:max-w-screen-desktop"
+                  " m-auto flex flex-col px-4 pb-[100px] pt-[50px] tablet:max-w-screen-tablet tablet:px-8 desktop:max-w-screen-desktop"
                 }
               >
                 {isLoggedIn && (
