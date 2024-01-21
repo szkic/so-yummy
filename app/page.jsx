@@ -3,6 +3,7 @@ import PreviewCategories from "@components/PreviewCategories";
 import Search from "@components/Search";
 import Image from "next/image";
 import React from "react";
+// import bowl from "../public/assets/images/bowl.png";
 
 const MainPage = () => {
   return (
@@ -36,6 +37,7 @@ const MainPage = () => {
           src="/../assets/images/bowl.png"
           width={320}
           height={296}
+          // src={bowl}
           alt="bowl"
           className="absolute z-[-1] mt-[210px] h-auto w-auto tablet:right-[-50px] tablet:top-[-170px] tablet:w-[378px] desktop:right-[150px] desktop:top-[-200px] desktop:w-[578px]"
         />

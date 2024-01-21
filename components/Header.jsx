@@ -27,7 +27,7 @@ const Header = () => {
   return (
     <>
       <div className="">
-        <div className="m-auto flex w-screen items-center justify-between px-4 pt-[18px] tablet:max-w-screen-tablet tablet:px-8 desktop:max-w-screen-desktop  desktop:pt-3.5">
+        <div className="m-auto flex w-screen items-center justify-between px-4 pt-[18px] tablet:max-w-screen-tablet tablet:px-8 desktop:max-w-screen-desktop desktop:px-24 desktop:pt-3.5">
           <div className="grow desktop:mr-[187px] desktop:grow-0">
             <Logo />
           </div>

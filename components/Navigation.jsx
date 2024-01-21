@@ -12,8 +12,8 @@ const Navigation = () => {
     <ul className="flex min-h-screen flex-col items-center justify-center gap-[30px] font-medium desktop:min-h-0 desktop:flex-row desktop:text-sm">
       <li>
         <Link
-          href="/categories"
-          className={pathname === "/categories" ? active : ""}
+          href="/categories/beef"
+          className={pathname.includes("categories") ? active : ""}
         >
           Categories
         </Link>
