@@ -1,4 +1,5 @@
 import ChooseYourBreakfast from "@components/ChooseYourBreakfast";
+import PreviewCategories from "@components/PreviewCategories";
 import Search from "@components/Search";
 import Image from "next/image";
 import React from "react";
@@ -51,6 +52,10 @@ const MainPage = () => {
         </div>
         <ChooseYourBreakfast />
         <Search />
+      </section>
+
+      <section>
+        <PreviewCategories />
       </section>
     </>
   );
