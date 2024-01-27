@@ -31,8 +31,7 @@ const MainPage = () => {
         className="absolute right-0 top-[-20px] z-[-2] h-auto tablet:top-[-200px] tablet:w-[450px]"
       />
 
-      {/* usunąć tablet:pb-48 */}
-      <section className="relative flex flex-col flex-wrap items-center tablet:flex-row tablet:pb-48 desktop:px-14">
+      <section className="relative flex flex-col flex-wrap items-center pb-20 tablet:flex-row tablet:pb-48 desktop:px-14 desktop:pb-64">
         <Image
           src="/../assets/images/bowl.png"
           width={320}
@@ -52,7 +51,9 @@ const MainPage = () => {
             cookbook. You can add your own recipes to save them for the future.
           </p>
         </div>
-        <ChooseYourBreakfast />
+        <div className="pl-20 tablet:pl-0">
+          <ChooseYourBreakfast />
+        </div>
         <Search />
       </section>
 

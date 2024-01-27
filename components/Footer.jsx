@@ -52,7 +52,7 @@ const Footer = () => {
           alt="leafs"
           className="sticky right-0 -z-10"
         /> */}
-        <p className="font-medium">&copy; 2023 All Rights Reserved.</p>
+        <p className="font-medium">&copy; 2024 All Rights Reserved.</p>
         <p>Terms of service</p>
       </section>
     </>
