@@ -57,9 +57,7 @@ const MainPage = () => {
         <Search />
       </section>
 
-      <section>
-        <PreviewCategories />
-      </section>
+      <PreviewCategories />
     </>
   );
 };
