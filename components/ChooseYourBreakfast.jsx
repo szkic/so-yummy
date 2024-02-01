@@ -9,7 +9,7 @@ const ChooseYourBreakfast = () => {
         enjoy a variety of fresh ingredients in one satisfying meal
       </p>
 
-      <p className="mt-2 text-[10px]">
+      <p className="ml-auto mt-2 text-[10px]">
         See recipes <ArrowRightIcon className="inline h-[18px]" />
       </p>
     </div>
