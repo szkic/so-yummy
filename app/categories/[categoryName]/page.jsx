@@ -2,26 +2,24 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
-
-const categories = [
-  "Beef",
-  "Breakfast",
-  "Chiken",
-  "Desserts",
-  "Goat",
-  "Lamb",
-  "Miscellaneous",
-  "Pasta",
-  "Pork",
-  "Seafood",
-  "Side",
-];
+import React, { useEffect, useState } from "react";
 
 const active = "text-primary-color border-b-2 pb-5 px-1 border-primary-color";
 
 const CategoriesPage = () => {
+  const [categories, setCategories] = useState([]);
   const pathname = usePathname();
+
+  const fetchCategories = async () => {
+    const response = await fetch("/api/categories");
+    const data = await response.json();
+
+    setCategories(data);
+  };
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
 
   return (
     <>
