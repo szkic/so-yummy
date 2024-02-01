@@ -1,19 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-const categories = [
-  {
-    Breakfast: [
-      "Banana Pancakes",
-      "Ham hock colcannon",
-      "Polish Pancakes",
-      "Boxty Breakfast",
-    ],
-    Miscellaneous: "Portuguese prego Por ",
-    Vegan: "Teriyaki Chicken Casserole",
-    Desserts: "Blackberry Fool",
-  },
-];
+const categories = ["breakfast", "miscellaneous", "chicken", "desserts"];
 
 const PreviewCategories = () => {
   return (

@@ -7,12 +7,10 @@ export const GET = async (req, res) => {
 
     const recipe = await Recipe.find();
 
-    const abc = recipe.map((a) => a.category);
-    const xyz = [...new Set(abc)].sort();
+    const categoriesList = recipe.map((a) => a.category);
+    const uniqueCategories = [...new Set(categoriesList)].sort();
 
-    console.log(xyz);
-
-    return new Response(JSON.stringify(recipe), { status: 200 });
+    return new Response(JSON.stringify(uniqueCategories), { status: 200 });
   } catch (error) {
     console.log(error);
     return new Response("Failed to fetch all recipes", { status: 500 });
