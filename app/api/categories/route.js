@@ -1,13 +1,13 @@
-import Recipe from "@models/recipe";
+import Category from "@models/category";
 import { connectToDB } from "@utils/database";
 
 export const GET = async () => {
   try {
     await connectToDB();
 
-    const recipe = await Recipe.find();
+    const categories = await Category.find();
 
-    const categoriesList = recipe.map((a) => a.category);
+    const categoriesList = categories.map(({ title }) => title);
     const uniqueCategories = [...new Set(categoriesList)].sort();
 
     return new Response(JSON.stringify(uniqueCategories), { status: 200 });
