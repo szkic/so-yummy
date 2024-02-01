@@ -1,16 +1,11 @@
 import Recipe from "@models/recipe";
 import { connectToDB } from "@utils/database";
 
-export const GET = async (req, res) => {
+export const GET = async () => {
   try {
     await connectToDB();
 
     const recipe = await Recipe.find();
-
-    const abc = recipe.map((a) => a.category);
-    const xyz = [...new Set(abc)].sort();
-
-    console.log(xyz);
 
     return new Response(JSON.stringify(recipe), { status: 200 });
   } catch (error) {
