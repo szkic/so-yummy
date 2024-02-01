@@ -1,4 +1,5 @@
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
+import Link from "next/link";
 import React from "react";
 
 const ChooseYourBreakfast = () => {
@@ -9,9 +10,9 @@ const ChooseYourBreakfast = () => {
         enjoy a variety of fresh ingredients in one satisfying meal
       </p>
 
-      <p className="ml-auto mt-2 text-[10px]">
+      <Link href={`/categories/breakfast`} className="ml-auto mt-2 text-[10px]">
         See recipes <ArrowRightIcon className="inline h-[18px]" />
-      </p>
+      </Link>
     </div>
   );
 };
