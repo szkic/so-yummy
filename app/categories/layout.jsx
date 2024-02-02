@@ -1,9 +1,9 @@
 "use client";
 
+import Loader from "@components/Loader";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import { PropagateLoader } from "react-spinners";
 
 const active = "text-primary-color border-b-2 pb-5 px-1 border-primary-color";
 
@@ -33,9 +33,7 @@ const CategoriesLayout = ({ children }) => {
       <section>
         <h2 className="text-3xl font-semibold">Categories</h2>
         {isLoading ? (
-          <div className="mt-8 text-center">
-            <PropagateLoader color="#8BAA36" />
-          </div>
+          <Loader />
         ) : (
           <>
             <div>
