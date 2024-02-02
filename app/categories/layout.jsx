@@ -9,12 +9,12 @@ const active = "text-primary-color border-b-2 pb-5 px-1 border-primary-color";
 
 const CategoriesLayout = ({ children }) => {
   const [categories, setCategories] = useState([]);
-  const [isLoading, setIsLoading] = useState(true); // Added loading state
+  const [isLoading, setIsLoading] = useState(true);
   const pathname = usePathname();
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch("/api/categories");
+      const response = await fetch("/api/recipes/category-list");
       const data = await response.json();
       setCategories(data);
     } catch (error) {

@@ -1,7 +1,5 @@
-import React from "react";
-
-const page = () => {
+const CategoryNamePage = () => {
   return <div>page</div>;
 };
 
-export default page;
+export default CategoryNamePage;
