@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-const NotFound = () => {
+const NotFoundPage = () => {
   return (
     <section className="flex flex-col items-center">
       <div className="mb-3.5 tablet:mb-8">
@@ -24,4 +24,4 @@ const NotFound = () => {
   );
 };
 
-export default NotFound;
+export default NotFoundPage;

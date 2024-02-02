@@ -1,8 +1,8 @@
 import React from "react";
 import AuthNav from "@components/AuthNav";
 
-const page = () => {
+const WelcomePage = () => {
   return <AuthNav />;
 };
 
-export default page;
+export default WelcomePage;
