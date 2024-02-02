@@ -12,20 +12,13 @@ const CategoriesLayout = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const pathname = usePathname();
 
-  const fetchCategories = async () => {
-    try {
-      const response = await fetch("/api/recipes/category-list");
-      const data = await response.json();
-      setCategories(data);
-    } catch (error) {
-      console.error("Error fetching categories:", error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   useEffect(() => {
-    fetchCategories();
+    fetch("/api/recipes/category-list")
+      .then((res) => res.json())
+      .then((data) => {
+        setCategories(data);
+        setIsLoading(false);
+      });
   }, []);
 
   return (
