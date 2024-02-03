@@ -9,7 +9,12 @@ import Image from "next/image";
 
 const Header = () => {
   const [isActive, setIsActive] = useState(false);
-  const handleOpenMenu = () => setIsActive(!isActive);
+  const handleOpenMenu = () =>
+    setTimeout(() => {
+      setIsActive(!isActive);
+    }, 100);
+
+  console.log(isActive);
 
   useEffect(() => {
     isActive
@@ -102,7 +107,7 @@ const Header = () => {
           alt="leaves"
           className="fixed bottom-0 right-0 -z-10 hidden tablet:block"
         />
-        <Navigation />
+        <Navigation handleOpenMenu={handleOpenMenu} />
       </section>
     </>
   );

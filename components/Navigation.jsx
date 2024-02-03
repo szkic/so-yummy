@@ -5,7 +5,7 @@ import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 
 const active = "font-semibold text-primary-color";
 
-const Navigation = () => {
+const Navigation = ({ handleOpenMenu }) => {
   const pathname = usePathname();
 
   return (
@@ -14,17 +14,26 @@ const Navigation = () => {
         <Link
           href="/categories/beef"
           className={pathname.includes("categories") ? active : ""}
+          onClick={handleOpenMenu}
         >
           Categories
         </Link>
       </li>
       <li>
-        <Link href="/add" className={pathname === "/add" ? active : ""}>
+        <Link
+          href="/add"
+          className={pathname === "/add" ? active : ""}
+          onClick={handleOpenMenu}
+        >
           Add recipes
         </Link>
       </li>
       <li>
-        <Link href="/my" className={pathname === "/my" ? active : ""}>
+        <Link
+          href="/my"
+          className={pathname === "/my" ? active : ""}
+          onClick={handleOpenMenu}
+        >
           My recipes
         </Link>
       </li>
@@ -32,6 +41,7 @@ const Navigation = () => {
         <Link
           href="/favorite"
           className={pathname === "/favorite" ? active : ""}
+          onClick={handleOpenMenu}
         >
           Favorites
         </Link>
@@ -40,12 +50,17 @@ const Navigation = () => {
         <Link
           href="/shopping-list"
           className={pathname === "/shopping-list" ? active : ""}
+          onClick={handleOpenMenu}
         >
           Shopping list
         </Link>
       </li>
       <li>
-        <Link href="/search" className={pathname === "/search" ? active : ""}>
+        <Link
+          href="/search"
+          className={pathname === "/search" ? active : ""}
+          onClick={handleOpenMenu}
+        >
           <div className="flex">
             <MagnifyingGlassIcon className="h-5 w-5 tablet:h-6 tablet:w-6" />
             <span className="ml-2 desktop:hidden">Search</span>
