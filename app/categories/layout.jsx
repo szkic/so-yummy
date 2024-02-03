@@ -1,6 +1,7 @@
 "use client";
 
 import Loader from "@components/Loader";
+import axios from "axios";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -13,12 +14,10 @@ const CategoriesLayout = ({ children }) => {
   const pathname = usePathname();
 
   useEffect(() => {
-    fetch("/api/recipes/category-list")
-      .then((res) => res.json())
-      .then((data) => {
-        setCategories(data);
-        setIsLoading(false);
-      });
+    axios.get("/api/recipes/category-list").then((res) => {
+      setCategories(res.data);
+      setIsLoading(false);
+    });
   }, []);
 
   return (
