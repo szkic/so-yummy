@@ -54,7 +54,7 @@ const PreviewCategories = () => {
                     width={343}
                     height={323}
                     alt={el.description}
-                    className="rounded-lg tablet:h-[323px] tablet:w-[336px] desktop:h-[323px] desktop:w-[300px]"
+                    className="rounded-lg tablet:h-auto tablet:w-[336px] desktop:h-auto desktop:w-[300px]"
                   />
                   <div className="absolute bottom-6 h-[52px] w-[300px] rounded-lg bg-primary-text-color p-4 font-medium leading-5 desktop:w-[268px]">
                     {el.title}
