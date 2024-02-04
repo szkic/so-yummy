@@ -25,11 +25,10 @@ const PreviewCategories = () => {
     return <Loader />;
   }
 
-  // const categories = Object.keys(data);
-
-  // console.log(data);
-
-  Object.entries(data).map(([key, value]) => console.log(value));
+  const displayHideCategories = (index) => {
+    if (index === 1) return "hidden tablet:flex";
+    if (index > 1) return "hidden desktop:flex";
+  };
 
   return (
     <section className="pt-16">
@@ -44,7 +43,12 @@ const PreviewCategories = () => {
             </h2>
             <div className="flex gap-8 desktop:gap-3.5">
               {value.map((el, index) => (
-                <div className="relative flex justify-center" key={el.title}>
+                <div
+                  className={`relative flex justify-center ${displayHideCategories(
+                    index,
+                  )}`}
+                  key={el.title}
+                >
                   <Image
                     src={el.thumb}
                     width={343}
