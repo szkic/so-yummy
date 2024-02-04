@@ -14,8 +14,6 @@ const Header = () => {
       setIsActive(!isActive);
     }, 100);
 
-  console.log(isActive);
-
   useEffect(() => {
     isActive
       ? (document.body.style.overflow = "hidden")
