@@ -1,9 +1,20 @@
+"use client";
+
+import { useQuery } from "@tanstack/react-query";
+import { fetchMainPage } from "@utils/fetchers";
 import Image from "next/image";
 import React from "react";
 
 const categories = ["Breakfast", "Miscellaneous", "Chicken", "Desserts"];
 
 const PreviewCategories = () => {
+  const { isPending, isError, data, error } = useQuery({
+    queryKey: ["main-recipes"],
+    queryFn: fetchMainPage,
+  });
+
+  console.log(data);
+
   return (
     <section className="pt-16">
       <div className="flex flex-col items-start gap-8 tablet:gap-12 desktop:gap-24">

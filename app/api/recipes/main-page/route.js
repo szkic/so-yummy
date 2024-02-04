@@ -10,15 +10,15 @@ export const GET = async () => {
   try {
     await connectToDB();
 
-    const categories = ["Breakfast", "Miscellaneous", "Chicken", "Desserts"];
+    const categories = ["Breakfast", "Miscellaneous", "Chicken", "Dessert"];
     const recipesPromises = categories.map((category) =>
       fetchRecipesByCategory(category),
     );
 
-    const [breakfast, miscellaneous, chicken, desserts] =
+    const [breakfast, miscellaneous, chicken, dessert] =
       await Promise.all(recipesPromises);
 
-    const data = { breakfast, miscellaneous, chicken, desserts };
+    const data = { breakfast, miscellaneous, chicken, dessert };
 
     return new Response(JSON.stringify(data), { status: 200 });
   } catch (error) {

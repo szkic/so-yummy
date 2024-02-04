@@ -6,3 +6,10 @@ export const fetchCategories = async () => {
 
   return categories;
 };
+
+export const fetchMainPage = async () => {
+  const response = await axios.get("/api/recipes/main-page");
+  const categories = response.data;
+
+  return categories;
+};
