@@ -5,6 +5,7 @@ import { fetchMainPage } from "@utils/fetchers";
 import Image from "next/image";
 import React from "react";
 import Loader from "./Loader";
+import Link from "next/link";
 
 const categories = ["Breakfast", "Miscellaneous", "Chicken", "Desserts"];
 
@@ -63,9 +64,11 @@ const PreviewCategories = () => {
               ))}
             </div>
             <div className="flex justify-end">
-              <button className="rounded-md bg-primary-color px-6 py-2.5 text-sm text-primary-text-color">
-                See all
-              </button>
+              <Link href={`/categories/${key}`}>
+                <button className="rounded-md bg-primary-color px-6 py-2.5 text-sm text-primary-text-color">
+                  See all
+                </button>
+              </Link>
             </div>
           </div>
         ))}
