@@ -1,21 +1,37 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
-import { fetchCategoriesPage } from "@utils/fetchers";
+import NotFoundPage from "@app/not-found";
+import { useQueries, useQuery } from "@tanstack/react-query";
+import { fetchCategories, fetchCategoriesPage } from "@utils/fetchers";
 import { useParams } from "next/navigation";
 
 const CategoryNamePage = () => {
-  const params = useParams();
+  const { categoryName } = useParams();
 
-  const { isPending, isError, data, error } = useQuery({
-    queryKey: ["categoriesPage"],
-    queryFn: () => fetchCategoriesPage(params.categoryName),
-    refetchOnMount: "always",
+  const capitalizeCategoryName =
+    categoryName[0].toUpperCase() + categoryName.substring(1);
+
+  const results = useQueries({
+    queries: [
+      { queryKey: ["categories"], queryFn: fetchCategories },
+      {
+        queryKey: ["categoriesPage"],
+        queryFn: () => fetchCategoriesPage(categoryName),
+        refetchOnMount: "always",
+      },
+    ],
   });
+
+  const categories = results[0].data;
+  const { isPending, isError, data, error } = results[1];
 
   console.log(data);
 
-  return <div>page</div>;
+  if (!categories.includes(capitalizeCategoryName)) {
+    return <NotFoundPage />;
+  }
+
+  return <div>{capitalizeCategoryName}</div>;
 };
 
 export default CategoryNamePage;
