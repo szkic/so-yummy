@@ -10,6 +10,7 @@ const CategoryNamePage = () => {
   const { isPending, isError, data, error } = useQuery({
     queryKey: ["categoriesPage"],
     queryFn: () => fetchCategoriesPage(params.categoryName),
+    refetchOnMount: "always",
   });
 
   console.log(data);
