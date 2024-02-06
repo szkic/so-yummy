@@ -9,10 +9,10 @@ const CategoryNamePage = () => {
 
   const { isPending, isError, data, error } = useQuery({
     queryKey: ["categoriesPage"],
-    queryFn: () => fetchCategoriesPage(category),
+    queryFn: () => fetchCategoriesPage(params.categoryName),
   });
 
-  console.log(params);
+  console.log(data);
 
   return <div>page</div>;
 };
