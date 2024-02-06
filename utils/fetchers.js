@@ -13,3 +13,10 @@ export const fetchMainPage = async () => {
 
   return categories;
 };
+
+export const fetchCategoriesPage = async (categoryName) => {
+  const response = await axios.get(`/api/recipes/category/${categoryName}`);
+  const category = response.data;
+
+  return category;
+};

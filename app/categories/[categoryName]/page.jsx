@@ -1,11 +1,18 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { useQuery } from "@tanstack/react-query";
+import { fetchCategoriesPage } from "@utils/fetchers";
+import { useParams } from "next/navigation";
 
 const CategoryNamePage = () => {
-  const pathname = usePathname();
+  const params = useParams();
 
-  console.log(pathname.split("/"));
+  const { isPending, isError, data, error } = useQuery({
+    queryKey: ["categoriesPage"],
+    queryFn: () => fetchCategoriesPage(category),
+  });
+
+  console.log(params);
 
   return <div>page</div>;
 };

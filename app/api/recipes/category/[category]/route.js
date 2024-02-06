@@ -1,9 +1,11 @@
 import Recipe from "@models/recipe";
 import { connectToDB } from "@utils/database";
 
-export const GET = async () => {
+export const GET = async (req) => {
   try {
     await connectToDB();
+
+    console.log(req.query);
 
     const recipesByCategory = await Recipe.find({ category: "Beef" });
 
