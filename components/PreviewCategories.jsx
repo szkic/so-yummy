@@ -35,13 +35,9 @@ const PreviewCategories = () => {
             <h2 className="text-3xl font-semibold">
               {capitalizeFirstLetter(key)}
             </h2>
-            <div className="flex gap-8 desktop:gap-3.5">
-              {value.map((el, index) => (
-                <div key={el.title}>
-                  <RecipeCard el={el} index={index} />
-                </div>
-              ))}
-            </div>
+
+            <RecipeCard data={value} />
+
             <div className="flex justify-end">
               <Link href={`/categories/${key}`}>
                 <button className="rounded-md bg-primary-color px-6 py-2.5 text-sm text-primary-text-color">
