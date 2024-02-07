@@ -1,7 +1,7 @@
 "use client";
 
 import NotFoundPage from "@app/not-found";
-import { useQueries, useQuery } from "@tanstack/react-query";
+import { useQueries } from "@tanstack/react-query";
 import { fetchCategories, fetchCategoriesPage } from "@utils/fetchers";
 import { useParams } from "next/navigation";
 
