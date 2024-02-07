@@ -6,9 +6,7 @@ import React from "react";
 import Loader from "./Loader";
 import Link from "next/link";
 import RecipeCard from "./RecipeCard";
-
-const capitalizeFirstLetter = (str) =>
-  str.charAt(0).toUpperCase() + str.slice(1);
+import { capitalizeFirstLetter } from "@utils/capitalizeFirstLetter";
 
 const PreviewCategories = () => {
   const { isPending, isError, data, error } = useQuery({
