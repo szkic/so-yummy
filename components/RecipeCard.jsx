@@ -1,20 +1,20 @@
 import React from "react";
 import Image from "next/image";
 
-const RecipeCard = ({ data }) => {
+const RecipeCard = ({ data, displayAll }) => {
   const displayHideCategories = (index) => {
     if (index === 1) return "hidden tablet:flex";
     if (index > 1) return "hidden desktop:flex";
   };
 
   return (
-    <div className="flex gap-8 desktop:gap-3.5">
+    <div className="flex flex-wrap gap-8 desktop:gap-3.5">
       {data.map((el, index) => (
         <div
-          className={`relative flex justify-center ${displayHideCategories(
-            index,
-          )}`}
-          key={el.title}
+          className={`relative flex justify-center ${
+            !displayAll && displayHideCategories(index)
+          }`}
+          key={el._id}
         >
           <Image
             src={el.thumb}

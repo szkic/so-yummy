@@ -1,6 +1,8 @@
 "use client";
 
 import NotFoundPage from "@app/not-found";
+import Loader from "@components/Loader";
+import RecipeCard from "@components/RecipeCard";
 import { useQueries } from "@tanstack/react-query";
 import { capitalizeFirstLetter } from "@utils/capitalizeFirstLetter";
 import { fetchCategories, fetchCategoriesPage } from "@utils/fetchers";
@@ -29,7 +31,19 @@ const CategoryNamePage = () => {
     return <NotFoundPage />;
   }
 
-  return <div>capitalizeCategoryName</div>;
+  if (isError) {
+    return <p>Error: {error.message}</p>;
+  }
+
+  if (isPending) {
+    return <Loader />;
+  }
+
+  return (
+    <div className="mt-8 tablet:mt-12">
+      <RecipeCard data={data} displayAll={true} />
+    </div>
+  );
 };
 
 export default CategoryNamePage;
