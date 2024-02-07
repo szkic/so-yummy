@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const fetchCategories = async () => {
+const fetcher = async (url) => {
   try {
-    const response = await axios.get("/api/recipes/category-list");
+    const response = await axios.get(url);
     const categories = response.data;
 
     return categories;
@@ -12,26 +12,10 @@ export const fetchCategories = async () => {
   }
 };
 
-export const fetchMainPage = async () => {
-  try {
-    const response = await axios.get("/api/recipes/main-page");
-    const categories = response.data;
+export const fetchCategories = async () =>
+  fetcher("/api/recipes/category-list");
 
-    return categories;
-  } catch (error) {
-    console.log(error);
-    throw error;
-  }
-};
+export const fetchMainPage = async () => fetcher("/api/recipes/main-page");
 
-export const fetchCategoriesPage = async (categoryName) => {
-  try {
-    const response = await axios.get(`/api/recipes/category/${categoryName}`);
-    const category = response.data;
-
-    return category;
-  } catch (error) {
-    console.log(error);
-    throw error;
-  }
-};
+export const fetchCategoriesPage = async (categoryName) =>
+  fetcher(`/api/recipes/category/${categoryName}`);
