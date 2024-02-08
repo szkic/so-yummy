@@ -1,6 +1,7 @@
 "use client";
 
 import Loader from "@components/Loader";
+import PageHeader from "@components/PageHeader";
 import { useQuery } from "@tanstack/react-query";
 import { fetchCategories } from "@utils/fetchers";
 import Link from "next/link";
@@ -23,13 +24,13 @@ const CategoriesLayout = ({ children }) => {
   return (
     <>
       <section>
-        <h2 className="text-3xl font-semibold">Categories</h2>
+        <PageHeader name={"Categories"} />
         {isPending ? (
           <Loader />
         ) : (
           <>
             <div>
-              <ul className=" mt-12 flex gap-7 overflow-x-auto overflow-y-hidden border-b-[1px] pb-5 tablet:gap-14 desktop:mt-24">
+              <ul className="flex gap-7 overflow-x-auto overflow-y-hidden border-b-[1px] pb-5 tablet:gap-14">
                 {data.map((category) => (
                   <li
                     key={category}

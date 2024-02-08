@@ -1,7 +1,12 @@
+import PageHeader from "@components/PageHeader";
 import React from "react";
 
 const SearchPage = () => {
-  return <div>SearchPage</div>;
+  return (
+    <section>
+      <PageHeader name={"Search"} />
+    </section>
+  );
 };
 
 export default SearchPage;

@@ -1,7 +1,12 @@
+import PageHeader from "@components/PageHeader";
 import React from "react";
 
 const FavoritePage = () => {
-  return <div>FavoritePage</div>;
+  return (
+    <section>
+      <PageHeader name={"Favorites"} />
+    </section>
+  );
 };
 
 export default FavoritePage;

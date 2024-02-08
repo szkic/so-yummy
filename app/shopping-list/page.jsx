@@ -1,7 +1,12 @@
+import PageHeader from "@components/PageHeader";
 import React from "react";
 
 const ShoppingListPage = () => {
-  return <div>ShoppingListPage</div>;
+  return (
+    <section>
+      <PageHeader name={"Shopping list"} />
+    </section>
+  );
 };
 
 export default ShoppingListPage;
