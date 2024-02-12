@@ -15,6 +15,7 @@ const CategoriesLayout = ({ children }) => {
   const { isPending, isError, data, error } = useQuery({
     queryKey: ["categories"],
     queryFn: fetchCategories,
+    staleTime: 1000 * 60,
   });
 
   if (isError) {

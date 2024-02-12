@@ -13,11 +13,16 @@ const CategoryNamePage = () => {
 
   const results = useQueries({
     queries: [
-      { queryKey: ["categories"], queryFn: fetchCategories },
+      {
+        queryKey: ["categories"],
+        queryFn: fetchCategories,
+        staleTime: 1000 * 60,
+      },
       {
         queryKey: ["categoriesPage"],
         queryFn: () => fetchCategoriesPage(categoryName),
         refetchOnMount: "always",
+        staleTime: 1000 * 60,
       },
     ],
   });

@@ -12,6 +12,7 @@ const PreviewCategories = () => {
   const { isPending, isError, data, error } = useQuery({
     queryKey: ["main-recipes"],
     queryFn: fetchMainPage,
+    staleTime: 1000 * 60 * 10,
   });
 
   if (isError) {
