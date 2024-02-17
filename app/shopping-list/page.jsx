@@ -1,10 +1,10 @@
-import PageHeader from "@components/PageHeader";
+import MainTitle from "@components/MainTitle";
 import React from "react";
 
 const ShoppingListPage = () => {
   return (
     <section>
-      <PageHeader name={"Shopping list"} />
+      <MainTitle name={"Shopping list"} />
     </section>
   );
 };

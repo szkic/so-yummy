@@ -1,7 +1,7 @@
 "use client";
 
 import Loader from "@components/Loader";
-import PageHeader from "@components/PageHeader";
+import MainTitle from "@components/MainTitle";
 import { useQuery } from "@tanstack/react-query";
 import { fetchCategories } from "@utils/fetchers";
 import Link from "next/link";
@@ -25,7 +25,7 @@ const CategoriesLayout = ({ children }) => {
   return (
     <>
       <section>
-        <PageHeader name={"Categories"} />
+        <MainTitle name={"Categories"} />
         {isPending ? (
           <Loader />
         ) : (

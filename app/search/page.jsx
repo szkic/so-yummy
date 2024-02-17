@@ -1,10 +1,10 @@
-import PageHeader from "@components/PageHeader";
+import MainTitle from "@components/MainTitle";
 import React from "react";
 
 const SearchPage = () => {
   return (
     <section>
-      <PageHeader name={"Search"} />
+      <MainTitle name={"Search"} />
     </section>
   );
 };

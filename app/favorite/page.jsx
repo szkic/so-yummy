@@ -1,10 +1,10 @@
-import PageHeader from "@components/PageHeader";
+import MainTitle from "@components/MainTitle";
 import React from "react";
 
 const FavoritePage = () => {
   return (
     <section>
-      <PageHeader name={"Favorites"} />
+      <MainTitle name={"Favorites"} />
     </section>
   );
 };
