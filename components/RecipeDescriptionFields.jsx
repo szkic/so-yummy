@@ -42,15 +42,16 @@ const RecipeDescriptionFields = () => {
       {isPending ? (
         <Loader />
       ) : (
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center gap-8 tablet:flex-row desktop:items-start desktop:gap-12">
           <Image
             src="/../assets/images/image_placeholder.png"
             width={279}
             height={268}
             alt="image placeholder"
+            className="h-auto desktop:w-[357px]"
           />
 
-          <FormControl className="mt-8 flex w-[343px] flex-col gap-6">
+          <FormControl className="flex w-[343px] flex-col gap-6 tablet:w-[393px] tablet:gap-8 desktop:gap-10">
             <TextField
               required
               id="item-title"
