@@ -1,15 +1,104 @@
+import { FormControl, MenuItem, Select, TextField } from "@mui/material";
+import { useQuery } from "@tanstack/react-query";
+import { fetchCategories } from "@utils/fetchers";
 import Image from "next/image";
+import Loader from "./Loader";
+
+const cookingTime = [];
+for (let i = 5; i <= 120; i += 5) {
+  cookingTime.push(i);
+}
+
+const ITEM_HEIGHT = 37;
+const ITEM_PADDING_TOP = 8;
+
+export const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 6 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
 
 const RecipeDescriptionFields = () => {
+  const {
+    isPending,
+    isError,
+    data: categories,
+    error,
+  } = useQuery({
+    queryKey: ["categories"],
+    queryFn: fetchCategories,
+    staleTime: 1000 * 60,
+  });
+
+  if (isError) {
+    return <p>Error: {error.message}</p>;
+  }
+
   return (
-    <div className="flex justify-center">
-      <Image
-        src="/../assets/images/image_placeholder.png"
-        width={279}
-        height={268}
-        alt="image placeholder"
-      />
-    </div>
+    <>
+      {isPending ? (
+        <Loader />
+      ) : (
+        <div className="flex flex-col items-center">
+          <Image
+            src="/../assets/images/image_placeholder.png"
+            width={279}
+            height={268}
+            alt="image placeholder"
+          />
+
+          <FormControl className="mt-8 flex w-[343px] flex-col gap-6">
+            <TextField
+              required
+              id="item-title"
+              label="Enter item title"
+              defaultValue=""
+              variant="standard"
+            />
+            <TextField
+              required
+              id="about-recipe"
+              label="Enter about recipe"
+              defaultValue=""
+              variant="standard"
+            />
+            <TextField
+              id="recipe-category"
+              select
+              label="Category"
+              variant="standard"
+              defaultValue=""
+              required
+              SelectProps={{ MenuProps }}
+            >
+              {categories.map((option) => (
+                <MenuItem key={option} value={option}>
+                  {option}
+                </MenuItem>
+              ))}
+            </TextField>
+            <TextField
+              id="recipe-cooking-time"
+              select
+              label="Cooking time"
+              variant="standard"
+              defaultValue=""
+              required
+              SelectProps={{ MenuProps }}
+            >
+              {cookingTime.map((option) => (
+                <MenuItem key={option} value={option}>
+                  {option}
+                </MenuItem>
+              ))}
+            </TextField>
+          </FormControl>
+        </div>
+      )}
+    </>
   );
 };
 
