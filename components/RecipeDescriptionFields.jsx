@@ -92,7 +92,7 @@ const RecipeDescriptionFields = () => {
             >
               {cookingTime.map((option) => (
                 <MenuItem key={option} value={option}>
-                  {option}
+                  {option} min
                 </MenuItem>
               ))}
             </TextField>

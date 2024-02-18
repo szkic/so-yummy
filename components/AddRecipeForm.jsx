@@ -9,11 +9,11 @@ const AddRecipeForm = () => {
   const [recipeState, setRecipeState] = useState(null);
 
   return (
-    <>
+    <div className="tablet:max-w-[704px] desktop:max-w-[800px]">
       <RecipeDescriptionFields />
       <RecipeIngredientsFields />
       {/* <RecipePreparationFields /> */}
-    </>
+    </div>
   );
 };
 
