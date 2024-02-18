@@ -11,7 +11,7 @@ const AddRecipeForm = () => {
   return (
     <>
       <RecipeDescriptionFields />
-      {/* <RecipeIngredientsFields /> */}
+      <RecipeIngredientsFields />
       {/* <RecipePreparationFields /> */}
     </>
   );
