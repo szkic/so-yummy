@@ -117,21 +117,14 @@ const RecipeIngredientsFields = () => {
             <MenuItem value={5}>5</MenuItem>
           </Select>
         </FormControl>
-        <FormControl className="w-16 tablet:w-28" size="small">
-          <InputLabel id="quantity">Quantity</InputLabel>
-          <Select
-            labelId="quantity"
+        <FormControl className="w-16 tablet:w-28">
+          <TextField
             id="quantity"
             value={quantity}
             label="Quantity"
             onChange={(e) => setQuantity(e.target.value)}
-          >
-            <MenuItem value={1}>1</MenuItem>
-            <MenuItem value={2}>2</MenuItem>
-            <MenuItem value={3}>3</MenuItem>
-            <MenuItem value={4}>4</MenuItem>
-            <MenuItem value={5}>5</MenuItem>
-          </Select>
+            size="small"
+          ></TextField>
         </FormControl>
         <FormControl className="w-16 tablet:w-28" size="small">
           <InputLabel id="measure">Measure</InputLabel>
@@ -142,10 +135,10 @@ const RecipeIngredientsFields = () => {
             label="Measure"
             onChange={(e) => setMeasure(e.target.value)}
           >
-            <MenuItem value="tbsp">tbsp</MenuItem>
+            <MenuItem value="tbs">tbs</MenuItem>
+            <MenuItem value="tsp">tsp</MenuItem>
             <MenuItem value="kg">kg</MenuItem>
             <MenuItem value="g">g</MenuItem>
-            <MenuItem value="mg">mg</MenuItem>
           </Select>
         </FormControl>
         <CloseIcon className="ml-2" fontSize="small" />
