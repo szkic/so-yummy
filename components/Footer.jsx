@@ -41,7 +41,9 @@ const Footer = () => {
           <Nav />
           <div className="hidden desktop:block desktop:grow" />
           <SubscribeForm />
-          <FollowUs />
+          <div className="flex justify-center tablet:basis-full">
+            <FollowUs />
+          </div>
         </div>
       </section>
       <section className="flex justify-center gap-3.5 py-7 text-[10px] opacity-50 tablet:gap-7 tablet:py-8 tablet:text-sm desktop:gap-10 desktop:py-[50px]">

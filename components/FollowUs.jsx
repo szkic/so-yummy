@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const FollowUs = () => {
   return (
-    <div className="flex justify-center tablet:basis-full">
+    <>
       <ul className="flex items-center gap-3.5 text-primary-text-color">
         <li>
           <a href="http://facebook.com" rel="noopener" target="_blank">
@@ -46,7 +46,7 @@ const FollowUs = () => {
           </a>
         </li>
       </ul>
-    </div>
+    </>
   );
 };
 
