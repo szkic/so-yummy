@@ -25,7 +25,7 @@ const AddRecipeForm = () => {
           <h3 className="mb-10 text-2xl font-semibold">Follow us</h3>
           <FollowUs />
         </div>
-        <div className="mt-20 tablet:mt-24">
+        <div className="mt-20 max-w-xs tablet:mt-24">
           <PopularRecipe />
         </div>
       </div>

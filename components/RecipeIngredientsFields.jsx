@@ -1,22 +1,49 @@
 "use client";
 
 import {
+  Autocomplete,
+  CircularProgress,
   FormControl,
   InputLabel,
   MenuItem,
   Select,
   TextField,
 } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
+import { fetchIngredients } from "@utils/fetchers";
 
 const RecipeIngredientsFields = () => {
   const [number, setNumber] = useState(0);
-  const [ingredient, setIngredient] = useState("");
+  // const [ingredient, setIngredient] = useState(""); - PRZYDA SIĘ DO ZBIERANIA STANU?
   const [quantity, setQuantity] = useState("");
   const [measure, setMeasure] = useState("");
   const [hoverColorPlus, sethoverColorPlus] = useState(false);
   const [hoverColorMinus, sethoverColorMinus] = useState(false);
+
+  const [open, setOpen] = useState(false);
+  const [options, setOptions] = useState([]);
+  const loading = open && options.length === 0;
+
+  useEffect(() => {
+    let active = true;
+
+    if (!loading) {
+      return undefined;
+    }
+
+    (async () => {
+      const response = await fetchIngredients();
+
+      if (active) {
+        setOptions([...response]);
+      }
+    })();
+
+    return () => {
+      active = false;
+    };
+  }, [loading]);
 
   return (
     <>
@@ -102,20 +129,38 @@ const RecipeIngredientsFields = () => {
 
       <div className="mt-6 flex items-center justify-between">
         <FormControl className="w-40 tablet:w-96" size="small">
-          <InputLabel id="ingredient">Ingredient</InputLabel>
-          <Select
-            labelId="ingredient"
+          <Autocomplete
             id="ingredient"
-            value={ingredient}
-            label="Ingredient"
-            onChange={(e) => setIngredient(e.target.value)}
-          >
-            <MenuItem value={1}>1</MenuItem>
-            <MenuItem value={2}>2</MenuItem>
-            <MenuItem value={3}>3</MenuItem>
-            <MenuItem value={4}>4</MenuItem>
-            <MenuItem value={5}>5</MenuItem>
-          </Select>
+            size="small"
+            open={open}
+            onOpen={() => {
+              setOpen(true);
+            }}
+            onClose={() => {
+              setOpen(false);
+            }}
+            isOptionEqualToValue={(option, value) => option === value}
+            getOptionLabel={(option) => option}
+            options={options}
+            loading={loading}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="Ingredient"
+                InputProps={{
+                  ...params.InputProps,
+                  endAdornment: (
+                    <>
+                      {loading ? (
+                        <CircularProgress color="inherit" size={20} />
+                      ) : null}
+                      {params.InputProps.endAdornment}
+                    </>
+                  ),
+                }}
+              />
+            )}
+          />
         </FormControl>
         <FormControl className="w-16 tablet:w-28">
           <TextField
