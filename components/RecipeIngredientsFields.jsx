@@ -168,7 +168,7 @@ const RecipeIngredientsFields = () => {
             value={quantity}
             label="Quantity"
             onChange={(e) => {
-              const regex = /^[0-9]+(?:[,.][0-9]{3})*(?:[,.][0-9]{0,2})?$/;
+              const regex = /^[0-9]*(\.[0-9]{0,2})?$/;
               if (e.target.value === "" || regex.test(e.target.value)) {
                 setQuantity(e.target.value);
               }
