@@ -23,7 +23,7 @@ const RecipeCard = ({ data, displayAll }) => {
             alt={el.description}
             className="h-auto rounded-lg tablet:w-[336px] desktop:w-[300px]"
           />
-          <div className="absolute bottom-6 h-[52px] w-[300px] rounded-lg bg-primary-text-color p-4 font-medium leading-5 desktop:w-[268px]">
+          <div className="absolute bottom-6 flex h-[52px] w-[300px] items-center rounded-lg bg-primary-text-color p-4 font-medium leading-5 desktop:w-[268px]">
             {el.title}
           </div>
         </div>
