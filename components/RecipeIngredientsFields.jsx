@@ -167,7 +167,12 @@ const RecipeIngredientsFields = () => {
             id="quantity"
             value={quantity}
             label="Quantity"
-            onChange={(e) => setQuantity(e.target.value)}
+            onChange={(e) => {
+              const regex = /^[0-9]+(?:[,.][0-9]{3})*(?:[,.][0-9]{0,2})?$/;
+              if (e.target.value === "" || regex.test(e.target.value)) {
+                setQuantity(e.target.value);
+              }
+            }}
             size="small"
           ></TextField>
         </FormControl>
