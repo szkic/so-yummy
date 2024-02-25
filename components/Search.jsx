@@ -7,13 +7,13 @@ const Search = ({ btnColor, searchType, createQueryString }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const searchValue = e.target.elements.search.value;
 
-    router.push(
-      `?${createQueryString(
-        searchType.toLowerCase(),
-        e.target.elements.search.value,
-      )}`,
-    );
+    if (searchValue !== "" && searchType !== "") {
+      router.push(
+        `?${createQueryString(searchType.toLowerCase(), searchValue)}`,
+      );
+    }
   };
 
   return (
