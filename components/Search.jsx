@@ -1,9 +1,33 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { fetchSearch } from "@utils/fetchers";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 
 const Search = ({ btnColor, searchType, createQueryString }) => {
   const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const searchParamsKeys = searchParams.keys();
+  const queryKeys = Array.from(searchParamsKeys).toString();
+
+  const searchParamsValues = searchParams.values();
+  const queryValues = Array.from(searchParamsValues).toString();
+
+  const fetchData = async () => {
+    try {
+      const data = await fetchSearch(queryKeys, queryValues);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (queryKeys !== "" && queryValues !== "") {
+      fetchData();
+    }
+  }, [queryKeys, queryValues]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
