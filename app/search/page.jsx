@@ -14,15 +14,13 @@ const SearchPage = () => {
   const title = searchParams.get("title");
   const ingredients = searchParams.get("ingredienrs");
 
-  const createQueryString = useCallback(
-    (name, value) => {
-      const params = new URLSearchParams(searchParams);
-      params.set(name, value);
+  const createQueryString = useCallback((name, value) => {
+    const params = new URLSearchParams();
 
-      return params.toString();
-    },
-    [searchParams],
-  );
+    params.set(name, value);
+
+    return params.toString();
+  }, []);
 
   return (
     <section>
