@@ -1,8 +1,23 @@
-import React from "react";
+"use client";
 
-const Search = ({ btnColor }) => {
+import { useRouter } from "next/navigation";
+
+const Search = ({ btnColor, searchType, createQueryString }) => {
+  const router = useRouter();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    router.push(
+      `?${createQueryString(
+        searchType.toLowerCase(),
+        e.target.elements.search.value,
+      )}`,
+    );
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <label
         htmlFor="search"
         className="sr-only mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -10,7 +25,7 @@ const Search = ({ btnColor }) => {
         Search
       </label>
       <div className="relative w-[295px] tablet:w-[362px] desktop:w-[510px]">
-        <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3"></div>
+        {/* <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3"></div> */}
         <input
           type="search"
           id="search"

@@ -24,9 +24,7 @@ export const GET = async (req) => {
       });
 
       // search for ingredient IDs
-      const targetIngredientId = searchIngredient.map((id) =>
-        id._id.toString(),
-      );
+      const targetIngredientId = searchIngredient.map((id) => id.id.toString());
 
       // return all Recipes with ingredients searched by IDs
       const recipesWithIngredient = await Promise.all(
