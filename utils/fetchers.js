@@ -21,3 +21,6 @@ export const fetchCategoriesPage = async (categoryName) =>
   fetcher(`/api/recipes/category/${categoryName}`);
 
 export const fetchIngredients = async () => fetcher("/api/ingredients/list");
+
+export const fetchSearch = async (name, value) =>
+  fetcher(`/api/search?${name}=${value}`);
