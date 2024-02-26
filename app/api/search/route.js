@@ -36,7 +36,9 @@ export const GET = async (req) => {
         ),
       );
 
-      return new Response(JSON.stringify(recipesWithIngredient), {
+      const flatRecipesWithIngredient = recipesWithIngredient.flat();
+
+      return new Response(JSON.stringify(flatRecipesWithIngredient), {
         status: 200,
       });
     }
