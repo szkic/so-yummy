@@ -38,9 +38,17 @@ export const GET = async (req) => {
 
       const flatRecipesWithIngredient = recipesWithIngredient.flat();
 
-      return new Response(JSON.stringify(flatRecipesWithIngredient), {
-        status: 200,
+      const uniqueValues = new Set();
+      const uniqueArray = flatRecipesWithIngredient.filter((obj) => {
+        const value = obj.id;
+
+        if (uniqueValues.has(value)) return false;
+
+        uniqueValues.add(value);
+        return true;
       });
+
+      return new Response(JSON.stringify(uniqueArray), { status: 200 });
     }
   } catch (error) {
     return new Response("Failed to find recipe", { status: 500 });

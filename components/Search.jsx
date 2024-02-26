@@ -1,18 +1,8 @@
-"use client";
+import { useRouter } from "next/navigation";
+import { useCallback } from "react";
 
-import { fetchSearch } from "@utils/fetchers";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useCallback, useEffect } from "react";
-
-const Search = ({ btnColor, searchType, setData }) => {
+const Search = ({ btnColor, searchType }) => {
   const router = useRouter();
-  const searchParams = useSearchParams();
-
-  const searchParamsKeys = searchParams.keys();
-  const queryKeys = Array.from(searchParamsKeys).toString();
-
-  const searchParamsValues = searchParams.values();
-  const queryValues = Array.from(searchParamsValues).toString();
 
   const createQueryString = useCallback((name, value) => {
     const params = new URLSearchParams();
@@ -21,22 +11,6 @@ const Search = ({ btnColor, searchType, setData }) => {
 
     return params.toString();
   }, []);
-
-  const fetchData = async () => {
-    try {
-      const data = await fetchSearch(queryKeys, queryValues);
-      console.log(data);
-      setData(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    if (queryKeys !== "" && queryValues !== "") {
-      fetchData();
-    }
-  }, [queryKeys, queryValues]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -58,7 +32,6 @@ const Search = ({ btnColor, searchType, setData }) => {
         Search
       </label>
       <div className="relative w-[295px] tablet:w-[362px] desktop:w-[510px]">
-        {/* <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3"></div> */}
         <input
           type="search"
           id="search"
