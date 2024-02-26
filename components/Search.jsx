@@ -2,9 +2,9 @@
 
 import { fetchSearch } from "@utils/fetchers";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 
-const Search = ({ btnColor, searchType, createQueryString }) => {
+const Search = ({ btnColor, searchType, setData }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -14,10 +14,19 @@ const Search = ({ btnColor, searchType, createQueryString }) => {
   const searchParamsValues = searchParams.values();
   const queryValues = Array.from(searchParamsValues).toString();
 
+  const createQueryString = useCallback((name, value) => {
+    const params = new URLSearchParams();
+
+    params.set(name, value);
+
+    return params.toString();
+  }, []);
+
   const fetchData = async () => {
     try {
       const data = await fetchSearch(queryKeys, queryValues);
       console.log(data);
+      setData(data);
     } catch (error) {
       console.log(error);
     }

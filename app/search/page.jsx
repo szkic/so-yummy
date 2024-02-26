@@ -9,18 +9,21 @@ import { useCallback, useState } from "react";
 
 const SearchPage = () => {
   const [searchType, setSearchType] = useState("");
+  const [data, setData] = useState([]);
 
-  const searchParams = useSearchParams();
-  const title = searchParams.get("title");
-  const ingredients = searchParams.get("ingredienrs");
+  // const searchParams = useSearchParams();
+  // const title = searchParams.get("title");
+  // const ingredients = searchParams.get("ingredienrs");
 
-  const createQueryString = useCallback((name, value) => {
-    const params = new URLSearchParams();
+  // const createQueryString = useCallback((name, value) => {
+  //   const params = new URLSearchParams();
 
-    params.set(name, value);
+  //   params.set(name, value);
 
-    return params.toString();
-  }, []);
+  //   return params.toString();
+  // }, []);
+
+  console.log(data.length);
 
   return (
     <section>
@@ -29,13 +32,14 @@ const SearchPage = () => {
         <Search
           btnColor="green"
           searchType={searchType}
-          createQueryString={createQueryString}
+          // createQueryString={createQueryString}
+          setData={setData}
         />
         <SearchTypeSelector
           searchType={searchType}
           setSearchType={setSearchType}
         />
-        <SearchedRecipesList />
+        <SearchedRecipesList data={data} />
       </div>
     </section>
   );
