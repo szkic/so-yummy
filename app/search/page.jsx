@@ -11,7 +11,7 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const SearchPage = () => {
-  const [searchType, setSearchType] = useState("");
+  const [searchType, setSearchType] = useState("Title");
   const searchParams = useSearchParams();
 
   const searchParamsKeys = searchParams.keys();
@@ -40,7 +40,11 @@ const SearchPage = () => {
     <section>
       <MainTitle name="Search" />
       <div className="flex flex-col items-center">
-        <Search btnColor="green" searchType={searchType} />
+        <Search
+          btnColor="green"
+          searchType={searchType}
+          queryValues={queryValues}
+        />
         <SearchTypeSelector
           searchType={searchType}
           setSearchType={setSearchType}
