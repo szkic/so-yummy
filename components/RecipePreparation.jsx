@@ -3,45 +3,52 @@ import image from "../public/assets/images/bowl.png";
 
 const RecipePreparation = () => {
   return (
-    <>
-      <h3 className="mb-8 pt-12 text-2xl font-semibold">Recipe Preparation</h3>
-      <ul className="flex flex-col gap-3.5">
-        <li className="flex gap-3.5">
-          <div>
-            <div className="flex h-5 w-5 items-center justify-center rounded-full bg-primary-color text-xs font-semibold text-primary-text-color">
-              1
+    <div className="flex flex-col gap-10 pt-12 tablet:gap-12 desktop:flex-row desktop:justify-between desktop:pt-24">
+      <div className="max-w-[757px]">
+        <h3 className="mb-8 text-2xl font-semibold">Recipe Preparation</h3>
+        <ul className="flex flex-col gap-3.5 tablet:gap-4">
+          <li className="flex gap-3.5">
+            <div>
+              <div className="flex h-5 w-5 items-center justify-center rounded-full bg-primary-color text-xs font-semibold text-primary-text-color tablet:text-sm ">
+                1
+              </div>
             </div>
-          </div>
-          <p className="text-xs leading-3">
-            Halve, stone, peel and slice the avocados. Halve and quarter the
-            cucumber lengthways, then cut into slices.
-          </p>
-        </li>
-        <li className="flex gap-3.5">
-          <div>
-            <div className="flex h-5 w-5 items-center justify-center rounded-full bg-primary-color text-xs font-semibold text-primary-text-color">
-              2
+            <p className="text-xs leading-3 tablet:text-sm tablet:leading-5">
+              Halve, stone, peel and slice the avocados. Halve and quarter the
+              cucumber lengthways, then cut into slices. Halve, stone, peel and
+              slice the avocados. Halve and quarter the cucumber lengthways,
+              then cut into slices.
+            </p>
+          </li>
+          <li className="flex gap-3.5">
+            <div>
+              <div className="flex h-5 w-5 items-center justify-center rounded-full bg-primary-color text-xs font-semibold text-primary-text-color tablet:text-sm ">
+                2
+              </div>
             </div>
-          </div>
-          <p className="text-xs leading-3">
-            Heat a non-stick pan. Add the salmon and fry for 3-4 mins on each
-            side until crisp but still moist inside.
-          </p>
-        </li>
-        <li className="flex gap-3.5">
-          <div>
-            <div className="flex h-5 w-5 items-center justify-center rounded-full bg-primary-color text-xs font-semibold text-primary-text-color">
-              3
+            <p className="text-xs leading-3 tablet:text-sm tablet:leading-5">
+              Halve, stone, peel and slice the avocados. Halve and quarter the
+              cucumber lengthways, then cut into slices.
+            </p>
+          </li>
+          <li className="flex gap-3.5">
+            <div>
+              <div className="flex h-5 w-5 items-center justify-center rounded-full bg-primary-color text-xs font-semibold text-primary-text-color tablet:text-sm ">
+                3
+              </div>
             </div>
-          </div>
-          <p className="text-xs leading-3">
-            Mix the dressing ingredients together.
-          </p>
-        </li>
-      </ul>
+            <p className="text-xs leading-3 tablet:text-sm tablet:leading-5">
+              Halve, stone, peel and slice the avocados. Halve and quarter the
+              cucumber lengthways, then cut into slices.
+            </p>
+          </li>
+        </ul>
+      </div>
 
-      <Image src={image} className="mt-10 h-[250px] w-auto bg-primary-color" />
-    </>
+      <div>
+        <Image src={image} className="h-[250px] w-auto bg-primary-color" />
+      </div>
+    </div>
   );
 };
 
