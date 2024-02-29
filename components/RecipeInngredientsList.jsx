@@ -1,43 +1,85 @@
 import React from "react";
+import image from "../public/assets/images/bowl.png";
+import Image from "next/image";
 
 const RecipeInngredientsList = () => {
   return (
     <div className="relative overflow-x-auto">
-      <table className="w-full border-separate border-spacing-y-4 text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
+      <table className="w-full border-separate border-spacing-y-4 text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400 tablet:border-spacing-y-6">
         <thead className="bg-primary-color text-xs text-primary-text-color dark:bg-gray-700 dark:text-gray-400">
           <tr>
             <th
               scope="col"
-              className="rounded-s-lg px-6 py-3 text-[10px] font-semibold"
+              className="rounded-s-lg py-3 pl-3.5 pr-28 text-[10px] font-semibold tablet:py-5 tablet:pl-8 tablet:text-lg"
             >
               Ingredients
             </th>
-            <th scope="col" className="px-6 py-3 text-[10px] font-semibold">
+            <th
+              scope="col"
+              className="py-3 text-center text-[10px] font-semibold tablet:py-5 tablet:text-lg"
+            >
               Number
             </th>
             <th
               scope="col"
-              className="rounded-e-lg px-6 py-3 text-[10px] font-semibold"
+              className="rounded-e-lg py-3 pr-3.5 text-center text-[10px] font-semibold tablet:py-5 tablet:text-lg"
             >
               Add to list
             </th>
           </tr>
         </thead>
         <tbody>
+          <tr className="h-20 bg-light-primary-color dark:bg-gray-800 tablet:h-44">
+            <th
+              scope="row"
+              className="whitespace-nowrap rounded-s-lg py-4 pl-2 text-xs font-medium text-gray-900 dark:text-white tablet:pl-6 tablet:text-2xl"
+            >
+              <div className="flex items-center gap-3 tablet:gap-6">
+                <Image
+                  src={image}
+                  alt="image"
+                  width={57}
+                  height={57}
+                  className="w-auto tablet:h-[112px]"
+                />
+                <p>Salmonbh</p>
+              </div>
+            </th>
+            <td className="py-4 text-center text-[10px]">
+              <p className="inline rounded bg-primary-color p-1 text-center font-semibold text-primary-text-color tablet:px-2 tablet:text-lg">
+                2 chopped
+              </p>
+            </td>
+            <td className="rounded-e-lg py-4">
+              <div className="flex items-center justify-center">
+                <input
+                  id="checkbox-all-search"
+                  type="checkbox"
+                  className="h-4 w-4 rounded border-gray-300 bg-light-primary-color text-primary-color focus:ring-2 focus:ring-primary-color dark:border-gray-600 dark:bg-gray-700  dark:ring-offset-gray-800 dark:focus:ring-primary-color dark:focus:ring-offset-gray-800 tablet:h-8 tablet:w-8"
+                />
+                <label htmlFor="checkbox-all-search" className="sr-only">
+                  checkbox
+                </label>
+              </div>
+            </td>
+          </tr>
           <tr className="h-20 bg-light-primary-color dark:bg-gray-800">
             <th
               scope="row"
-              className="whitespace-nowrap rounded-s-lg px-6 py-4 text-xs font-medium text-gray-900 dark:text-white"
+              className="whitespace-nowrap rounded-s-lg py-4 pl-2 text-xs font-medium text-gray-900 dark:text-white tablet:text-base"
             >
-              Salmonbh
+              <div className="flex items-center gap-3">
+                <Image src={image} alt="image" width={57} height={57} />
+                <p>Salmonbh</p>
+              </div>
             </th>
-            <td className="px-6 py-4 text-[10px]">
+            <td className="py-4 text-center text-[10px]">
               <p className="inline rounded bg-primary-color p-1 text-center font-semibold text-primary-text-color">
                 2 chopped
               </p>
             </td>
-            <td className="rounded-e-lg px-6 py-4">
-              <div clcla ass="flex items-center justify-center">
+            <td className="rounded-e-lg py-4">
+              <div className="flex items-center justify-center">
                 <input
                   id="checkbox-all-search"
                   type="checkbox"
@@ -49,51 +91,57 @@ const RecipeInngredientsList = () => {
               </div>
             </td>
           </tr>
-          <tr class="h-20 bg-light-primary-color dark:bg-gray-800">
+          <tr className="h-20 bg-light-primary-color dark:bg-gray-800">
             <th
               scope="row"
-              class="whitespace-nowrap rounded-s-lg px-6 py-4 text-xs font-medium text-gray-900 dark:text-white"
+              className="whitespace-nowrap rounded-s-lg py-4 pl-2 text-xs font-medium text-gray-900 dark:text-white"
             >
-              Salmonbh
+              <div className="flex items-center gap-3">
+                <Image src={image} alt="image" width={57} height={57} />
+                <p>Salmonbh</p>
+              </div>
             </th>
-            <td class="px-6 py-4 text-[10px]">
-              <p className="bg-primary-color text-center font-semibold text-primary-text-color">
+            <td className="py-4 text-center text-[10px]">
+              <p className="inline rounded bg-primary-color p-1 text-center font-semibold text-primary-text-color">
                 2 chopped
               </p>
             </td>
-            <td class="rounded-e-lg px-6 py-4">
-              <div class="flex items-center justify-center">
+            <td className="rounded-e-lg py-4">
+              <div className="flex items-center justify-center">
                 <input
                   id="checkbox-all-search"
                   type="checkbox"
-                  class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-800"
+                  className="h-4 w-4 rounded border-gray-300 bg-light-primary-color text-primary-color focus:ring-2 focus:ring-primary-color  dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-primary-color dark:focus:ring-offset-gray-800"
                 />
-                <label for="checkbox-all-search" class="sr-only">
+                <label htmlFor="checkbox-all-search" className="sr-only">
                   checkbox
                 </label>
               </div>
             </td>
           </tr>
-          <tr class="h-20 bg-light-primary-color dark:bg-gray-800">
+          <tr className="h-20 bg-light-primary-color dark:bg-gray-800">
             <th
               scope="row"
-              class="whitespace-nowrap rounded-s-lg px-6 py-4 text-xs font-medium text-gray-900 dark:text-white"
+              className="whitespace-nowrap rounded-s-lg py-4 pl-2 text-xs font-medium text-gray-900 dark:text-white"
             >
-              Salmonbh
+              <div className="flex items-center gap-3">
+                <Image src={image} alt="image" width={57} height={57} />
+                <p>Salmonbh</p>
+              </div>
             </th>
-            <td class="px-6 py-4 text-[10px]">
-              <p className="bg-primary-color text-center font-semibold text-primary-text-color">
+            <td className="py-4 text-center text-[10px]">
+              <p className="inline rounded bg-primary-color p-1 text-center font-semibold text-primary-text-color">
                 2 chopped
               </p>
             </td>
-            <td class="rounded-e-lg px-6 py-4">
-              <div class="flex items-center justify-center">
+            <td className="rounded-e-lg py-4">
+              <div className="flex items-center justify-center">
                 <input
                   id="checkbox-all-search"
                   type="checkbox"
-                  class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-800"
+                  className="h-4 w-4 rounded border-gray-300 bg-light-primary-color text-primary-color focus:ring-2 focus:ring-primary-color  dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-primary-color dark:focus:ring-offset-gray-800"
                 />
-                <label for="checkbox-all-search" class="sr-only">
+                <label htmlFor="checkbox-all-search" className="sr-only">
                   checkbox
                 </label>
               </div>
