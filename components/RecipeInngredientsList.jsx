@@ -2,48 +2,48 @@ import React from "react";
 
 const RecipeInngredientsList = () => {
   return (
-    <div class="relative overflow-x-auto">
-      <table class="w-full border-separate border-spacing-y-4 text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
-        <thead class="bg-primary-color text-xs text-primary-text-color dark:bg-gray-700 dark:text-gray-400">
+    <div className="relative overflow-x-auto">
+      <table className="w-full border-separate border-spacing-y-4 text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
+        <thead className="bg-primary-color text-xs text-primary-text-color dark:bg-gray-700 dark:text-gray-400">
           <tr>
             <th
               scope="col"
-              class="rounded-s-lg px-6 py-3 text-[10px] font-semibold"
+              className="rounded-s-lg px-6 py-3 text-[10px] font-semibold"
             >
               Ingredients
             </th>
-            <th scope="col" class="px-6 py-3 text-[10px] font-semibold">
+            <th scope="col" className="px-6 py-3 text-[10px] font-semibold">
               Number
             </th>
             <th
               scope="col"
-              class="rounded-e-lg px-6 py-3 text-[10px] font-semibold"
+              className="rounded-e-lg px-6 py-3 text-[10px] font-semibold"
             >
               Add to list
             </th>
           </tr>
         </thead>
         <tbody>
-          <tr class="h-20 bg-light-primary-color dark:bg-gray-800">
+          <tr className="h-20 bg-light-primary-color dark:bg-gray-800">
             <th
               scope="row"
-              class="whitespace-nowrap rounded-s-lg px-6 py-4 text-xs font-medium text-gray-900 dark:text-white"
+              className="whitespace-nowrap rounded-s-lg px-6 py-4 text-xs font-medium text-gray-900 dark:text-white"
             >
               Salmonbh
             </th>
-            <td class="px-6 py-4 text-[10px]">
+            <td className="px-6 py-4 text-[10px]">
               <p className="inline rounded bg-primary-color p-1 text-center font-semibold text-primary-text-color">
                 2 chopped
               </p>
             </td>
-            <td class="rounded-e-lg px-6 py-4">
-              <div class="flex items-center justify-center">
+            <td className="rounded-e-lg px-6 py-4">
+              <div clcla ass="flex items-center justify-center">
                 <input
                   id="checkbox-all-search"
                   type="checkbox"
-                  class="h-4 w-4 rounded border-gray-300 bg-light-primary-color text-primary-color focus:ring-2 focus:ring-primary-color  dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-primary-color dark:focus:ring-offset-gray-800"
+                  className="h-4 w-4 rounded border-gray-300 bg-light-primary-color text-primary-color focus:ring-2 focus:ring-primary-color  dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-primary-color dark:focus:ring-offset-gray-800"
                 />
-                <label for="checkbox-all-search" class="sr-only">
+                <label htmlFor="checkbox-all-search" className="sr-only">
                   checkbox
                 </label>
               </div>
