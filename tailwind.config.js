@@ -6,6 +6,7 @@ module.exports = withMT({
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/flowbite-react/lib/**/*.js",
   ],
   theme: {
     fontFamily: {
@@ -45,6 +46,6 @@ module.exports = withMT({
       },
     },
   },
-  plugins: [],
+  plugins: [require("flowbite/plugin")],
   darkMode: "class",
 });

@@ -32,7 +32,7 @@ const RecipeInngredientsList = () => {
               Salmonbh
             </th>
             <td class="px-6 py-4 text-[10px]">
-              <p className="bg-primary-color text-center font-semibold text-primary-text-color">
+              <p className="inline rounded bg-primary-color p-1 text-center font-semibold text-primary-text-color">
                 2 chopped
               </p>
             </td>
@@ -41,26 +41,11 @@ const RecipeInngredientsList = () => {
                 <input
                   id="checkbox-all-search"
                   type="checkbox"
-                  class="h-4 w-4 rounded border-gray-300 bg-light-primary-color text-primary-color focus:ring-2  dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-800"
+                  class="h-4 w-4 rounded border-gray-300 bg-light-primary-color text-primary-color focus:ring-2 focus:ring-primary-color  dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-primary-color dark:focus:ring-offset-gray-800"
                 />
                 <label for="checkbox-all-search" class="sr-only">
                   checkbox
                 </label>
-                <div class="me-4 flex items-center">
-                  <input
-                    checked
-                    id="green-checkbox"
-                    type="checkbox"
-                    value=""
-                    class="h-4 w-4 rounded border-gray-300 bg-gray-100 !text-green-600 focus:ring-2 focus:ring-green-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-green-600"
-                  />
-                  <label
-                    for="green-checkbox"
-                    class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                  >
-                    Green
-                  </label>
-                </div>
               </div>
             </td>
           </tr>
