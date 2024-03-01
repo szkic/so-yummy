@@ -26,3 +26,17 @@ export const fetchSearch = async (name, value) =>
   fetcher(`/api/search?${name}=${value}`);
 
 export const fetchRecipeById = async (id) => fetcher(`/api/recipes/id/${id}`);
+
+export const fetchIngredientsById = async (ids) => {
+  try {
+    const response = await axios.post("/api/ingredients", {
+      ingredientsIds: ids,
+    });
+    const categories = response.data;
+
+    return categories;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};

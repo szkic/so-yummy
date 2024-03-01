@@ -1,9 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import image from "../public/assets/images/bowl.png";
 import Image from "next/image";
+import { useQuery } from "@tanstack/react-query";
+import { fetchIngredientsById } from "@utils/fetchers";
+import Loader from "./Loader";
 
 const RecipeInngredientsList = ({ ingredients }) => {
-  console.log(ingredients);
+  const [updatedIngredients, setUpdatedIngredients] = useState(ingredients);
+  const ingredientsIds = ingredients.map((ingredient) => ingredient.id);
+
+  const { isPending, isError, data, error } = useQuery({
+    queryKey: ["ingredient-search"],
+    queryFn: () => fetchIngredientsById(ingredientsIds),
+  });
+
+  if (isError) {
+    return <p>Error: {error.message}</p>;
+  }
+
+  if (isPending) {
+    return <Loader />;
+  }
+
+  console.log("data", data);
+  console.log("ingredients", ingredients);
+  // console.log("updateIngredientsWitdData", updateIngredientsWitdData);
+  console.log("updatedIngredients", updatedIngredients);
 
   return (
     <div className="relative overflow-x-auto">
