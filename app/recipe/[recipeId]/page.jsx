@@ -15,6 +15,7 @@ const page = () => {
   const { isPending, isError, data, error } = useQuery({
     queryKey: ["recipe-id"],
     queryFn: () => fetchRecipeById(pathnameId),
+    refetchOnMount: "always",
   });
 
   if (isError) {
@@ -31,9 +32,9 @@ const page = () => {
 
   return (
     <>
-      <RecipePageHero />
-      <RecipeInngredientsList />
-      <RecipePreparation />
+      <RecipePageHero title={title} description={description} time={time} />
+      <RecipeInngredientsList ingredients={ingredients} />
+      <RecipePreparation instructions={instructions} preview={preview} />
     </>
   );
 };

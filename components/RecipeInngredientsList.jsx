@@ -2,7 +2,9 @@ import React from "react";
 import image from "../public/assets/images/bowl.png";
 import Image from "next/image";
 
-const RecipeInngredientsList = () => {
+const RecipeInngredientsList = ({ ingredients }) => {
+  console.log(ingredients);
+
   return (
     <div className="relative overflow-x-auto">
       <table className="w-full border-separate border-spacing-y-4 text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400 tablet:border-spacing-y-6">

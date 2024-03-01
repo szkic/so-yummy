@@ -11,12 +11,11 @@ const RecipeCard = ({ data, displayAll }) => {
   return (
     <div className="flex flex-wrap gap-8 desktop:gap-3.5">
       {data.map((el, index) => (
-        <Link href={`/recipe/${el._id}`}>
+        <Link href={`/recipe/${el._id}`} key={el._id}>
           <div
             className={`relative flex justify-center ${
               !displayAll && displayHideCategories(index)
             }`}
-            key={el._id}
           >
             <Image
               src={el.thumb}

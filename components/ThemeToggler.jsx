@@ -2,9 +2,7 @@ import React from "react";
 import { useTheme } from "next-themes";
 
 const ThemeToggler = () => {
-  const { setTheme, resolvedTheme } = useTheme();
-
-  console.log(resolvedTheme);
+  const { setTheme } = useTheme();
 
   return (
     <label
