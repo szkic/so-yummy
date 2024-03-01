@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const RecipeCard = ({ data, displayAll }) => {
   const displayHideCategories = (index) => {
@@ -10,23 +11,25 @@ const RecipeCard = ({ data, displayAll }) => {
   return (
     <div className="flex flex-wrap gap-8 desktop:gap-3.5">
       {data.map((el, index) => (
-        <div
-          className={`relative flex justify-center ${
-            !displayAll && displayHideCategories(index)
-          }`}
-          key={el._id}
-        >
-          <Image
-            src={el.thumb}
-            width={343}
-            height={323}
-            alt={el.description}
-            className="h-auto rounded-lg tablet:w-[336px] desktop:w-[300px]"
-          />
-          <div className="absolute bottom-6 flex h-[52px] w-[300px] items-center rounded-lg bg-primary-text-color p-4 font-medium leading-5 desktop:w-[268px]">
-            {el.title}
+        <Link href={`/recipe/${el._id}`}>
+          <div
+            className={`relative flex justify-center ${
+              !displayAll && displayHideCategories(index)
+            }`}
+            key={el._id}
+          >
+            <Image
+              src={el.thumb}
+              width={343}
+              height={323}
+              alt={el.description}
+              className="h-auto rounded-lg tablet:w-[336px] desktop:w-[300px]"
+            />
+            <div className="absolute bottom-6 flex h-[52px] w-[300px] items-center rounded-lg bg-primary-text-color p-4 font-medium leading-5 desktop:w-[268px]">
+              {el.title}
+            </div>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );
