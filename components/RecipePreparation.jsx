@@ -2,7 +2,7 @@ import Image from "next/image";
 import image from "../public/assets/images/bowl.png";
 
 const RecipePreparation = ({ instructions, preview }) => {
-  const instructionsArr = instructions.split("\r\n\r\n");
+  const instructionsArr = instructions.split("\r");
 
   return (
     <div className="flex flex-col gap-10 pt-12 tablet:gap-12 desktop:flex-row desktop:justify-between desktop:pt-24">

@@ -6,7 +6,6 @@ import { fetchIngredientsById } from "@utils/fetchers";
 import Loader from "./Loader";
 
 const RecipeInngredientsList = ({ ingredients }) => {
-  const [updatedIngredients, setUpdatedIngredients] = useState(ingredients);
   const ingredientsIds = ingredients.map((ingredient) => ingredient.id);
 
   const { isPending, isError, data, error } = useQuery({
@@ -22,10 +21,14 @@ const RecipeInngredientsList = ({ ingredients }) => {
     return <Loader />;
   }
 
-  console.log("data", data);
-  console.log("ingredients", ingredients);
-  // console.log("updateIngredientsWitdData", updateIngredientsWitdData);
-  console.log("updatedIngredients", updatedIngredients);
+  const mergedIngredients = data.map((d) => {
+    const matchingIngredient = ingredients.find(
+      (ingredient) => d._id === ingredient.id,
+    );
+    return { ...d, ...matchingIngredient };
+  });
+
+  console.log("mergedIngredients", mergedIngredients);
 
   return (
     <div className="relative overflow-x-auto">
