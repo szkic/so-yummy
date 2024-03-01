@@ -27,13 +27,13 @@ const page = () => {
   }
 
   const [
-    { title, description, time, ingredients, instructions, thumb, preview },
+    { title, description, time, ingredients, instructions, preview, _id: id },
   ] = data;
 
   return (
     <>
       <RecipePageHero title={title} description={description} time={time} />
-      <RecipeInngredientsList ingredients={ingredients} />
+      <RecipeInngredientsList ingredients={ingredients} id={id} />
       <RecipePreparation instructions={instructions} preview={preview} />
     </>
   );

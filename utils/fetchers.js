@@ -27,10 +27,11 @@ export const fetchSearch = async (name, value) =>
 
 export const fetchRecipeById = async (id) => fetcher(`/api/recipes/id/${id}`);
 
-export const fetchIngredientsById = async (ids) => {
+export const fetchIngredientsById = async (id, ingredients) => {
   try {
     const response = await axios.post("/api/ingredients", {
-      ingredientsIds: ids,
+      id,
+      ingredientsIds: ingredients,
     });
     const categories = response.data;
 

@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import image from "../public/assets/images/bowl.png";
+import React from "react";
 import Image from "next/image";
 import { useQuery } from "@tanstack/react-query";
 import { fetchIngredientsById } from "@utils/fetchers";
 import Loader from "./Loader";
 
-const RecipeInngredientsList = ({ ingredients }) => {
+const RecipeInngredientsList = ({ ingredients, id }) => {
   const ingredientsIds = ingredients.map((ingredient) => ingredient.id);
 
   const { isPending, isError, data, error } = useQuery({
     queryKey: ["ingredient-search"],
-    queryFn: () => fetchIngredientsById(ingredientsIds),
+    queryFn: () => fetchIngredientsById(id, ingredientsIds),
+    refetchOnMount: "always",
   });
 
   if (isError) {
@@ -20,15 +20,6 @@ const RecipeInngredientsList = ({ ingredients }) => {
   if (isPending) {
     return <Loader />;
   }
-
-  const mergedIngredients = data.map((d) => {
-    const matchingIngredient = ingredients.find(
-      (ingredient) => d._id === ingredient.id,
-    );
-    return { ...d, ...matchingIngredient };
-  });
-
-  console.log("mergedIngredients", mergedIngredients);
 
   return (
     <div className="relative overflow-x-auto">
@@ -56,40 +47,45 @@ const RecipeInngredientsList = ({ ingredients }) => {
           </tr>
         </thead>
         <tbody>
-          <tr className="h-20 bg-light-primary-color dark:bg-gray-800 tablet:h-44 desktop:h-48">
-            <th
-              scope="row"
-              className="whitespace-nowrap rounded-s-lg py-4 pl-2 text-xs font-medium text-gray-900 dark:text-white tablet:pl-6 tablet:text-2xl desktop:pl-10"
+          {data.map((ing) => (
+            <tr
+              className="h-20 bg-light-primary-color dark:bg-gray-800 tablet:h-44 desktop:h-48"
+              key={ing.ttl}
             >
-              <div className="flex items-center gap-3 tablet:gap-6 desktop:gap-16">
-                <Image
-                  src={image}
-                  alt="image"
-                  width={57}
-                  height={57}
-                  className="w-auto tablet:h-[112px]"
-                />
-                <p>Salmonbh</p>
-              </div>
-            </th>
-            <td className="py-4 text-center text-[10px]">
-              <p className="inline rounded bg-primary-color p-1 text-center font-semibold text-primary-text-color tablet:px-2 tablet:text-lg">
-                2 chopped
-              </p>
-            </td>
-            <td className="rounded-e-lg py-4">
-              <div className="flex items-center justify-center">
-                <input
-                  id="checkbox-all-search"
-                  type="checkbox"
-                  className="h-4 w-4 rounded border-gray-300 bg-light-primary-color text-primary-color focus:ring-2 focus:ring-primary-color dark:border-gray-600 dark:bg-gray-700  dark:ring-offset-gray-800 dark:focus:ring-primary-color dark:focus:ring-offset-gray-800 tablet:h-8 tablet:w-8"
-                />
-                <label htmlFor="checkbox-all-search" className="sr-only">
-                  checkbox
-                </label>
-              </div>
-            </td>
-          </tr>
+              <th
+                scope="row"
+                className="whitespace-nowrap rounded-s-lg py-4 pl-2 text-xs font-medium text-gray-900 dark:text-white tablet:pl-6 tablet:text-2xl desktop:pl-10"
+              >
+                <div className="flex items-center gap-3 tablet:gap-6 desktop:gap-16">
+                  <Image
+                    src={ing.thb}
+                    alt="image"
+                    width={57}
+                    height={57}
+                    className="w-auto tablet:h-[112px]"
+                  />
+                  <p>{ing.ttl}</p>
+                </div>
+              </th>
+              <td className="py-4 text-center text-[10px]">
+                <p className="inline rounded bg-primary-color p-1 text-center font-semibold text-primary-text-color tablet:px-2 tablet:text-lg">
+                  {ing.measure}
+                </p>
+              </td>
+              <td className="rounded-e-lg py-4">
+                <div className="flex items-center justify-center">
+                  <input
+                    id="checkbox-all-search"
+                    type="checkbox"
+                    className="h-4 w-4 rounded border-gray-300 bg-light-primary-color text-primary-color focus:ring-2 focus:ring-primary-color dark:border-gray-600 dark:bg-gray-700  dark:ring-offset-gray-800 dark:focus:ring-primary-color dark:focus:ring-offset-gray-800 tablet:h-8 tablet:w-8"
+                  />
+                  <label htmlFor="checkbox-all-search" className="sr-only">
+                    checkbox
+                  </label>
+                </div>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
