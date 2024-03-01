@@ -46,7 +46,11 @@ const RecipePreparation = () => {
       </div>
 
       <div>
-        <Image src={image} className="h-[250px] w-auto bg-primary-color" />
+        <Image
+          src={image}
+          className="h-[250px] w-auto bg-primary-color"
+          alt="img"
+        />
       </div>
     </div>
   );

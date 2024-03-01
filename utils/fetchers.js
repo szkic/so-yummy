@@ -24,3 +24,5 @@ export const fetchIngredients = async () => fetcher("/api/ingredients/list");
 
 export const fetchSearch = async (name, value) =>
   fetcher(`/api/search?${name}=${value}`);
+
+export const fetchRecipeById = async (id) => fetcher(`/api/recipes/id/${id}`);
