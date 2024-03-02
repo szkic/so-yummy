@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useQuery } from "@tanstack/react-query";
 import { fetchIngredientsById } from "@utils/fetchers";
 import Loader from "./Loader";
+import { Checkbox } from "@mui/material";
 
 const RecipeInngredientsList = ({ ingredients, id }) => {
   const ingredientsIds = ingredients.map((ingredient) => ingredient.id);
@@ -74,14 +75,25 @@ const RecipeInngredientsList = ({ ingredients, id }) => {
               </td>
               <td className="rounded-e-lg py-4">
                 <div className="flex items-center justify-center">
-                  <input
+                  {/* <input
                     id="checkbox-all-search"
                     type="checkbox"
                     className="h-4 w-4 rounded border-gray-300 bg-light-primary-color text-primary-color focus:ring-2 focus:ring-primary-color dark:border-gray-600 dark:bg-gray-700  dark:ring-offset-gray-800 dark:focus:ring-primary-color dark:focus:ring-offset-gray-800 tablet:h-8 tablet:w-8"
                   />
                   <label htmlFor="checkbox-all-search" className="sr-only">
                     checkbox
-                  </label>
+                  </label> */}
+                  <Checkbox
+                    sx={{
+                      "& .MuiSvgIcon-root": {
+                        fontSize: 30,
+                      },
+                      color: "rgba(126, 126, 126, 0.5)",
+                      "&.Mui-checked": {
+                        color: "#8BAA36",
+                      },
+                    }}
+                  />
                 </div>
               </td>
             </tr>

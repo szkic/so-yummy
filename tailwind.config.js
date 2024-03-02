@@ -46,6 +46,6 @@ module.exports = withMT({
       },
     },
   },
-  plugins: [require("flowbite/plugin")],
+  // plugins: [require("flowbite/plugin")],
   darkMode: "class",
 });
