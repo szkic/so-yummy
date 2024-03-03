@@ -5,8 +5,8 @@ import Paginator from "@components/Paginator";
 const MyRecipesPage = () => {
   return (
     <section>
-      <MainTitle name={"My recipes"} />
-      <MyRecipesList />
+      <MainTitle name="My recipes" />
+      <MyRecipesList theme="my" />
       <Paginator />
     </section>
   );

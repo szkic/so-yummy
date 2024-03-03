@@ -199,7 +199,7 @@ const myRecipes = [
   },
 ];
 
-const MyRecipesList = () => {
+const MyRecipesList = ({ theme }) => {
   return (
     <div className="flex flex-col gap-4 tablet:gap-10 desktop:gap-12">
       {myRecipes.map((recipe) => (
@@ -215,9 +215,17 @@ const MyRecipesList = () => {
               alt="img"
               className="h-auto rounded-lg tablet:w-[228px] desktop:w-[318px]"
             />
-            <div className="absolute right-0 top-0 rounded bg-primary-color p-1.5 tablet:p-2 desktop:p-2.5">
+            <div
+              className={`absolute right-0 top-0 rounded  ${
+                theme === "my" && "bg-primary-color"
+              } ${
+                theme === "favorites" && "bg-light-primary-color"
+              } p-1.5 tablet:p-2 desktop:p-2.5`}
+            >
               <FaRegTrashAlt
-                className="text-input-primary tablet:h-5 tablet:w-5 desktop:h-6 desktop:w-6"
+                className={`${
+                  theme === "my" && "text-input-primary"
+                } tablet:h-5 tablet:w-5 desktop:h-6 desktop:w-6`}
                 size="14px"
               />
             </div>
@@ -237,7 +245,13 @@ const MyRecipesList = () => {
                 20 min
               </span>
             </div>
-            <button className="absolute bottom-0 right-0 rounded-lg rounded-bl-[35px] rounded-br-[15px] rounded-tl-[15px] rounded-tr-[35px] bg-primary-color px-4 py-1.5 text-[10px] text-white hover:bg-secondary-light-color focus:outline-none focus:ring-4 focus:ring-secondary-light-color tablet:px-8 tablet:py-3 tablet:text-sm desktop:px-11 desktop:py-4 desktop:text-base">
+            <button
+              className={`absolute bottom-0 right-0 rounded-lg rounded-bl-[35px] rounded-br-[15px] rounded-tl-[15px] rounded-tr-[35px] ${
+                theme === "my" && "bg-primary-color"
+              } ${
+                theme === "favorites" && "bg-secondary-color"
+              } px-4 py-1.5 text-[10px] text-white hover:bg-secondary-light-color focus:outline-none focus:ring-4 focus:ring-secondary-light-color tablet:px-8 tablet:py-3 tablet:text-sm desktop:px-11 desktop:py-4 desktop:text-base`}
+            >
               See recipe
             </button>
           </div>
