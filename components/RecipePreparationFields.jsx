@@ -3,7 +3,7 @@ import React from "react";
 
 const RecipePreparationFields = () => {
   return (
-    <div className="mt-11">
+    <div className="mt-11 tablet:mt-24">
       <h3 className="text-2xl font-semibold">Recipe Preparation</h3>
       <TextField
         id="recipe"

@@ -47,7 +47,7 @@ const RecipeIngredientsFields = () => {
 
   return (
     <>
-      <div className="mt-11 flex items-center justify-between">
+      <div className="mt-11 flex items-center justify-between tablet:mt-24">
         <h3 className="text-2xl font-semibold">Ingredients</h3>
 
         <form className="w-[92px] tablet:w-[110px]">

@@ -20,6 +20,8 @@ module.exports = withMT({
         "secondary-color": "#22252A",
         "secondary-dark-color": "#1E1F28",
         "secondary-light-color": "#2A2C36",
+        "secondary-text-color": "#7E7E7E",
+        "light-border-color": "#707070",
         "inactive-color": "#D9D9D9",
         "inactive-text": "#BDBDBD",
         "inactive-text-light": "#E0E0E0",
