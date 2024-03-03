@@ -82,6 +82,7 @@ const SubscribeForm = () => {
                 type="submit"
                 className=" h-[38px] w-full rounded-md bg-primary-color text-sm text-primary-text-color transition-colors
                   duration-300 ease-in-out hover:bg-[#6c8828] tablet:h-[50px] tablet:w-[187px] tablet:text-base desktop:h-[60px] desktop:w-full"
+                aria-label="Subscribe"
               >
                 Subscribe
               </Button>

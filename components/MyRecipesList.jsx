@@ -250,7 +250,8 @@ const MyRecipesList = ({ theme }) => {
                 theme === "my" && "bg-primary-color"
               } ${
                 theme === "favorites" && "bg-secondary-color"
-              } px-4 py-1.5 text-[10px] text-white hover:bg-secondary-light-color focus:outline-none focus:ring-4 focus:ring-secondary-light-color tablet:px-8 tablet:py-3 tablet:text-sm desktop:px-11 desktop:py-4 desktop:text-base`}
+                } px-4 py-1.5 text-[10px] text-white hover:bg-secondary-light-color focus:outline-none focus:ring-4 focus:ring-secondary-light-color tablet:px-8 tablet:py-3 tablet:text-sm desktop:px-11 desktop:py-4 desktop:text-base`}
+              aria-label="See recipe"
             >
               See recipe
             </button>

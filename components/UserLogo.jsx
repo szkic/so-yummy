@@ -17,7 +17,10 @@ const UserLogo = () => {
     <div className="flex items-center gap-4 tablet:mr-7">
       <Popover open={open} handler={handleOpen}>
         <PopoverHandler>
-          <Button className="flex items-center gap-4 bg-transparent p-0 font-Poppins text-xs font-normal normal-case leading-5 text-secondary-color shadow-none hover:bg-transparent hover:shadow-none tablet:text-sm">
+          <Button
+            className="flex items-center gap-4 bg-transparent p-0 font-Poppins text-xs font-normal normal-case leading-5 text-secondary-color shadow-none hover:bg-transparent hover:shadow-none tablet:text-sm"
+            aria-label="User"
+          >
             <img
               className="h-[34px] w-[34px] rounded-full tablet:h-11 tablet:w-11"
               src="/../assets/images/user-logo-temp.png"

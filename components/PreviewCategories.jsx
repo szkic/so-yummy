@@ -39,7 +39,10 @@ const PreviewCategories = () => {
 
             <div className="flex justify-end">
               <Link href={`/categories/${key}`}>
-                <button className="rounded-md bg-primary-color px-6 py-2.5 text-sm text-primary-text-color">
+                <button
+                  className="rounded-md bg-primary-color px-6 py-2.5 text-sm text-primary-text-color"
+                  aria-label="See all"
+                >
                   See all
                 </button>
               </Link>

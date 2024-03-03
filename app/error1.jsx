@@ -17,6 +17,7 @@ export default function Error({ error, reset }) {
           // Attempt to recover by trying to re-render the segment
           () => reset()
         }
+        aria-label="Try again"
       >
         Try again
       </button>

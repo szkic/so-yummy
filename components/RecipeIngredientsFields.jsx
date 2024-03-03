@@ -67,6 +67,7 @@ const RecipeIngredientsFields = () => {
               }}
               onMouseEnter={() => sethoverColorMinus(true)}
               onMouseLeave={() => sethoverColorMinus(false)}
+              aria-label="Decrement recipe ingredient"
             >
               <svg
                 className={`h-3 w-3 text-gray-300 dark:text-white tablet:h-4 tablet:w-4 ${
@@ -104,6 +105,7 @@ const RecipeIngredientsFields = () => {
               onClick={() => setNumber((prev) => prev + 1)}
               onMouseEnter={() => sethoverColorPlus(true)}
               onMouseLeave={() => sethoverColorPlus(false)}
+              aria-label="Increment recipe ingredient"
             >
               <svg
                 className={`h-3 w-3 text-gray-300 dark:text-white tablet:h-4 tablet:w-4 ${

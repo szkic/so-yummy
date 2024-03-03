@@ -81,7 +81,10 @@ const UserInfoModal = ({ handleClose, handlePopover }) => {
         />
       </div>
 
-      <Button className="h-[49px] w-full rounded-md bg-primary-color font-Poppins text-sm font-normal normal-case text-primary-text-color transition-colors duration-300 ease-in-out hover:bg-[#6c8828] tablet:h-[59px] tablet:text-base">
+      <Button
+        className="h-[49px] w-full rounded-md bg-primary-color font-Poppins text-sm font-normal normal-case text-primary-text-color transition-colors duration-300 ease-in-out hover:bg-[#6c8828] tablet:h-[59px] tablet:text-base"
+        aria-label="Save changes"
+      >
         Save changes
       </Button>
 

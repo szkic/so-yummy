@@ -51,6 +51,7 @@ const Header = () => {
             type="button"
             className="pointer desktop:hidden"
             onClick={handleOpenMenu}
+            aria-label="Open mobile menu"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -84,6 +85,7 @@ const Header = () => {
           <button
             className="self-end px-6 text-5xl text-black"
             onClick={handleOpenMenu}
+            aria-label="Close mobile menu"
           >
             &times;
           </button>

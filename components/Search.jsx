@@ -52,6 +52,7 @@ const Search = ({ btnColor, searchType, queryValues }) => {
               className={`absolute right-[0px] top-0 h-full rounded-lg rounded-bl-[35px] rounded-br-[15px] rounded-tl-[15px] rounded-tr-[35px] ${
                 btnColor === "green" ? "bg-primary-color" : "bg-secondary-color"
               }  px-8 text-sm font-medium text-white hover:bg-secondary-light-color focus:outline-none focus:ring-4 focus:ring-secondary-light-color tablet:px-14`}
+              aria-label="Search"
             >
               Search
             </button>
@@ -62,6 +63,7 @@ const Search = ({ btnColor, searchType, queryValues }) => {
             className={`absolute right-[0px] top-0 h-full rounded-lg rounded-bl-[35px] rounded-br-[15px] rounded-tl-[15px] rounded-tr-[35px] ${
               btnColor === "green" ? "bg-primary-color" : "bg-secondary-color"
             }  px-8 text-sm font-medium text-white hover:bg-secondary-light-color focus:outline-none focus:ring-4 focus:ring-secondary-light-color tablet:px-14`}
+            aria-label="Search"
           >
             Search
           </button>

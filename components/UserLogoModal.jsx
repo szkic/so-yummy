@@ -19,6 +19,7 @@ const UserLogoModal = ({ handlePopover }) => {
       <button
         className="mb-7 flex w-full items-center justify-between text-secondary-color"
         onClick={handleOpenEdit}
+        aria-label="Edit profile"
       >
         <p className="font-medium">Edit profile</p>
         <PencilIcon className="h-3.5 w-3.5" />
@@ -26,6 +27,7 @@ const UserLogoModal = ({ handlePopover }) => {
       <Button
         className="flex gap-1 rounded-bl-[35px] rounded-br-[15px] rounded-tl-[15px] rounded-tr-[35px] bg-primary-color px-6 py-3 text-sm font-normal normal-case tablet:rounded-bl-[70px] tablet:rounded-br-[30px] tablet:rounded-tl-[30px] tablet:rounded-tr-[70px] tablet:px-8 "
         onClick={handleOpenLogout}
+        aria-label="Log out"
       >
         <span>Log out</span>
         <ArrowRightIcon className="h-[18px] w-[18px]" />

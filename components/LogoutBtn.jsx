@@ -8,7 +8,10 @@ const LogoutBtn = ({ handleClose, handlePopover }) => {
         Are you sure you want to log out?
       </p>
       <div className="flex justify-between">
-        <Button className="h-[49px] w-[137px] rounded-md bg-primary-color font-Poppins text-sm font-normal normal-case text-primary-text-color transition-colors duration-300 ease-in-out hover:bg-[#6c8828] tablet:h-[59px] tablet:w-[192px] tablet:text-base">
+        <Button
+          className="h-[49px] w-[137px] rounded-md bg-primary-color font-Poppins text-sm font-normal normal-case text-primary-text-color transition-colors duration-300 ease-in-out hover:bg-[#6c8828] tablet:h-[59px] tablet:w-[192px] tablet:text-base"
+          aria-label="Log oute"
+        >
           Log out
         </Button>
         <Button
@@ -17,6 +20,7 @@ const LogoutBtn = ({ handleClose, handlePopover }) => {
             handleClose();
             handlePopover();
           }}
+          aria-label="Cancel"
         >
           Cancel
         </Button>

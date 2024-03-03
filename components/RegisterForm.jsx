@@ -177,6 +177,7 @@ const RegisterForm = () => {
                       : "bg-primary-color text-primary-text-color transition-colors duration-300 ease-in-out hover:bg-[#6c8828]"
                   }`}
                   disabled={!(dirty && isValid)}
+                  aria-label="Sign up"
                 >
                   Sign up
                 </button>
