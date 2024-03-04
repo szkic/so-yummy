@@ -87,6 +87,13 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients }) => {
             setOpenStates(newOpenStates);
             setIsOpen(false);
           }}
+          onChange={(e, newValue) =>
+            setIngredients((prev) => [
+              ...prev.slice(0, ingredient.id - 1),
+              { ...prev[ingredient.id - 1], ingredient: newValue },
+              ...prev.slice(ingredient.id),
+            ])
+          }
           isOptionEqualToValue={(option, value) => option === value}
           getOptionLabel={(option) => option}
           options={options}
