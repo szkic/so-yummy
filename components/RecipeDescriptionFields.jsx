@@ -28,7 +28,7 @@ export const MenuProps = {
   },
 };
 
-const RecipeDescriptionFields = () => {
+const RecipeDescriptionFields = ({ setDescription }) => {
   const [open, setOpen] = useState(false);
   const [options, setOptions] = useState([]);
   const loading = open && options.length === 0;
@@ -71,6 +71,9 @@ const RecipeDescriptionFields = () => {
             label="Enter item title"
             defaultValue=""
             variant="standard"
+            onChange={(e) =>
+              setDescription((prev) => ({ ...prev, itemTitle: e.target.value }))
+            }
           />
           <TextField
             required
@@ -78,6 +81,12 @@ const RecipeDescriptionFields = () => {
             label="Enter about recipe"
             defaultValue=""
             variant="standard"
+            onChange={(e) =>
+              setDescription((prev) => ({
+                ...prev,
+                aboutRecipe: e.target.value,
+              }))
+            }
           />
           <Autocomplete
             id="category"
@@ -92,6 +101,12 @@ const RecipeDescriptionFields = () => {
             getOptionLabel={(option) => option}
             options={options}
             loading={loading}
+            onChange={(e, newValue) =>
+              setDescription((prev) => ({
+                ...prev,
+                category: newValue,
+              }))
+            }
             renderInput={(params) => (
               <TextField
                 {...params}
@@ -119,6 +134,12 @@ const RecipeDescriptionFields = () => {
             defaultValue=""
             required
             SelectProps={{ MenuProps }}
+            onChange={(e) =>
+              setDescription((prev) => ({
+                ...prev,
+                cookingTime: e.target.value,
+              }))
+            }
           >
             {cookingTime.map((option) => (
               <MenuItem key={option} value={option}>
