@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Autocomplete,
   CircularProgress,
@@ -13,19 +11,25 @@ import { useEffect, useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import { fetchIngredients } from "@utils/fetchers";
 
+const MEASURES = ["tbs", "tsp", "kg", "g"];
+
 const RecipeIngredientsFields = ({ ingredients, setIngredients }) => {
   const [number, setNumber] = useState(1);
   const [quantity, setQuantity] = useState("");
   const [measure, setMeasure] = useState("");
 
-  const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const [options, setOptions] = useState([]);
-  const loading = open && options.length === 0;
+  const [openStates, setOpenStates] = useState(
+    Array(ingredients.length).fill(false),
+  );
+
+  const loading = isOpen && options.length === 0;
+
+  console.log(isOpen);
 
   useEffect(() => {
-    let active = true;
-
     if (!loading) {
       return undefined;
     }
@@ -33,15 +37,15 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients }) => {
     (async () => {
       const response = await fetchIngredients();
 
-      if (active) {
+      if (isOpen) {
         setOptions([...response]);
       }
     })();
 
     return () => {
-      active = false;
+      setIsOpen(false);
     };
-  }, [loading]);
+  }, [isOpen]);
 
   const handleAddIngredient = () => {
     setIngredients((prev) => [
@@ -70,12 +74,18 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients }) => {
         <Autocomplete
           id={`ingredient-${ingredient.id}`}
           size="small"
-          open={open}
+          open={openStates[ingredient.id - 1]}
           onOpen={() => {
-            setOpen(true);
+            const newOpenStates = [...openStates];
+            newOpenStates[ingredient.id - 1] = true;
+            setOpenStates(newOpenStates);
+            setIsOpen(true);
           }}
           onClose={() => {
-            setOpen(false);
+            const newOpenStates = [...openStates];
+            newOpenStates[ingredient.id - 1] = false;
+            setOpenStates(newOpenStates);
+            setIsOpen(false);
           }}
           isOptionEqualToValue={(option, value) => option === value}
           getOptionLabel={(option) => option}
@@ -123,10 +133,11 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients }) => {
           label="Measure"
           onChange={(e) => setMeasure(e.target.value)}
         >
-          <MenuItem value="tbs">tbs</MenuItem>
-          <MenuItem value="tsp">tsp</MenuItem>
-          <MenuItem value="kg">kg</MenuItem>
-          <MenuItem value="g">g</MenuItem>
+          {MEASURES.map((measure) => (
+            <MenuItem key={measure} value={measure}>
+              {measure}
+            </MenuItem>
+          ))}
         </Select>
       </FormControl>
       <CloseIcon
