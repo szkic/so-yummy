@@ -113,13 +113,19 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients }) => {
       <FormControl className="w-16 tablet:w-28">
         <TextField
           id="quantity"
-          value={quantity}
+          value={ingredient.quantity || ""}
           label="Quantity"
           onChange={(e) => {
             const regex = /^[0-9]*(\.[0-9]{0,2})?$/;
             if (e.target.value === "" || regex.test(e.target.value)) {
               setQuantity(e.target.value);
             }
+
+            setIngredients((prev) => [
+              ...prev.slice(0, ingredient.id - 1),
+              { ...prev[ingredient.id - 1], quantity: e.target.value },
+              ...prev.slice(ingredient.id),
+            ]);
           }}
           size="small"
         ></TextField>
@@ -129,9 +135,16 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients }) => {
         <Select
           labelId="measure"
           id="measure"
-          value={measure}
+          value={ingredient.measure || ""}
           label="Measure"
-          onChange={(e) => setMeasure(e.target.value)}
+          // onChange={(e) => setMeasure(e.target.value)}
+          onChange={(e) =>
+            setIngredients((prev) => [
+              ...prev.slice(0, ingredient.id - 1),
+              { ...prev[ingredient.id - 1], measure: e.target.value },
+              ...prev.slice(ingredient.id),
+            ])
+          }
         >
           {MEASURES.map((measure) => (
             <MenuItem key={measure} value={measure}>
