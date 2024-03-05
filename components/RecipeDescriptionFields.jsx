@@ -28,7 +28,7 @@ export const MenuProps = {
   },
 };
 
-const RecipeDescriptionFields = ({ setDescription }) => {
+const RecipeDescriptionFields = ({ setRecipeInfo }) => {
   const [open, setOpen] = useState(false);
   const [options, setOptions] = useState([]);
   const loading = open && options.length === 0;
@@ -72,7 +72,7 @@ const RecipeDescriptionFields = ({ setDescription }) => {
             defaultValue=""
             variant="standard"
             onChange={(e) =>
-              setDescription((prev) => ({ ...prev, itemTitle: e.target.value }))
+              setRecipeInfo((prev) => ({ ...prev, title: e.target.value }))
             }
           />
           <TextField
@@ -82,9 +82,9 @@ const RecipeDescriptionFields = ({ setDescription }) => {
             defaultValue=""
             variant="standard"
             onChange={(e) =>
-              setDescription((prev) => ({
+              setRecipeInfo((prev) => ({
                 ...prev,
-                aboutRecipe: e.target.value,
+                description: e.target.value,
               }))
             }
           />
@@ -102,7 +102,7 @@ const RecipeDescriptionFields = ({ setDescription }) => {
             options={options}
             loading={loading}
             onChange={(e, newValue) =>
-              setDescription((prev) => ({
+              setRecipeInfo((prev) => ({
                 ...prev,
                 category: newValue,
               }))
@@ -135,9 +135,9 @@ const RecipeDescriptionFields = ({ setDescription }) => {
             required
             SelectProps={{ MenuProps }}
             onChange={(e) =>
-              setDescription((prev) => ({
+              setRecipeInfo((prev) => ({
                 ...prev,
-                cookingTime: e.target.value,
+                time: e.target.value,
               }))
             }
           >

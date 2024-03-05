@@ -8,11 +8,11 @@ import FollowUs from "./FollowUs";
 import PopularRecipe from "./PopularRecipe";
 
 const AddRecipeForm = () => {
-  const [description, setDescription] = useState({
-    itemTitle: "",
-    aboutRecipe: "",
+  const [recipeInfo, setRecipeInfo] = useState({
+    title: "",
+    description: "",
     category: "",
-    cookingTime: "",
+    time: "",
   });
   const [ingredients, setIngredients] = useState([
     {
@@ -22,19 +22,21 @@ const AddRecipeForm = () => {
       measure: "",
     },
   ]);
-  const [preparation, setPreparation] = useState("");
+  const [instructions, setInstructions] = useState("");
 
-  console.log(ingredients);
 
   return (
     <div className="flex flex-col desktop:flex-row desktop:justify-between desktop:gap-32">
       <div className="tablet:max-w-[704px] desktop:max-w-[800px]">
-        <RecipeDescriptionFields setDescription={setDescription} />
+        <RecipeDescriptionFields setRecipeInfo={setRecipeInfo} />
         <RecipeIngredientsFields
           ingredients={ingredients}
           setIngredients={setIngredients}
         />
-        <RecipePreparationFields />
+        <RecipePreparationFields
+          instructions={instructions}
+          setInstructions={setInstructions}
+        />
         <button
           className="mt-4 rounded-bl-[35px] rounded-br-[15px] rounded-tl-[15px] rounded-tr-[35px] bg-secondary-color px-12 py-3 text-sm text-primary-text-color tablet:mt-8 tablet:rounded-bl-[70px] tablet:rounded-br-[30px] tablet:rounded-tl-[30px] tablet:rounded-tr-[70px] tablet:px-16 tablet:py-3.5 tablet:text-base desktop:mt-11"
           aria-label="Add recipe"
@@ -56,3 +58,32 @@ const AddRecipeForm = () => {
 };
 
 export default AddRecipeForm;
+
+// "title": "New York cheesecake",
+// "category": "Dessert",
+// "area": "American",
+// "instructions":
+// "description": "A classic dessert made with cream cheese and a graham cracker crust, creamy and indulgent.",
+// "thumb": "https://www.themealdb.com/images/media/meals/swttys1511385853.jpg",
+// "preview": "https://ftp.goit.study/img/so-yummy/preview/New%20York%20cheesecake.jpg",
+// "time": "195",
+// "favorites": [],
+// "youtube": "https://www.youtube.com/watch?v=tspdJ6hxqnc",
+// "tags": [
+//   "Desert",
+//   "Dairy",
+//   "Pudding",
+//   "Cake",
+//   "Breakfast"
+// ],
+// "createdAt": {
+//   "$date": {
+//     "$numberLong": "1678562733242"
+//   }
+// },
+// "updatedAt": {
+//   "$date": {
+//     "$numberLong": "1679514447710"
+//   }
+// },
+// "ingredients": [
