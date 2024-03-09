@@ -3,6 +3,8 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const classes = {
   input: [
@@ -28,6 +30,8 @@ const registerSchema = Yup.object().shape({
 });
 
 const SigninForm = () => {
+  const router = useRouter();
+
   return (
     <>
       <div className="z-10 px-7 pb-10 pt-8 tablet:px-[50px] tablet:py-11">
@@ -39,6 +43,8 @@ const SigninForm = () => {
           validationSchema={registerSchema}
           onSubmit={(values) => {
             console.log(values);
+            signIn("credentials", { ...values, redirect: false });
+            router.push("/");
           }}
         >
           {(formik) => {
