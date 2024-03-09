@@ -1,8 +1,6 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
-import { MongoDBAdapter } from "@auth/mongodb-adapter";
-import clientPromise from "@config/mongodbAdapter";
 import { connectToDB } from "@utils/database";
 import User from "@models/user";
 
@@ -49,28 +47,6 @@ export const authOptions = {
         } catch (error) {
           console.error("Error connecting to DB:", error);
         }
-
-        // // check if user exists
-        // const user = await User.findOne({ email: credentials.email });
-
-        // console.log("User:", user);
-
-        // if (!user) {
-        //   return { error: "Invalid credentials" };
-        // }
-
-        // // check if passwords match
-        // const paswordMatch = await bcrypt.compare(
-        //   credentials.password,
-        //   user.password,
-        // );
-
-        // if (!paswordMatch) {
-        //   return { error: "Invalid credentials" };
-        // }
-
-        // // return user object if everything is valid
-        // return user;
       },
     }),
   ],

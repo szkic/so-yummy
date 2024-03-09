@@ -1,8 +1,13 @@
 import SigninForm from "@components/SigninForm";
 import Link from "next/link";
-import React from "react";
+import { authOptions } from "@app/api/auth/[...nextauth]/route";
+import { redirect } from "next/navigation";
+import { getServerSession } from "next-auth";
 
-const SigninPage = () => {
+const SigninPage = async () => {
+  const session = await getServerSession(authOptions);
+  if (session) redirect("/");
+
   return (
     <>
       <div className="flex w-screen flex-col">
