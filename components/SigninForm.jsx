@@ -3,7 +3,7 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 const classes = {
@@ -31,6 +31,8 @@ const registerSchema = Yup.object().shape({
 
 const SigninForm = () => {
   const router = useRouter();
+  const { data: session, status } = useSession();
+  console.log(session, status);
 
   return (
     <>
