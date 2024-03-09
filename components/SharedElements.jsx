@@ -6,10 +6,9 @@ import Image from "next/image";
 import { useSession } from "next-auth/react";
 
 const SharedElements = ({ children }) => {
-  const { data: session, status } = useSession();
-  const isLoggedIn = true;
+  const { status } = useSession();
 
-  console.log(session, status);
+  console.log(status);
 
   return (
     <div className="main min-h-screen flex-col">

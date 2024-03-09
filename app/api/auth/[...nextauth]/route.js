@@ -7,7 +7,6 @@ import { connectToDB } from "@utils/database";
 import User from "@models/user";
 
 export const authOptions = {
-  // adapter: MongoDBAdapter(clientPromise),
   providers: [
     CredentialsProvider({
       name: "credentials",
