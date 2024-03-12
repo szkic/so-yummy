@@ -43,10 +43,15 @@ const SigninForm = () => {
         <Formik
           initialValues={initialValues}
           validationSchema={registerSchema}
-          onSubmit={(values) => {
+          onSubmit={async (values) => {
             console.log(values);
-            signIn("credentials", { ...values, redirect: false });
-            router.push("/");
+            const signInResult = await signIn("credentials", values);
+            if (signInResult?.error) {
+              console.error("Sign-in error:", signInResult.error);
+            } else {
+              console.log("Sign-in successful!");
+              router.push("/");
+            }
           }}
         >
           {(formik) => {
