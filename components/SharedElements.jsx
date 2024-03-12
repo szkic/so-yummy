@@ -4,11 +4,14 @@ import Header from "@components/Header";
 import Footer from "@components/Footer";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
+import Loader from "./Loader";
 
 const SharedElements = ({ children }) => {
   const { status } = useSession();
 
   console.log(status);
+
+  if (status === "loading") return <Loader />;
 
   return (
     <div className="main min-h-screen flex-col">

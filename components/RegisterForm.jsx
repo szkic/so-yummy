@@ -3,6 +3,10 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/navigation";
 
 const classes = {
   input: [
@@ -30,6 +34,8 @@ const registerSchema = Yup.object().shape({
 });
 
 const RegisterForm = () => {
+  const router = useRouter();
+
   return (
     <>
       <div className="z-10 px-7 pb-10 pt-8 tablet:px-[50px] tablet:py-11">
@@ -39,8 +45,15 @@ const RegisterForm = () => {
         <Formik
           initialValues={initialValues}
           validationSchema={registerSchema}
-          onSubmit={(values) => {
-            console.log(values);
+          onSubmit={async (values) => {
+            try {
+              const response = await axios.post("/api/register", { values });
+              toast.success(response.data);
+              router.push("/");
+            } catch (error) {
+              console.error("Registration error:", error.response.data);
+              toast.error(error.response.data);
+            }
           }}
         >
           {(formik) => {
@@ -178,6 +191,7 @@ const RegisterForm = () => {
                   }`}
                   disabled={!(dirty && isValid)}
                   aria-label="Sign up"
+                  // onClick={() => toast.error("🦄 Wow so easy!")}
                 >
                   Sign up
                 </button>
@@ -186,6 +200,8 @@ const RegisterForm = () => {
           }}
         </Formik>
       </div>
+
+      <ToastContainer />
     </>
   );
 };
