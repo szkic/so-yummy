@@ -32,13 +32,13 @@ export const authOptions = {
           }
 
           // check if passwords match
-          const paswordMatch = await bcrypt.compare(
+          const passwordMatch = await bcrypt.compare(
             credentials.password,
             user.password,
           );
-          console.log("Password match:", paswordMatch);
+          console.log("Password match:", passwordMatch);
 
-          if (!paswordMatch) {
+          if (!passwordMatch) {
             return null;
           }
 
@@ -57,6 +57,9 @@ export const authOptions = {
   debug: process.env.NODE_ENV === "development",
   pages: {
     signIn: "/welcome",
+    signOut: "/welcome",
+    error: "/error",
+    newUser: "/categories",
   },
 };
 

@@ -49,7 +49,6 @@ const RegisterForm = () => {
             try {
               const response = await axios.post("/api/register", { values });
               toast.success(response.data);
-              router.push("/");
             } catch (error) {
               console.error("Registration error:", error.response.data);
               toast.error(error.response.data);
