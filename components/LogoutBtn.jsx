@@ -1,5 +1,8 @@
+"use client";
+
 import { Button } from "@material-tailwind/react";
 import React from "react";
+import { signOut } from "next-auth/react";
 
 const LogoutBtn = ({ handleClose, handlePopover }) => {
   return (
@@ -11,6 +14,7 @@ const LogoutBtn = ({ handleClose, handlePopover }) => {
         <Button
           className="h-[49px] w-[137px] rounded-md bg-primary-color font-Poppins text-sm font-normal normal-case text-primary-text-color transition-colors duration-300 ease-in-out hover:bg-[#6c8828] tablet:h-[59px] tablet:w-[192px] tablet:text-base"
           aria-label="Log oute"
+          onClick={() => signOut()}
         >
           Log out
         </Button>

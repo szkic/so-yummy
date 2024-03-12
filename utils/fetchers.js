@@ -41,3 +41,13 @@ export const fetchIngredientsById = async (id, ingredients) => {
     throw error;
   }
 };
+
+// export const fetchUser = async (values) => {
+//   try {
+//     const response = await axios.post("/api/register", { values });
+//     const user = response.data;
+//     console.log("User:", user);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
