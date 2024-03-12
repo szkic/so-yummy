@@ -1,5 +1,7 @@
 import User from "@models/user";
+import { connectToDB } from "@utils/database";
 import bcrypt from "bcrypt";
+import { connect } from "mongoose";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
@@ -11,6 +13,8 @@ export async function POST(req) {
       status: 400,
     });
   }
+
+  await connectToDB();
 
   const userExists = await User.exists({ email });
   console.log("User exists:", userExists);
