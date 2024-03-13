@@ -4,7 +4,7 @@ import Header from "@components/Header";
 import Footer from "@components/Footer";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
-import Loader from "../components/Loader";
+import Loader from "./Loader";
 
 const SharedElements = ({ children }) => {
   const { status } = useSession();
