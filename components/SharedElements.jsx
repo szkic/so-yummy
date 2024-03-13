@@ -9,9 +9,7 @@ import Loader from "./Loader";
 const SharedElements = ({ children }) => {
   const { status } = useSession();
 
-  console.log(status);
-
-  if (status === "loading") return <Loader />;
+  if (status === "loading" || !status) return <Loader />;
 
   return (
     <div className="main min-h-screen flex-col">
@@ -26,7 +24,7 @@ const SharedElements = ({ children }) => {
             className={
               status === "authenticated"
                 ? "m-auto flex max-w-[375px] flex-col px-4 pb-[100px] pt-[50px] tablet:max-w-screen-tablet tablet:px-8 desktop:max-w-screen-desktop desktop:px-24"
-                : undefined
+                : ""
             }
           >
             {status === "authenticated" && (
