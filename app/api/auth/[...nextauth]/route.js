@@ -58,8 +58,6 @@ export const authOptions = {
   pages: {
     signIn: "/welcome",
     signOut: "/welcome",
-    error: "/error",
-    newUser: "/categories",
   },
 };
 
