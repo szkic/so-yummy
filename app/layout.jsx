@@ -10,6 +10,9 @@ import SharedElements from "@components/SharedElements";
 export const metadata = {
   title: "So Yummy",
   description: "Cooking recipes app",
+  icons: {
+    icon: "/assets/images/favicon.ico",
+  },
 };
 
 /* 
