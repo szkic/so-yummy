@@ -2,10 +2,10 @@ import React from "react";
 import "@styles/globals.css";
 import { poppins } from "@styles/fonts";
 
-import ReactQueryClientProvider from "@components/ReactQueryClientProvider";
-import Providers from "./Providers";
+import ReactQueryClientProvider from "@Providers/ReactQueryClientProvider";
+import Providers from "../Providers/Providers";
 import AuthProvider from "@Providers/AuthProvider";
-import SharedElements from "@components/SharedElements";
+import SharedElements from "@Providers/SharedElements";
 
 export const metadata = {
   title: "So Yummy",
