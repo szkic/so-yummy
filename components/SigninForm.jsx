@@ -4,6 +4,7 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const classes = {
   input: [
@@ -29,6 +30,7 @@ const registerSchema = Yup.object().shape({
 });
 
 const SigninForm = () => {
+  const router = useRouter();
   const { data: session, status } = useSession();
   console.log(session, status);
 
@@ -42,10 +44,14 @@ const SigninForm = () => {
           initialValues={initialValues}
           validationSchema={registerSchema}
           onSubmit={async (values) => {
-            await signIn("credentials", {
-              email: values.email,
-              password: values.password,
-            });
+            console.log(values);
+            const signInResult = await signIn("credentials", values);
+            if (signInResult?.error) {
+              console.error("Sign-in error:", signInResult.error);
+            } else {
+              console.log("Sign-in successful!");
+              router.push("/");
+            }
           }}
         >
           {(formik) => {

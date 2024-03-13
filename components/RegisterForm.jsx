@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const classes = {
   input: [
@@ -34,6 +34,8 @@ const registerSchema = Yup.object().shape({
 });
 
 const RegisterForm = () => {
+  const router = useRouter();
+
   return (
     <>
       <div className="z-10 px-7 pb-10 pt-8 tablet:px-[50px] tablet:py-11">
@@ -47,12 +49,6 @@ const RegisterForm = () => {
             try {
               const response = await axios.post("/api/register", { values });
               toast.success(response.data);
-
-              await signIn("credentials", {
-                email: values.email,
-                password: values.password,
-                callbackUrl: "/",
-              });
             } catch (error) {
               console.error("Registration error:", error.response.data);
               toast.error(error.response.data);
