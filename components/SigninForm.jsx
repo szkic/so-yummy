@@ -3,7 +3,7 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { signIn, useSession } from "next-auth/react";
+import { signIn } from "next-auth/react";
 
 const classes = {
   input: [
@@ -29,9 +29,6 @@ const registerSchema = Yup.object().shape({
 });
 
 const SigninForm = () => {
-  const { data: session, status } = useSession();
-  console.log(session, status);
-
   return (
     <>
       <div className="z-10 px-7 pb-10 pt-8 tablet:px-[50px] tablet:py-11">

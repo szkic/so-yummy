@@ -6,9 +6,13 @@ import {
   Button,
 } from "@material-tailwind/react";
 import UserLogoModal from "./UserLogoModal";
+import { useSession } from "next-auth/react";
 
 const UserLogo = () => {
   const [open, setOpen] = useState(false);
+  const { data: session } = useSession();
+
+  console.log("session", session);
 
   const handleOpen = () => setOpen(!open);
   const handleClose = () => setOpen(false);
@@ -26,7 +30,7 @@ const UserLogo = () => {
               src="/../assets/images/user-logo-temp.png"
               alt="avatar"
             />
-            <span>Marta</span>
+            <span>{session.user.name}</span>
           </Button>
         </PopoverHandler>
         <PopoverContent className="h-[130px] w-[161px] border-[1px] border-primary-color p-[18px] tablet:h-[134px] tablet:w-[177px]">
