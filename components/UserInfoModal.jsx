@@ -2,6 +2,13 @@ import React from "react";
 import { Button } from "@material-tailwind/react";
 import { PencilIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
+import {
+  FormControl,
+  InputAdornment,
+  InputLabel,
+  OutlinedInput,
+} from "@mui/material";
+import AccountCircle from "@mui/icons-material/AccountCircle";
 
 const UserInfoModal = ({ handleClose, handlePopover }) => {
   return (
@@ -51,7 +58,7 @@ const UserInfoModal = ({ handleClose, handlePopover }) => {
         />
       </div>
 
-      <div className="relative mb-6 w-full opacity-80 hover:opacity-100">
+      {/* <div className="relative mb-6 w-full opacity-80 hover:opacity-100">
         <label htmlFor="email"></label>
         <div className="absolute inset-y-0 left-0 flex items-center pl-3.5">
           <svg
@@ -79,6 +86,21 @@ const UserInfoModal = ({ handleClose, handlePopover }) => {
           className="block h-12 w-full rounded-lg border border-secondary-color border-opacity-50 stroke-1 p-4 pl-[50px] font-Poppins text-sm  text-secondary-color outline-none placeholder:font-Poppins placeholder:text-sm placeholder:text-secondary-color focus:border-secondary-color  tablet:h-[58px] tablet:text-lg tablet:placeholder:text-lg"
           placeholder="Marta"
         />
+      </div> */}
+
+      <div className="relative mb-6 w-full opacity-80 hover:opacity-100">
+        <FormControl variant="outlined" fullWidth>
+          <InputLabel htmlFor="input-with-icon-adornment">Name</InputLabel>
+          <OutlinedInput
+            id="input-with-icon-adornment"
+            startAdornment={
+              <InputAdornment position="start">
+                <AccountCircle />
+              </InputAdornment>
+            }
+            label="Name"
+          />
+        </FormControl>
       </div>
 
       <Button
