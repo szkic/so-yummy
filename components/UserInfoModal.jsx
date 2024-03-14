@@ -9,6 +9,7 @@ import {
   OutlinedInput,
 } from "@mui/material";
 import AccountCircle from "@mui/icons-material/AccountCircle";
+import axios from "axios";
 
 const UserInfoModal = ({ handleClose, handlePopover }) => {
   const [name, setName] = useState("");
@@ -17,8 +18,24 @@ const UserInfoModal = ({ handleClose, handlePopover }) => {
   console.log("name", name);
   console.log("image", image);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!name && !image) return;
+
+    try {
+      const data = new FormData();
+      data.set("image", image);
+
+      const response = await axios.post("/api/upload", data);
+      console.log("response", response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
-    <form className="flex flex-col items-center">
+    <form className="flex flex-col items-center" onSubmit={handleSubmit}>
       <label htmlFor="imageInput">
         <div className="relative mb-[54px] cursor-pointer">
           <svg
@@ -122,6 +139,7 @@ const UserInfoModal = ({ handleClose, handlePopover }) => {
       <Button
         className="h-[49px] w-full rounded-md bg-primary-color font-Poppins text-sm font-normal normal-case text-primary-text-color transition-colors duration-300 ease-in-out hover:bg-[#6c8828] tablet:h-[59px] tablet:text-base"
         aria-label="Save changes"
+        type="submit"
       >
         Save changes
       </Button>
