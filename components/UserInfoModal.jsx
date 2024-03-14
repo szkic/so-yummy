@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@material-tailwind/react";
 import { PencilIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
@@ -11,52 +11,67 @@ import {
 import AccountCircle from "@mui/icons-material/AccountCircle";
 
 const UserInfoModal = ({ handleClose, handlePopover }) => {
-  return (
-    <div className="flex flex-col items-center">
-      <div className="relative mb-[54px]">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="88"
-          height="88"
-          viewBox="0 0 88 88"
-          fill="none"
-        >
-          <circle cx="44" cy="44" r="44" fill="#D9D9D9" />
-        </svg>
+  const [name, setName] = useState("");
+  const [image, setImage] = useState(null);
 
-        <div className="absolute left-1/2 top-1/2  -translate-x-1/2 -translate-y-1/2 transform">
+  console.log("name", name);
+  console.log("image", image);
+
+  return (
+    <form className="flex flex-col items-center">
+      <label htmlFor="imageInput">
+        <div className="relative mb-[54px] cursor-pointer">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="40"
-            height="40"
-            viewBox="0 0 40 40"
+            width="88"
+            height="88"
+            viewBox="0 0 88 88"
             fill="none"
           >
-            <path
-              d="M33.3327 35V31.6667C33.3327 29.8986 32.6303 28.2029 31.3801 26.9526C30.1298 25.7024 28.4341 25 26.666 25H13.3327C11.5646 25 9.86888 25.7024 8.61864 26.9526C7.36839 28.2029 6.66602 29.8986 6.66602 31.6667V35"
-              stroke="#C4C4C4"
-              strokeWidth="3"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M20.0006 18.3333C23.6825 18.3333 26.6673 15.3486 26.6673 11.6667C26.6673 7.98477 23.6825 5 20.0006 5C16.3188 5 13.334 7.98477 13.334 11.6667C13.334 15.3486 16.3188 18.3333 20.0006 18.3333Z"
-              stroke="#C4C4C4"
-              strokeWidth="3"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
+            <circle cx="44" cy="44" r="44" fill="#D9D9D9" />
           </svg>
-        </div>
 
-        <Image
-          src="/../assets/images/plus.svg"
-          width={24}
-          height={24}
-          alt="leaves"
-          className="absolute bottom-[-6px] right-3"
-        />
-      </div>
+          <div className="absolute left-1/2 top-1/2  -translate-x-1/2 -translate-y-1/2 transform">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="40"
+              height="40"
+              viewBox="0 0 40 40"
+              fill="none"
+            >
+              <path
+                d="M33.3327 35V31.6667C33.3327 29.8986 32.6303 28.2029 31.3801 26.9526C30.1298 25.7024 28.4341 25 26.666 25H13.3327C11.5646 25 9.86888 25.7024 8.61864 26.9526C7.36839 28.2029 6.66602 29.8986 6.66602 31.6667V35"
+                stroke="#C4C4C4"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M20.0006 18.3333C23.6825 18.3333 26.6673 15.3486 26.6673 11.6667C26.6673 7.98477 23.6825 5 20.0006 5C16.3188 5 13.334 7.98477 13.334 11.6667C13.334 15.3486 16.3188 18.3333 20.0006 18.3333Z"
+                stroke="#C4C4C4"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+
+          <Image
+            src="/../assets/images/plus.svg"
+            width={24}
+            height={24}
+            alt="leaves"
+            className="absolute bottom-[-6px] right-3"
+          />
+        </div>
+      </label>
+
+      <input
+        type="file"
+        id="imageInput"
+        className="hidden"
+        onChange={(e) => setImage(e.target.files?.[0])}
+      />
 
       {/* <div className="relative mb-6 w-full opacity-80 hover:opacity-100">
         <label htmlFor="email"></label>
@@ -99,6 +114,7 @@ const UserInfoModal = ({ handleClose, handlePopover }) => {
               </InputAdornment>
             }
             label="Name"
+            onChange={(e) => setName(e.target.value)}
           />
         </FormControl>
       </div>
@@ -132,7 +148,7 @@ const UserInfoModal = ({ handleClose, handlePopover }) => {
           />
         </svg>
       </div>
-    </div>
+    </form>
   );
 };
 

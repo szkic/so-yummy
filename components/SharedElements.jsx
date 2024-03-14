@@ -9,7 +9,7 @@ import Loader from "./Loader";
 const SharedElements = ({ children }) => {
   const { status } = useSession();
 
-  if (status === "loading" || !status) return <Loader />;
+  // if (status === "loading" || !status) return <Loader />;
 
   return (
     <div className="main min-h-screen flex-col">
