@@ -8,11 +8,12 @@ import { fetchFavorites } from "@utils/fetchers";
 import { useSession } from "next-auth/react";
 import Loader from "./Loader";
 import Link from "next/link";
+import axios from "axios";
 
 const MyRecipesList = ({ theme }) => {
   const { data: session } = useSession();
 
-  const { isPending, isError, data, error } = useQuery({
+  const { isPending, isError, data, error, refetch } = useQuery({
     queryKey: ["favorites"],
     queryFn: () => fetchFavorites(session.user.email),
     refetchOnMount: "always",
@@ -25,6 +26,20 @@ const MyRecipesList = ({ theme }) => {
   if (isPending) {
     return <Loader />;
   }
+
+  const handleDeleteFromFavorites = async (id) => {
+    try {
+      const response = await axios.delete("/api/favorite", {
+        data: { user: session.user.email, id },
+      });
+
+      refetch();
+
+      console.log("Item deleted from favorites:", response.data);
+    } catch (error) {
+      console.error("Failed to delete item from favorites:", error);
+    }
+  };
 
   return (
     <div className="flex flex-col gap-4 tablet:gap-10 desktop:gap-12">
@@ -51,8 +66,9 @@ const MyRecipesList = ({ theme }) => {
               <FaRegTrashAlt
                 className={`${
                   theme === "my" && "text-input-primary"
-                } tablet:h-5 tablet:w-5 desktop:h-6 desktop:w-6`}
+                } cursor-pointer tablet:h-5 tablet:w-5 desktop:h-6 desktop:w-6`}
                 size="14px"
+                onClick={() => handleDeleteFromFavorites(recipe._id)}
               />
             </div>
 
