@@ -1,8 +1,20 @@
 import Image from "next/image";
 import vegetables from "../public/assets/images/vegetables.png";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import axios from "axios";
+import { useSession } from "next-auth/react";
 
-const RecipePageHero = ({ title, description, time }) => {
+const RecipePageHero = ({ title, description, time, id }) => {
+  const { data: session } = useSession();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await axios.put("/api/favorite", {
+      user: session.user.email,
+      id,
+    });
+  };
+
   return (
     <div className="flex justify-center">
       <Image
@@ -21,6 +33,7 @@ const RecipePageHero = ({ title, description, time }) => {
         <button
           className="mt-6 rounded-bl-[35px] rounded-br-[15px] rounded-tl-[15px] rounded-tr-[35px] border-2 border-primary-color px-5 py-2.5 text-[10px] tablet:rounded-bl-[70px] tablet:rounded-br-[30px] tablet:rounded-tl-[30px] tablet:rounded-tr-[70px] tablet:px-11 tablet:py-5 tablet:text-base"
           aria-label="Add to favorite"
+          onClick={handleSubmit}
         >
           Add to favorite recipes
         </button>

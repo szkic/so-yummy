@@ -32,7 +32,12 @@ const page = () => {
 
   return (
     <>
-      <RecipePageHero title={title} description={description} time={time} />
+      <RecipePageHero
+        title={title}
+        description={description}
+        time={time}
+        id={id}
+      />
       <RecipeInngredientsList ingredients={ingredients} id={id} />
       <RecipePreparation instructions={instructions} preview={preview} />
     </>

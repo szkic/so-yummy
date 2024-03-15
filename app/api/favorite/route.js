@@ -17,6 +17,22 @@ export const POST = async (req, res) => {
   }
 };
 
-export const PUT = async (req, res) => {};
+export const PUT = async (req, res) => {
+  const { user, id } = await req.json();
+
+  try {
+    await connectToDB();
+
+    const updateFavorites = await User.findOneAndUpdate(
+      { email: user },
+      { $addToSet: { favorites: id } },
+      { new: true },
+    );
+
+    return new Response(JSON.stringify(updateFavorites), { status: 200 });
+  } catch (error) {
+    return new Response("Failed to add to favorites", { status: 500 });
+  }
+};
 
 export const DELETE = async (req, res) => {};

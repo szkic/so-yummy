@@ -15,6 +15,7 @@ const MyRecipesList = ({ theme }) => {
   const { isPending, isError, data, error } = useQuery({
     queryKey: ["favorites"],
     queryFn: () => fetchFavorites(session.user.email),
+    refetchOnMount: "always",
   });
 
   if (isError) {
