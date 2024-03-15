@@ -42,12 +42,15 @@ export const fetchIngredientsById = async (id, ingredients) => {
   }
 };
 
-// export const fetchUser = async (values) => {
-//   try {
-//     const response = await axios.post("/api/register", { values });
-//     const user = response.data;
-//     console.log("User:", user);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
+
+export const fetchFavorites = async (user) => {
+  try {
+    const response = await axios.post("/api/favorite", { user });
+    const favorites = response.data;
+
+    return favorites;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}

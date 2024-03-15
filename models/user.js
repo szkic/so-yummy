@@ -9,7 +9,10 @@ const UserSchema = new Schema({
     default:
       "https://res.cloudinary.com/dgr5ysrrw/image/upload/v1706098775/avatars/default.jpg",
   },
-  favorites: { type: Array, default: [] },
+  favorites: {
+    type: [String],
+    default: ["640cd5ac2d9fecf12e8897fc", "640cd5ac2d9fecf12e8897f0"],
+  },
 });
 
 const User = models.User || model("User", UserSchema);
