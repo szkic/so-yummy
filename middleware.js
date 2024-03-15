@@ -4,10 +4,10 @@ export const config = {
   matcher: [
     "/",
     "/add",
-    "/categories",
+    "/categories/:path*",
     "/favorite",
     "/my",
-    "/recipe",
+    "/recipe/:path*",
     "/search",
     "/shopping-list",
   ],
