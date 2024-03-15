@@ -11,7 +11,7 @@ const UserSchema = new Schema({
   },
   favorites: {
     type: [String],
-    default: ["640cd5ac2d9fecf12e8897fc", "640cd5ac2d9fecf12e8897f0"],
+    default: [],
   },
 });
 
