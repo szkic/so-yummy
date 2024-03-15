@@ -13,8 +13,8 @@ const MyRecipesList = ({ theme }) => {
   const { data: session } = useSession();
 
   const { isPending, isError, data, error } = useQuery({
-    queryKey: "favorites",
-    queryFn: () => fetchFavorites(session?.user.email),
+    queryKey: ["favorites"],
+    queryFn: () => fetchFavorites(session.user.email),
   });
 
   if (isError) {

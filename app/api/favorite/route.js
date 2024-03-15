@@ -3,10 +3,7 @@ import User from "@models/user";
 import { connectToDB } from "@utils/database";
 
 export const POST = async (req, res) => {
-  const { user2 } = await req.json();
-  const user = "szkic@wp.pl";
-
-  console.log(user2);
+  const { user } = await req.json();
 
   try {
     await connectToDB();
