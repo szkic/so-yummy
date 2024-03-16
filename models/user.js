@@ -13,6 +13,10 @@ const UserSchema = new Schema({
     type: [String],
     default: [],
   },
+  myRecipes: {
+    type: [String],
+    default: ["640cd5ac2d9fecf12e889838"],
+  },
 });
 
 const User = models.User || model("User", UserSchema);

@@ -2,7 +2,7 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
 
-const FavoriteRecipeItem = ({ recipe, theme, onDelete }) => {
+const RecipeItem = ({ recipe, theme, onDelete }) => {
   return (
     <div className="rounded-lg bg-input-primary px-3.5 py-2.5 tablet:px-6 tablet:py-7 desktop:p-10">
       <div className="relative flex gap-4 tablet:gap-6 desktop:gap-14">
@@ -61,4 +61,4 @@ const FavoriteRecipeItem = ({ recipe, theme, onDelete }) => {
   );
 };
 
-export default FavoriteRecipeItem;
+export default RecipeItem;
