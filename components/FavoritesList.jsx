@@ -1,29 +1,7 @@
-"use client";
-
-import { useQuery } from "@tanstack/react-query";
-import { fetchFavorites } from "@utils/fetchers";
-import { useSession } from "next-auth/react";
-import Loader from "./Loader";
 import axios from "axios";
 import RecipeItem from "./RecipeItem";
 
-const FavoritesList = () => {
-  const { data: session } = useSession();
-
-  const { isPending, isError, data, error, refetch } = useQuery({
-    queryKey: ["favorites"],
-    queryFn: () => fetchFavorites(session.user.email),
-    refetchOnMount: "always",
-  });
-
-  if (isError) {
-    return <p>Error: {error.message}</p>;
-  }
-
-  if (isPending) {
-    return <Loader />;
-  }
-
+const FavoritesList = ({ data }) => {
   const handleDeleteFromFavorites = async (id) => {
     try {
       const response = await axios.delete("/api/favorite", {

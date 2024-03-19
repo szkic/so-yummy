@@ -42,6 +42,8 @@ const SigninForm = () => {
             await signIn("credentials", {
               email: values.email,
               password: values.password,
+              redirect: true,
+              callbackUrl: "/",
             });
           }}
         >
