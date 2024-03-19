@@ -12,7 +12,7 @@ const IngredientsShoppingList = () => {
 
   const { isPending, isError, data, error, refetch } = useQuery({
     queryKey: ["shopping-list"],
-    queryFn: () => fetchShoppingList(session.user.email),
+    queryFn: () => fetchShoppingList({ user: session.user.email }),
     refetchOnMount: "always",
   });
 

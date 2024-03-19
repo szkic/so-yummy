@@ -54,9 +54,9 @@ export const fetchFavorites = async (user) => {
   }
 };
 
-export const fetchShoppingList = async (user) => {
+export const fetchShoppingList = async (data) => {
   try {
-    const response = await axios.post("/api/shopping-list", { user });
+    const response = await axios.post("/api/shopping-list", { data });
     const shoppingList = response.data;
 
     return shoppingList;

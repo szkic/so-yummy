@@ -18,8 +18,11 @@ const UserSchema = new Schema({
     default: ["640cd5ac2d9fecf12e889838"],
   },
   shoppingList: {
-    type: [String],
-    default: ["640c2dd963a319ea671e373a", "640c2dd963a319ea671e373f"],
+    type: [Object],
+    default: [
+      { _id: "640c2dd963a319ea671e373a", measure: "1" },
+      { _id: "640c2dd963a319ea671e373f", measure: "5tbsp" },
+    ],
   },
 });
 
