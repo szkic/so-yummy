@@ -42,7 +42,6 @@ export const fetchIngredientsById = async (id, ingredients) => {
   }
 };
 
-
 export const fetchFavorites = async (user) => {
   try {
     const response = await axios.post("/api/favorite", { user });
@@ -53,4 +52,16 @@ export const fetchFavorites = async (user) => {
     console.log(error);
     throw error;
   }
-}
+};
+
+export const fetchShoppingList = async (user) => {
+  try {
+    const response = await axios.post("/api/shopping-list", { user });
+    const shoppingList = response.data;
+
+    return shoppingList;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};

@@ -25,8 +25,6 @@ const FavoritePage = () => {
     return <Loader />;
   }
 
-  console.log("data", data.length === 0);
-
   return (
     <section>
       <MainTitle name="Favorites" />

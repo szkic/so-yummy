@@ -17,6 +17,10 @@ const UserSchema = new Schema({
     type: [String],
     default: ["640cd5ac2d9fecf12e889838"],
   },
+  shoppingList: {
+    type: [String],
+    default: ["640c2dd963a319ea671e373a", "640c2dd963a319ea671e373f"],
+  },
 });
 
 const User = models.User || model("User", UserSchema);
