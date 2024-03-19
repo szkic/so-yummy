@@ -1,17 +1,24 @@
 import React from "react";
 import Image from "next/image";
-import { useQuery } from "@tanstack/react-query";
-import { fetchIngredientsById } from "@utils/fetchers";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { fetchIngredientsById, fetchShoppingList } from "@utils/fetchers";
 import Loader from "./Loader";
 import { Checkbox } from "@mui/material";
+import { useSession } from "next-auth/react";
 
 const RecipeInngredientsList = ({ ingredients, id }) => {
+  const { data: session } = useSession();
+
   const ingredientsIds = ingredients.map((ingredient) => ingredient.id);
 
   const { isPending, isError, data, error } = useQuery({
     queryKey: ["ingredient-search"],
     queryFn: () => fetchIngredientsById(id, ingredientsIds),
     refetchOnMount: "always",
+  });
+
+  const mutation = useMutation({
+    mutationFn: fetchShoppingList,
   });
 
   if (isError) {
@@ -21,6 +28,26 @@ const RecipeInngredientsList = ({ ingredients, id }) => {
   if (isPending) {
     return <Loader />;
   }
+
+  const handleCheckboxChange = (e, ing) => {
+    const { checked } = e.target;
+
+    if (checked) {
+      mutation.mutate({
+        user: session.user.email,
+        id: ing._id,
+        measure: ing.measure,
+        action: "add",
+      });
+    } else {
+      mutation.mutate({
+        user: session.user.email,
+        id: ing._id,
+        measure: ing.measure,
+        action: "remove",
+      });
+    }
+  };
 
   return (
     <div className="relative overflow-x-auto">
@@ -75,14 +102,6 @@ const RecipeInngredientsList = ({ ingredients, id }) => {
               </td>
               <td className="rounded-e-lg py-4">
                 <div className="flex items-center justify-center">
-                  {/* <input
-                    id="checkbox-all-search"
-                    type="checkbox"
-                    className="h-4 w-4 rounded border-gray-300 bg-light-primary-color text-primary-color focus:ring-2 focus:ring-primary-color dark:border-gray-600 dark:bg-gray-700  dark:ring-offset-gray-800 dark:focus:ring-primary-color dark:focus:ring-offset-gray-800 tablet:h-8 tablet:w-8"
-                  />
-                  <label htmlFor="checkbox-all-search" className="sr-only">
-                    checkbox
-                  </label> */}
                   <Checkbox
                     sx={{
                       "& .MuiSvgIcon-root": {
@@ -93,6 +112,7 @@ const RecipeInngredientsList = ({ ingredients, id }) => {
                         color: "#8BAA36",
                       },
                     }}
+                    onChange={(e) => handleCheckboxChange(e, ing)}
                   />
                 </div>
               </td>
