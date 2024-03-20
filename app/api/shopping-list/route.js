@@ -55,7 +55,6 @@ export const POST = async (req, res) => {
       if (titleA < titleB) {
         return -1;
       }
-
       if (titleA > titleB) {
         return 1;
       }
@@ -63,19 +62,34 @@ export const POST = async (req, res) => {
       return 0;
     });
 
-    // console.log("ingredientWithMeasure", ingredientWithMeasure);
-
-    // 1. przesłać ID i measure jako obiekt
-    // 2. zapisać go do usera
-    // 3. przemapować się po userze -> zwrócić obiekt z ingredients i dodać do niego measure
-    // 4. zwrócić obiekt z ID i measure
-
-    // 5. dodać możliwość usuwania z listy zakupów po przesłanym ID
-
     return new Response(JSON.stringify(ingredientWithMeasure), { status: 200 });
   } catch (error) {
     console.log("error", error);
     return new Response("Failed to retrieve shopping list", { status: 500 });
   }
 };
-// export const PUT = async (req, res) => {};
+
+export const DELETE = async (req, res) => {
+  const { user, id } = await req.json();
+
+  console.log("user", user, "id", id);
+
+  if (!user || !id) {
+    return new Response("User and ID is required", { status: 400 });
+  }
+
+  try {
+    await connectToDB();
+
+    await User.findOneAndUpdate(
+      { email: user },
+      { $pull: { shoppingList: { _id: id } } },
+      { new: true },
+    );
+
+    return new Response("Ingredient removed", { status: 200 });
+  } catch (error) {
+    console.log("error", error);
+    return new Response("Failed to remove ingredient", { status: 500 });
+  }
+};

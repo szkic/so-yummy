@@ -6,6 +6,7 @@ import { useSession } from "next-auth/react";
 import Loader from "./Loader";
 import Image from "next/image";
 import CloseIcon from "@mui/icons-material/Close";
+import axios from "axios";
 
 const IngredientsShoppingList = () => {
   const { data: session } = useSession();
@@ -25,6 +26,23 @@ const IngredientsShoppingList = () => {
   }
 
   console.log("data", data);
+
+  const handleDeleteIngredient = async (id) => {
+    console.log("id", id);
+
+    try {
+      await axios.delete("/api/shopping-list", {
+        data: {
+          user: session.user.email,
+          id,
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    } finally {
+      refetch();
+    }
+  };
 
   return (
     <div className="relative overflow-x-auto">
@@ -79,7 +97,10 @@ const IngredientsShoppingList = () => {
               </td>
               <td className="rounded-e-lg py-4">
                 <div className="flex items-center justify-center">
-                  <CloseIcon className="hover:cursor-pointer" />
+                  <CloseIcon
+                    className="hover:cursor-pointer"
+                    onClick={() => handleDeleteIngredient(ing._id)}
+                  />
                 </div>
               </td>
             </tr>
