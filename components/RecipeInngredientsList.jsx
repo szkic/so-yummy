@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { fetchIngredientsById, fetchShoppingList } from "@utils/fetchers";
 import Loader from "./Loader";
 import { Checkbox } from "@mui/material";
 import { useSession } from "next-auth/react";
+import { ref } from "yup";
 
 const RecipeInngredientsList = ({ ingredients, id }) => {
   const { data: session } = useSession();
@@ -17,15 +18,29 @@ const RecipeInngredientsList = ({ ingredients, id }) => {
     refetchOnMount: "always",
   });
 
-  const mutation = useMutation({
-    mutationFn: fetchShoppingList,
+  const {
+    isPending: isPendingShoppingList,
+    isError: isErrorShoppingList,
+    data: shoppingListData,
+    refetch,
+  } = useQuery({
+    queryKey: ["shopping-list"],
+    queryFn: () => fetchShoppingList({ user: session.user.email }),
+    refetchOnMount: "always",
   });
 
-  if (isError) {
+  const mutation = useMutation({
+    mutationFn: fetchShoppingList,
+    onSuccess: () => {
+      refetch();
+    },
+  });
+
+  if (isError || isErrorShoppingList) {
     return <p>Error: {error.message}</p>;
   }
 
-  if (isPending) {
+  if (isPending || isPendingShoppingList) {
     return <Loader />;
   }
 
@@ -48,6 +63,8 @@ const RecipeInngredientsList = ({ ingredients, id }) => {
       });
     }
   };
+
+  const shoppingListItems = shoppingListData.map((item) => item._id);
 
   return (
     <div className="relative overflow-x-auto">
@@ -112,6 +129,7 @@ const RecipeInngredientsList = ({ ingredients, id }) => {
                         color: "#8BAA36",
                       },
                     }}
+                    checked={shoppingListItems.includes(ing._id)}
                     onChange={(e) => handleCheckboxChange(e, ing)}
                   />
                 </div>
