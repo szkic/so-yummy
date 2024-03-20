@@ -5,18 +5,19 @@ import { connectToDB } from "@utils/database";
 export const POST = async (req, res) => {
   const { data } = await req.json();
 
-  console.log(data);
-
-  console.log("user", data.user);
-
-  if (!data.user) {
-    return new Response("User is required", { status: 400 });
+  if (!data) {
+    return new Response("Invalid request data", { status: 400 });
   }
 
   try {
     await connectToDB();
 
     const user = await User.findOne({ email: data.user });
+
+    if (!user) {
+      return new Response("User not found", { status: 404 });
+    }
+
     const ingredients = await Ingredient.find({
       _id: { $in: user.shoppingList },
     });
@@ -52,14 +53,7 @@ export const POST = async (req, res) => {
       const titleA = a.ttl.toLowerCase();
       const titleB = b.ttl.toLowerCase();
 
-      if (titleA < titleB) {
-        return -1;
-      }
-      if (titleA > titleB) {
-        return 1;
-      }
-
-      return 0;
+      return titleA.localeCompare(titleB);
     });
 
     return new Response(JSON.stringify(ingredientWithMeasure), { status: 200 });
@@ -72,8 +66,6 @@ export const POST = async (req, res) => {
 export const DELETE = async (req, res) => {
   const { user, id } = await req.json();
 
-  console.log("user", user, "id", id);
-
   if (!user || !id) {
     return new Response("User and ID is required", { status: 400 });
   }
@@ -81,11 +73,15 @@ export const DELETE = async (req, res) => {
   try {
     await connectToDB();
 
-    await User.findOneAndUpdate(
+    const updatedUser = await User.findOneAndUpdate(
       { email: user },
       { $pull: { shoppingList: { _id: id } } },
       { new: true },
     );
+
+    if (!updatedUser) {
+      return new Response("User not found", { status: 404 });
+    }
 
     return new Response("Ingredient removed", { status: 200 });
   } catch (error) {
