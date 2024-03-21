@@ -14,10 +14,32 @@ import { useSession } from "next-auth/react";
 
 const UserInfoModal = ({ handleClose, handlePopover }) => {
   const [newName, setNewName] = useState("");
+  const [image, setImage] = useState("adsada");
   const { data: session, update } = useSession();
 
+  const user = session.user.email;
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!newName || !image) return;
+
+    try {
+      const response = await axios.put("/api/update-user", {
+        user,
+        newName,
+        image,
+      });
+      console.log("response", response.data);
+
+      update({ ...session.user, name: newName });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
-    <form className="flex flex-col items-center">
+    <form className="flex flex-col items-center" onSubmit={handleSubmit}>
       <label htmlFor="imageInput">
         <div className="relative mb-[54px] cursor-pointer">
           <svg
@@ -65,7 +87,12 @@ const UserInfoModal = ({ handleClose, handlePopover }) => {
         </div>
       </label>
 
-      <input type="file" id="imageInput" className="hidden" />
+      <input
+        type="file"
+        id="imageInput"
+        className="hidden"
+        // onChange={(e) => setImage(e.target.files?.[0])}
+      />
 
       {/* <div className="relative mb-6 w-full opacity-80 hover:opacity-100">
         <label htmlFor="email"></label>
@@ -117,7 +144,7 @@ const UserInfoModal = ({ handleClose, handlePopover }) => {
         className="h-[49px] w-full rounded-md bg-primary-color font-Poppins text-sm font-normal normal-case text-primary-text-color transition-colors duration-300 ease-in-out hover:bg-[#6c8828] tablet:h-[59px] tablet:text-base"
         aria-label="Save changes"
         type="submit"
-        onClick={() => update({ ...session.user, name: newName })}
+        // onClick={() => update({ ...session.user, name: newName })}
       >
         Save changes
       </Button>

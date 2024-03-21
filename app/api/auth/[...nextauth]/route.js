@@ -58,9 +58,6 @@ export const authOptions = {
     jwt({ token, trigger, session }) {
       if (trigger === "update" && session?.name) {
         token.name = session.name;
-        console.log("token:", token);
-        console.log("session:", session);
-        console.log("trigger:", trigger);
       }
       return token;
     },
