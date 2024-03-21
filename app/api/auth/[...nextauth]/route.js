@@ -54,6 +54,17 @@ export const authOptions = {
     strategy: "jwt",
     maxAge: 1 * 60 * 60,
   },
+  callbacks: {
+    jwt({ token, trigger, session }) {
+      if (trigger === "update" && session?.name) {
+        token.name = session.name;
+        console.log("token:", token);
+        console.log("session:", session);
+        console.log("trigger:", trigger);
+      }
+      return token;
+    },
+  },
   secret: process.env.NEXTAUTH_SECRET,
   debug: process.env.NODE_ENV === "development",
   pages: {

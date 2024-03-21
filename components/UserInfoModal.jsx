@@ -10,32 +10,14 @@ import {
 } from "@mui/material";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import axios from "axios";
+import { useSession } from "next-auth/react";
 
 const UserInfoModal = ({ handleClose, handlePopover }) => {
-  const [name, setName] = useState("");
-  const [image, setImage] = useState(null);
-
-  console.log("name", name);
-  console.log("image", image);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (!name && !image) return;
-
-    try {
-      const data = new FormData();
-      data.set("image", image);
-
-      const response = await axios.post("/api/upload", data);
-      console.log("response", response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const [newName, setNewName] = useState("");
+  const { data: session, update } = useSession();
 
   return (
-    <form className="flex flex-col items-center" onSubmit={handleSubmit}>
+    <form className="flex flex-col items-center">
       <label htmlFor="imageInput">
         <div className="relative mb-[54px] cursor-pointer">
           <svg
@@ -83,12 +65,7 @@ const UserInfoModal = ({ handleClose, handlePopover }) => {
         </div>
       </label>
 
-      <input
-        type="file"
-        id="imageInput"
-        className="hidden"
-        onChange={(e) => setImage(e.target.files?.[0])}
-      />
+      <input type="file" id="imageInput" className="hidden" />
 
       {/* <div className="relative mb-6 w-full opacity-80 hover:opacity-100">
         <label htmlFor="email"></label>
@@ -131,7 +108,7 @@ const UserInfoModal = ({ handleClose, handlePopover }) => {
               </InputAdornment>
             }
             label="Name"
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => setNewName(e.target.value)}
           />
         </FormControl>
       </div>
@@ -140,6 +117,7 @@ const UserInfoModal = ({ handleClose, handlePopover }) => {
         className="h-[49px] w-full rounded-md bg-primary-color font-Poppins text-sm font-normal normal-case text-primary-text-color transition-colors duration-300 ease-in-out hover:bg-[#6c8828] tablet:h-[59px] tablet:text-base"
         aria-label="Save changes"
         type="submit"
+        onClick={() => update({ ...session.user, name: newName })}
       >
         Save changes
       </Button>

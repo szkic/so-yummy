@@ -1,11 +1,9 @@
-import React, { useState } from "react";
 import Image from "next/image";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { fetchIngredientsById, fetchShoppingList } from "@utils/fetchers";
 import Loader from "./Loader";
 import { Checkbox } from "@mui/material";
 import { useSession } from "next-auth/react";
-import { ref } from "yup";
 
 const RecipeInngredientsList = ({ ingredients, id }) => {
   const { data: session } = useSession();
@@ -95,7 +93,7 @@ const RecipeInngredientsList = ({ ingredients, id }) => {
           {data.map((ing) => (
             <tr
               className="h-20 bg-light-primary-color dark:bg-gray-800 tablet:h-44 desktop:h-48"
-              key={ing.ttl}
+              key={ing._id}
             >
               <th
                 scope="row"
