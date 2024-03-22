@@ -7,23 +7,38 @@ import RecipePreparation from "@components/RecipePreparation";
 import { useQuery } from "@tanstack/react-query";
 import { fetchRecipeById } from "@utils/fetchers";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const page = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
   const pathname = usePathname();
-  const pathnameId = pathname.split("/").pop();
+  const pathnameId = pathname.split("/").pop() || "";
 
   const { isPending, isError, data, error } = useQuery({
-    queryKey: ["recipe-id"],
+    queryKey: ["recipe-id", pathnameId],
     queryFn: () => fetchRecipeById(pathnameId),
     refetchOnMount: "always",
   });
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    const timeout = setTimeout(() => {
+      setIsLoaded(true);
+    }, 500);
+    return () => clearTimeout(timeout);
+  }, []);
 
   if (isError) {
     return <p>Error: {error.message}</p>;
   }
 
-  if (isPending) {
+  if (isPending || !isLoaded) {
     return <Loader />;
+  }
+
+  if (!data) {
+    return null;
   }
 
   const [
