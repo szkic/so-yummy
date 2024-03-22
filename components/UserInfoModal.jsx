@@ -32,7 +32,13 @@ const UserInfoModal = ({ handleClose, handlePopover }) => {
       });
       console.log("response", response.data);
 
+      // jeśli new name jest puste to niech nie zmienia
       update({ ...session.user, name: newName });
+
+      // tutaj bedzie zmiana zdjecia jeśli nie bedzie puste
+      // if (image) {
+      //   update({ ...session.user, image });
+      // }
     } catch (error) {
       console.error(error);
     }
@@ -144,7 +150,6 @@ const UserInfoModal = ({ handleClose, handlePopover }) => {
         className="h-[49px] w-full rounded-md bg-primary-color font-Poppins text-sm font-normal normal-case text-primary-text-color transition-colors duration-300 ease-in-out hover:bg-[#6c8828] tablet:h-[59px] tablet:text-base"
         aria-label="Save changes"
         type="submit"
-        // onClick={() => update({ ...session.user, name: newName })}
       >
         Save changes
       </Button>
