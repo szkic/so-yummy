@@ -5,7 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
 
 const Search = ({ btnColor, searchType, queryValues }) => {
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState(queryValues || "");
   const router = useRouter();
   const pathname = usePathname();
 
@@ -40,7 +40,7 @@ const Search = ({ btnColor, searchType, queryValues }) => {
           type="search"
           id="search"
           onChange={(e) => setSearchValue(e.target.value)}
-          value={queryValues || searchValue}
+          value={searchValue}
           className="block w-full rounded-lg rounded-bl-[35px] rounded-br-[15px] rounded-tl-[15px] rounded-tr-[35px] border border-gray-300 bg-gray-50 p-4 ps-10 text-sm text-gray-900 outline-none focus:border-[#23262a33] focus:ring-[#23262a33] dark:border-gray-600 "
           placeholder="Search"
           required
