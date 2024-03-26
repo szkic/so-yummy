@@ -14,9 +14,9 @@ import { fetchIngredients } from "@utils/fetchers";
 const MEASURES = ["tbs", "tsp", "kg", "g"];
 
 const RecipeIngredientsFields = ({ ingredients, setIngredients }) => {
-  const [number, setNumber] = useState(1);
-  const [quantity, setQuantity] = useState("");
-  const [measure, setMeasure] = useState("");
+  // const [number, setNumber] = useState(1);
+  // const [quantity, setQuantity] = useState("");
+  // const [measure, setMeasure] = useState("");
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -26,8 +26,6 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients }) => {
   );
 
   const loading = isOpen && options.length === 0;
-
-  console.log(isOpen);
 
   useEffect(() => {
     if (!loading) {
@@ -74,7 +72,7 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients }) => {
         <Autocomplete
           id={`ingredient-${ingredient.id}`}
           size="small"
-          open={openStates[ingredient.id - 1]}
+          // open={openStates[ingredient.id - 1]}
           onOpen={() => {
             const newOpenStates = [...openStates];
             newOpenStates[ingredient.id - 1] = true;
@@ -123,10 +121,10 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients }) => {
           value={ingredient.quantity || ""}
           label="Quantity"
           onChange={(e) => {
-            const regex = /^[0-9]*(\.[0-9]{0,2})?$/;
-            if (e.target.value === "" || regex.test(e.target.value)) {
-              setQuantity(e.target.value);
-            }
+            // const regex = /^[0-9]*(\.[0-9]{0,2})?$/;
+            // if (e.target.value === "" || regex.test(e.target.value)) {
+            //   setQuantity(e.target.value);
+            // }
 
             setIngredients((prev) => [
               ...prev.slice(0, ingredient.id - 1),

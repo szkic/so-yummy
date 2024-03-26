@@ -24,7 +24,6 @@ const AddRecipeForm = () => {
   ]);
   const [instructions, setInstructions] = useState("");
 
-
   return (
     <div className="flex flex-col desktop:flex-row desktop:justify-between desktop:gap-32">
       <div className="tablet:max-w-[704px] desktop:max-w-[800px]">
