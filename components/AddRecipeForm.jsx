@@ -6,6 +6,7 @@ import RecipeIngredientsFields from "./RecipeIngredientsFields";
 import RecipePreparationFields from "./RecipePreparationFields";
 import FollowUs from "./FollowUs";
 import PopularRecipe from "./PopularRecipe";
+import { nanoid } from "nanoid";
 
 const AddRecipeForm = () => {
   const [recipeInfo, setRecipeInfo] = useState({
@@ -16,13 +17,15 @@ const AddRecipeForm = () => {
   });
   const [ingredients, setIngredients] = useState([
     {
-      id: 1,
+      id: nanoid(),
       ingredient: "",
       quantity: "",
       measure: "",
     },
   ]);
   const [instructions, setInstructions] = useState("");
+
+  console.log("ingredients", ingredients);
 
   return (
     <div className="flex flex-col desktop:flex-row desktop:justify-between desktop:gap-32">

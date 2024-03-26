@@ -10,6 +10,7 @@ import {
 import { useEffect, useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import { fetchIngredients } from "@utils/fetchers";
+import { nanoid } from "nanoid";
 
 const MEASURES = ["tbs", "tsp", "kg", "g"];
 
@@ -49,7 +50,7 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients }) => {
     setIngredients((prev) => [
       ...prev,
       {
-        id: prev.length + 1,
+        id: nanoid(),
         ingredient: "",
         quantity: "",
         measure: "",
@@ -70,7 +71,7 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients }) => {
     <div className="mt-6 flex items-center justify-between" key={ingredient.id}>
       <FormControl className="w-40 tablet:w-96" size="small">
         <Autocomplete
-          id={`ingredient-${ingredient.id}`}
+          id={ingredient.id}
           size="small"
           // open={openStates[ingredient.id - 1]}
           onOpen={() => {
@@ -86,11 +87,14 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients }) => {
             setIsOpen(false);
           }}
           onChange={(e, newValue) =>
-            setIngredients((prev) => [
-              ...prev.slice(0, ingredient.id - 1),
-              { ...prev[ingredient.id - 1], ingredient: newValue },
-              ...prev.slice(ingredient.id),
-            ])
+            setIngredients((prev) =>
+              prev.map((item) => {
+                if (item.id === ingredient.id) {
+                  return { ...item, ingredient: newValue };
+                }
+                return item;
+              }),
+            )
           }
           isOptionEqualToValue={(option, value) => option === value}
           getOptionLabel={(option) => option}
@@ -126,11 +130,14 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients }) => {
             //   setQuantity(e.target.value);
             // }
 
-            setIngredients((prev) => [
-              ...prev.slice(0, ingredient.id - 1),
-              { ...prev[ingredient.id - 1], quantity: e.target.value },
-              ...prev.slice(ingredient.id),
-            ]);
+            setIngredients((prev) =>
+              prev.map((item) => {
+                if (item.id === ingredient.id) {
+                  return { ...item, quantity: e.target.value };
+                }
+                return item;
+              }),
+            );
           }}
           size="small"
         ></TextField>
@@ -144,11 +151,14 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients }) => {
           label="Measure"
           // onChange={(e) => setMeasure(e.target.value)}
           onChange={(e) =>
-            setIngredients((prev) => [
-              ...prev.slice(0, ingredient.id - 1),
-              { ...prev[ingredient.id - 1], measure: e.target.value },
-              ...prev.slice(ingredient.id),
-            ])
+            setIngredients((prev) =>
+              prev.map((item) => {
+                if (item.id === ingredient.id) {
+                  return { ...item, measure: e.target.value };
+                }
+                return item;
+              }),
+            )
           }
         >
           {MEASURES.map((measure) => (
