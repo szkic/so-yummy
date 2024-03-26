@@ -15,12 +15,7 @@ import { nanoid } from "nanoid";
 const MEASURES = ["tbs", "tsp", "kg", "g"];
 
 const RecipeIngredientsFields = ({ ingredients, setIngredients }) => {
-  // const [number, setNumber] = useState(1);
-  // const [quantity, setQuantity] = useState("");
-  // const [measure, setMeasure] = useState("");
-
   const [isOpen, setIsOpen] = useState(false);
-
   const [options, setOptions] = useState([]);
   const [openStates, setOpenStates] = useState(
     Array(ingredients.length).fill(false),
@@ -73,7 +68,6 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients }) => {
         <Autocomplete
           id={ingredient.id}
           size="small"
-          // open={openStates[ingredient.id - 1]}
           onOpen={() => {
             const newOpenStates = [...openStates];
             newOpenStates[ingredient.id - 1] = true;
@@ -125,19 +119,17 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients }) => {
           value={ingredient.quantity || ""}
           label="Quantity"
           onChange={(e) => {
-            // const regex = /^[0-9]*(\.[0-9]{0,2})?$/;
-            // if (e.target.value === "" || regex.test(e.target.value)) {
-            //   setQuantity(e.target.value);
-            // }
-
-            setIngredients((prev) =>
-              prev.map((item) => {
-                if (item.id === ingredient.id) {
-                  return { ...item, quantity: e.target.value };
-                }
-                return item;
-              }),
-            );
+            const regex = /^[0-9]*(\.[0-9]{0,2})?$/;
+            if (e.target.value === "" || regex.test(e.target.value)) {
+              setIngredients((prev) =>
+                prev.map((item) => {
+                  if (item.id === ingredient.id) {
+                    return { ...item, quantity: e.target.value };
+                  }
+                  return item;
+                }),
+              );
+            }
           }}
           size="small"
         ></TextField>
@@ -149,7 +141,6 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients }) => {
           id="measure"
           value={ingredient.measure || ""}
           label="Measure"
-          // onChange={(e) => setMeasure(e.target.value)}
           onChange={(e) =>
             setIngredients((prev) =>
               prev.map((item) => {
@@ -192,12 +183,7 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients }) => {
               id="decrement-button"
               data-input-counter-decrement="quantity-input"
               className="flex h-7 items-center rounded-s-3xl border border-r-0 border-gray-300 p-3  focus:outline-none  dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 tablet:h-8"
-              onClick={() => {
-                // if (number === 0) return;
-                // setNumber((prev) => prev - 1);
-
-                handleRemoveLastIngredient();
-              }}
+              onClick={handleRemoveLastIngredient}
               aria-label="Decrement recipe ingredient"
             >
               <svg
@@ -231,10 +217,7 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients }) => {
               id="increment-button"
               data-input-counter-increment="quantity-input"
               className="flex h-7 items-center rounded-e-3xl border border-l-0 border-gray-300 p-3  focus:outline-none   dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 tablet:h-8"
-              onClick={() => {
-                // setNumber((prev) => prev + 1);
-                handleAddIngredient();
-              }}
+              onClick={handleAddIngredient}
               aria-label="Increment recipe ingredient"
             >
               <svg
