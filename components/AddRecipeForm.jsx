@@ -7,6 +7,7 @@ import RecipePreparationFields from "./RecipePreparationFields";
 import FollowUs from "./FollowUs";
 import PopularRecipe from "./PopularRecipe";
 import { nanoid } from "nanoid";
+import { useTheme } from "next-themes";
 
 const AddRecipeForm = () => {
   const [recipeInfo, setRecipeInfo] = useState({
@@ -24,6 +25,7 @@ const AddRecipeForm = () => {
     },
   ]);
   const [instructions, setInstructions] = useState("");
+  const { theme } = useTheme(); // Access the current theme
 
   const recipeToAdd = {
     ...recipeInfo,
@@ -36,14 +38,16 @@ const AddRecipeForm = () => {
   return (
     <div className="flex flex-col desktop:flex-row desktop:justify-between desktop:gap-32">
       <div className="tablet:max-w-[704px] desktop:max-w-[800px]">
-        <RecipeDescriptionFields setRecipeInfo={setRecipeInfo} />
+        <RecipeDescriptionFields setRecipeInfo={setRecipeInfo} theme={theme} />
         <RecipeIngredientsFields
           ingredients={ingredients}
           setIngredients={setIngredients}
+          theme={theme}
         />
         <RecipePreparationFields
           instructions={instructions}
           setInstructions={setInstructions}
+          theme={theme}
         />
         <button
           className="mt-4 rounded-bl-[35px] rounded-br-[15px] rounded-tl-[15px] rounded-tr-[35px] bg-secondary-color px-12 py-3 text-sm text-primary-text-color tablet:mt-8 tablet:rounded-bl-[70px] tablet:rounded-br-[30px] tablet:rounded-tl-[30px] tablet:rounded-tr-[70px] tablet:px-16 tablet:py-3.5 tablet:text-base desktop:mt-11"

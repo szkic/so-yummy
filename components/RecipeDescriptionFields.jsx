@@ -28,10 +28,30 @@ export const MenuProps = {
   },
 };
 
-const RecipeDescriptionFields = ({ setRecipeInfo }) => {
+const RecipeDescriptionFields = ({ setRecipeInfo, theme }) => {
   const [open, setOpen] = useState(false);
   const [options, setOptions] = useState([]);
   const loading = open && options.length === 0;
+
+  const formStyling = {
+    "& .MuiInputBase-input": {
+      color: theme === "dark" ? "white" : "inherit",
+    },
+    "& .MuiOutlinedInput-notchedOutline": {
+      borderColor: theme === "dark" ? "white !important" : "inherit",
+    },
+    "& .MuiInputLabel-root": {
+      color: theme === "dark" ? "white" : "inherit",
+    },
+    "& .MuiInput-root::before": {
+      borderBottom:
+        theme === "dark" ? "1px solid white" : "1px solid rgba(0, 0, 0, 0.42)",
+      opacity: theme === "dark" ? "30%" : "inherit",
+    },
+    "& .MuiSvgIcon-root": {
+      color: theme === "dark" ? "white" : "inherit",
+    },
+  };
 
   useEffect(() => {
     let active = true;
@@ -74,6 +94,7 @@ const RecipeDescriptionFields = ({ setRecipeInfo }) => {
             onChange={(e) =>
               setRecipeInfo((prev) => ({ ...prev, title: e.target.value }))
             }
+            sx={formStyling}
           />
           <TextField
             required
@@ -87,6 +108,7 @@ const RecipeDescriptionFields = ({ setRecipeInfo }) => {
                 description: e.target.value,
               }))
             }
+            sx={formStyling}
           />
           <Autocomplete
             id="category"
@@ -123,6 +145,7 @@ const RecipeDescriptionFields = ({ setRecipeInfo }) => {
                     </>
                   ),
                 }}
+                sx={formStyling}
               />
             )}
           />
@@ -140,6 +163,7 @@ const RecipeDescriptionFields = ({ setRecipeInfo }) => {
                 time: e.target.value,
               }))
             }
+            sx={formStyling}
           >
             {cookingTime.map((option) => (
               <MenuItem key={option} value={option}>

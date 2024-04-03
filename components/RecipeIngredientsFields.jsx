@@ -14,12 +14,33 @@ import { nanoid } from "nanoid";
 
 const MEASURES = ["tbs", "tsp", "kg", "g"];
 
-const RecipeIngredientsFields = ({ ingredients, setIngredients }) => {
+const RecipeIngredientsFields = ({ ingredients, setIngredients, theme }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [options, setOptions] = useState([]);
   const [openStates, setOpenStates] = useState(
     Array(ingredients.length).fill(false),
   );
+
+  const formStyling = {
+    "& .MuiInputBase-input": {
+      color: theme === "dark" ? "white" : "inherit",
+    },
+    "& .MuiOutlinedInput-notchedOutline": {
+      borderColor: theme === "dark" ? "white" : "black",
+      opacity: "30%",
+    },
+    "& .MuiInputLabel-root": {
+      color: theme === "dark" ? "white" : "inherit",
+    },
+    "& .MuiInput-root::before": {
+      borderBottom:
+        theme === "dark" ? "1px solid white" : "1px solid rgba(0, 0, 0, 0.42)",
+      opacity: theme === "dark" ? "30%" : "inherit",
+    },
+    "& .MuiSvgIcon-root": {
+      color: theme === "dark" ? "white" : "inherit",
+    },
+  };
 
   const loading = isOpen && options.length === 0;
 
@@ -109,6 +130,7 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients }) => {
                   </>
                 ),
               }}
+              sx={formStyling}
             />
           )}
         />
@@ -132,10 +154,18 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients }) => {
             }
           }}
           size="small"
-        ></TextField>
+          sx={formStyling}
+        />
       </FormControl>
       <FormControl className="w-16 tablet:w-28" size="small">
-        <InputLabel id="measure">Measure</InputLabel>
+        <InputLabel
+          id="measure"
+          sx={{
+            color: theme === "dark" ? "white" : "inherit", // Set color to white in dark mode
+          }}
+        >
+          Measure
+        </InputLabel>
         <Select
           labelId="measure"
           id="measure"
@@ -151,6 +181,7 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients }) => {
               }),
             )
           }
+          sx={formStyling}
         >
           {MEASURES.map((measure) => (
             <MenuItem key={measure} value={measure}>
