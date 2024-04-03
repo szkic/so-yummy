@@ -52,8 +52,8 @@ const IngredientsShoppingList = () => {
   return (
     <>
       <div className="relative overflow-x-auto">
-        <table className="w-full border-separate border-spacing-y-4 text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400 tablet:border-spacing-y-6">
-          <thead className="bg-primary-color text-xs text-primary-text-color dark:bg-gray-700 dark:text-gray-400">
+        <table className="w-full  border-spacing-y-4 text-left text-sm text-gray-500 rtl:text-right  tablet:border-spacing-y-6">
+          <thead className="bg-primary-color text-xs text-primary-text-color">
             <tr>
               <th
                 scope="col"
@@ -77,15 +77,12 @@ const IngredientsShoppingList = () => {
           </thead>
           <tbody>
             {data.map((ing) => (
-              <tr
-                className="h-20 dark:bg-gray-800 tablet:h-44 desktop:h-48"
-                key={ing.ttl}
-              >
+              <tr className="h-20 tablet:h-44 desktop:h-48 " key={ing.ttl}>
                 <th
                   scope="row"
-                  className="whitespace-nowrap rounded-s-lg py-4 pl-2 text-xs font-medium text-gray-900 dark:text-white tablet:pl-6 tablet:text-2xl desktop:pl-10"
+                  className="whitespace-nowrap border-b-2 border-inactive-text-light py-4 pl-2 text-xs font-medium text-gray-900 dark:border-opacity-30 dark:text-white tablet:pl-6 tablet:text-2xl desktop:pl-10"
                 >
-                  <div className="flex items-center gap-3 tablet:gap-6 desktop:gap-16">
+                  <div className="flex items-center gap-3 tablet:gap-6 desktop:gap-16 ">
                     <Image
                       src={ing.thb}
                       alt="image"
@@ -96,12 +93,12 @@ const IngredientsShoppingList = () => {
                     <p>{ing.ttl}</p>
                   </div>
                 </th>
-                <td className="py-4 text-center text-[10px]">
+                <td className="border-b-2 border-inactive-text-light py-4 text-center text-[10px] dark:border-opacity-30">
                   <p className="inline rounded bg-primary-color p-1 text-center font-semibold text-primary-text-color tablet:px-2 tablet:text-lg">
                     {ing.measure}
                   </p>
                 </td>
-                <td className="rounded-e-lg py-4">
+                <td className="border-b-2 border-inactive-text-light py-4 dark:border-opacity-30">
                   <div className="flex items-center justify-center">
                     <CloseIcon
                       className="hover:cursor-pointer"

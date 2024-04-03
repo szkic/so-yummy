@@ -73,8 +73,8 @@ const RecipeInngredientsList = ({ ingredients, id }) => {
   return (
     <>
       <div className="relative overflow-x-auto">
-        <table className="w-full border-separate border-spacing-y-4 text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400 tablet:border-spacing-y-6">
-          <thead className="bg-primary-color text-xs text-primary-text-color dark:bg-gray-700 dark:text-gray-400">
+        <table className="w-full border-separate border-spacing-y-4 text-left text-sm rtl:text-right tablet:border-spacing-y-6">
+          <thead className="bg-primary-color text-xs text-primary-text-color ">
             <tr>
               <th
                 scope="col"
