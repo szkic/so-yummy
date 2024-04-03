@@ -7,7 +7,7 @@ import SubscribeForm from "./SubscribeForm";
 const Footer = () => {
   return (
     <>
-      <section className="bg-secondary-color">
+      <section className="bg-secondary-color dark:bg-primary-color">
         <div className="m-auto flex flex-col items-center justify-start pb-5 pt-7  tablet:max-w-screen-tablet tablet:flex-row tablet:flex-wrap tablet:items-start tablet:pb-6 tablet:pl-8 tablet:pt-[50px] desktop:max-w-screen-desktop desktop:px-[100px] desktop:pb-[50px] desktop:pt-16">
           <div className="mb-8 tablet:mb-[72px] tablet:flex tablet:basis-3/4 tablet:flex-col tablet:gap-6 desktop:basis-2/5 desktop:gap-10">
             <div className="flex items-center gap-[9px] tablet:gap-3">

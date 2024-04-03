@@ -50,6 +50,7 @@ const PreviewCategories = () => {
           </div>
         ))}
       </div>
+      {/* tutaj button Other categories */}
     </section>
   );
 };

@@ -7,7 +7,7 @@ import * as Yup from "yup";
 
 const classes = {
   input: [
-    "block h-[38px] w-[204px] rounded-lg border border-primary-text-color border-opacity-50 bg-secondary-light-color stroke-1 p-3.5 pl-[42px] text-[10px] text-primary-text-color outline-none placeholder:text-[10px] placeholder:tracking-[-0.2px] placeholder:text-primary-text-color focus:border-primary-text-color tablet:h-[50px] tablet:w-[259px] tablet:text-sm tablet:placeholder:text-sm desktop:h-[60px] desktop:w-full desktop:pl-[51px] desktop:text-lg desktop:placeholder:text-lg",
+    "block h-[38px] w-[204px] rounded-lg border border-primary-text-color border-opacity-50 bg-secondary-light-color stroke-1 p-3.5 pl-[42px] text-[10px] text-primary-text-color outline-none placeholder:text-[10px] placeholder:tracking-[-0.2px] placeholder:text-primary-text-color focus:border-primary-text-color tablet:h-[50px] tablet:w-[259px] tablet:text-sm tablet:placeholder:text-sm desktop:h-[60px] desktop:w-full desktop:pl-[51px] desktop:text-lg desktop:placeholder:text-lg dark:bg-transparent",
   ],
 };
 
@@ -81,7 +81,7 @@ const SubscribeForm = () => {
               <Button
                 type="submit"
                 className=" h-[38px] w-full rounded-md bg-primary-color text-sm text-primary-text-color transition-colors
-                  duration-300 ease-in-out hover:bg-[#6c8828] tablet:h-[50px] tablet:w-[187px] tablet:text-base desktop:h-[60px] desktop:w-full"
+                  duration-300 ease-in-out hover:bg-[#6c8828] dark:bg-secondary-dark-color tablet:h-[50px] tablet:w-[187px] tablet:text-base desktop:h-[60px] desktop:w-full"
                 aria-label="Subscribe"
               >
                 Subscribe
