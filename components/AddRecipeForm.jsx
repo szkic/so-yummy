@@ -8,6 +8,7 @@ import FollowUs from "./FollowUs";
 import PopularRecipe from "./PopularRecipe";
 import { nanoid } from "nanoid";
 import { useTheme } from "next-themes";
+import axios from "axios";
 
 const AddRecipeForm = () => {
   const [recipeInfo, setRecipeInfo] = useState({
@@ -33,6 +34,11 @@ const AddRecipeForm = () => {
     instructions,
   };
 
+  const handleAddRecipe = () => {
+    return axios.post("/api/own-recipes", recipeToAdd);
+    console.log("recipe", recipeToAdd);
+  };
+
   console.log("recipe", recipeToAdd);
 
   return (
@@ -52,7 +58,7 @@ const AddRecipeForm = () => {
         <button
           className="mt-4 rounded-bl-[35px] rounded-br-[15px] rounded-tl-[15px] rounded-tr-[35px] bg-secondary-color px-12 py-3 text-sm text-primary-text-color tablet:mt-8 tablet:rounded-bl-[70px] tablet:rounded-br-[30px] tablet:rounded-tl-[30px] tablet:rounded-tr-[70px] tablet:px-16 tablet:py-3.5 tablet:text-base desktop:mt-11"
           aria-label="Add recipe"
-          onClick={() => console.log(recipeToAdd)}
+          onClick={handleAddRecipe}
         >
           Add
         </button>
