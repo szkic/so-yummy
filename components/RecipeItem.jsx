@@ -6,13 +6,15 @@ const RecipeItem = ({ recipe, theme, onDelete }) => {
   return (
     <div className="rounded-lg bg-input-primary px-3.5 py-2.5 dark:bg-secondary-light-color tablet:px-6 tablet:py-7 desktop:p-10 ">
       <div className="relative flex gap-4  tablet:gap-6 desktop:gap-14">
-        <Image
-          src={recipe.thumb}
-          width={124}
-          height={124}
-          alt="img"
-          className="h-auto rounded-lg tablet:w-[228px] desktop:w-[318px]"
-        />
+        <Link href={`/recipe/${recipe._id}`}>
+          <Image
+            src={recipe.thumb}
+            width={124}
+            height={124}
+            alt="img"
+            className="h-auto rounded-lg tablet:w-[228px] desktop:w-[318px]"
+          />
+        </Link>
         <div
           className={`absolute right-0 top-0 rounded  ${
             theme === "my" && "bg-primary-color"
