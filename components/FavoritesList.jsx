@@ -1,16 +1,24 @@
 import axios from "axios";
 import RecipeItem from "./RecipeItem";
+import { useSession } from "next-auth/react";
+import { useMutation } from "@tanstack/react-query";
 
-const FavoritesList = ({ data }) => {
+const FavoritesList = ({ data, refetch }) => {
+  const { data: session } = useSession();
+
+  const mutation = useMutation({
+    mutationFn: (id) =>
+      axios.delete("/api/favorite", {
+        data: { user: session.user.email, id },
+      }),
+    onSuccess: () => {
+      refetch();
+    },
+  });
+
   const handleDeleteFromFavorites = async (id) => {
     try {
-      const response = await axios.delete("/api/favorite", {
-        data: { user: session.user.email, id },
-      });
-
-      refetch();
-
-      console.log("Item deleted from favorites:", response.data);
+      mutation.mutateAsync(id);
     } catch (error) {
       console.error("Failed to delete item from favorites:", error);
     }

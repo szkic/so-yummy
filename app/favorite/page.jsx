@@ -34,7 +34,7 @@ const FavoritePage = () => {
         </p>
       ) : (
         <div>
-          <FavoritesList data={data} />
+          <FavoritesList data={data} refetch={refetch} />
         </div>
       )}
       <Paginator />
