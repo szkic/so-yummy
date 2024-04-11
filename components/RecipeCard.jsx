@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import PLACEHOLDER_IMAGE from "../public/assets/images/img_placeholder.png";
 
 const RecipeCard = ({ data, displayAll }) => {
   const displayHideCategories = (index) => {
@@ -17,13 +18,23 @@ const RecipeCard = ({ data, displayAll }) => {
               !displayAll && displayHideCategories(index)
             }`}
           >
-            <Image
-              src={el.thumb}
-              width={343}
-              height={323}
-              alt={el.description}
-              className="h-auto rounded-lg tablet:w-[336px] desktop:w-[300px]"
-            />
+            {!el.thumb ? (
+              <Image
+                src={PLACEHOLDER_IMAGE}
+                width={343}
+                height={323}
+                alt={el.description}
+                className="h-auto rounded-lg tablet:w-[336px] desktop:w-[300px]"
+              />
+            ) : (
+              <Image
+                src={el.thumb}
+                width={343}
+                height={323}
+                alt={el.description}
+                className="h-auto rounded-lg tablet:w-[336px] desktop:w-[300px]"
+              />
+            )}
             <div className="absolute bottom-6 flex h-[52px] w-[300px] items-center rounded-lg bg-primary-text-color p-4 font-medium leading-5 dark:bg-secondary-light-color desktop:w-[268px]">
               {el.title}
             </div>

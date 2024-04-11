@@ -1,5 +1,6 @@
 import Image from "next/image";
 import image from "../public/assets/images/bowl.png";
+import PLACEHOLDER_IMAGE from "../public/assets/images/img_placeholder.png";
 
 const RecipePreparation = ({ instructions, preview }) => {
   const instructionsArr = instructions.split("\r");
@@ -25,13 +26,23 @@ const RecipePreparation = ({ instructions, preview }) => {
       </div>
 
       <div>
-        <Image
-          src={preview}
-          width={343}
-          height={250}
-          className="rounded-lg tablet:h-auto tablet:w-[433px]"
-          alt="img"
-        />
+        {!preview ? (
+          <Image
+            src={PLACEHOLDER_IMAGE}
+            width={343}
+            height={250}
+            className="rounded-lg tablet:h-auto tablet:w-[433px]"
+            alt="img"
+          />
+        ) : (
+          <Image
+            src={preview}
+            width={343}
+            height={250}
+            className="rounded-lg tablet:h-auto tablet:w-[433px]"
+            alt="img"
+          />
+        )}
       </div>
     </div>
   );
