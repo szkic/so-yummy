@@ -17,9 +17,13 @@ const MEASURES = ["tbs", "tsp", "kg", "g"];
 const RecipeIngredientsFields = ({ ingredients, setIngredients, theme }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [options, setOptions] = useState([]);
+  const [ingredientsTitleWithId, setIngredientsTitleWithId] = useState([]);
   const [openStates, setOpenStates] = useState(
     Array(ingredients.length).fill(false),
   );
+
+  // console.log("options", options);
+  // console.log("ingredientsTitleWithId", ingredientsTitleWithId);
 
   const formStyling = {
     "& .MuiInputBase-input": {
@@ -52,8 +56,11 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients, theme }) => {
     (async () => {
       const response = await fetchIngredients();
 
+      const ingredientsTitle = response.map((ingredient) => ingredient.ttl);
+
       if (isOpen) {
-        setOptions([...response]);
+        setOptions([...ingredientsTitle]);
+        setIngredientsTitleWithId(response);
       }
     })();
 
@@ -66,7 +73,7 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients, theme }) => {
     setIngredients((prev) => [
       ...prev,
       {
-        id: nanoid(),
+        id: "",
         ingredient: "",
         quantity: "",
         measure: "",
@@ -83,12 +90,20 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients, theme }) => {
     setIngredients(removeLastIngredient);
   };
 
+  const findIngredientId = (ingredientTitle) => {
+    const ingredientId = ingredientsTitleWithId.find(
+      (ingredient) => ingredient.ttl === ingredientTitle,
+    );
+    return ingredientId._id;
+  };
+
   const ingredientsFormItem = ingredients.map((ingredient) => (
     <div className="mt-6 flex items-center justify-between" key={ingredient.id}>
       <FormControl className="w-40 tablet:w-96" size="small">
         <Autocomplete
           id={ingredient.id}
           size="small"
+          value={ingredient.ingredient || ""}
           onOpen={() => {
             const newOpenStates = [...openStates];
             newOpenStates[ingredient.id - 1] = true;
@@ -101,12 +116,17 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients, theme }) => {
             setOpenStates(newOpenStates);
             setIsOpen(false);
           }}
-          onChange={(e, newValue) =>
+          onChange={(_, newValue) =>
             setIngredients((prev) =>
               prev.map((item) => {
                 if (item.id === ingredient.id) {
-                  return { ...item, ingredient: newValue };
+                  return {
+                    ...item,
+                    id: findIngredientId(newValue),
+                    ingredient: newValue,
+                  };
                 }
+
                 return item;
               }),
             )

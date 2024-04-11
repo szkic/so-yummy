@@ -7,8 +7,10 @@ export const GET = async () => {
 
     const ingredients = await Ingredient.find();
     const ingredientsList = ingredients
-      .map((ingrefient) => ingrefient.ttl)
+      .map(({ _id, ttl }) => ({ _id, ttl }))
       .sort();
+
+    console.log(ingredientsList);
 
     return new Response(JSON.stringify(ingredientsList), { status: 200 });
   } catch (error) {

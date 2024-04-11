@@ -15,7 +15,7 @@ const UserSchema = new Schema({
   },
   myRecipes: {
     type: [String],
-    default: ["640cd5ac2d9fecf12e889838"],
+    default: [],
   },
   shoppingList: {
     type: [Object],

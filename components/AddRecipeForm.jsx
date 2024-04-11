@@ -19,7 +19,7 @@ const AddRecipeForm = () => {
   });
   const [ingredients, setIngredients] = useState([
     {
-      id: nanoid(),
+      id: "",
       ingredient: "",
       quantity: "",
       measure: "",
