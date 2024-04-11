@@ -36,7 +36,6 @@ const AddRecipeForm = () => {
 
   const handleAddRecipe = () => {
     return axios.post("/api/own-recipes", recipeToAdd);
-    console.log("recipe", recipeToAdd);
   };
 
   console.log("recipe", recipeToAdd);
@@ -78,17 +77,12 @@ const AddRecipeForm = () => {
 
 export default AddRecipeForm;
 
-// "title": "New York cheesecake",
-// "category": "Dessert",
+// "title": "New York cheesecake", ✅
+// "category": "Dessert", ✅
 // "area": "American",
 // "instructions":
-// "description": "A classic dessert made with cream cheese and a graham cracker crust, creamy and indulgent.",
-// "thumb": "https://www.themealdb.com/images/media/meals/swttys1511385853.jpg",
-// "preview": "https://ftp.goit.study/img/so-yummy/preview/New%20York%20cheesecake.jpg",
-// "time": "195",
-// "favorites": [],
-// "youtube": "https://www.youtube.com/watch?v=tspdJ6hxqnc",
-// "tags": [
+// "description": "A classic dessert made with cream cheese and a graham cracker crust, creamy and indulgent.", ✅
+// "thumb": "https://www.themealdb.com/images/media/meals/swttys15✅
 //   "Desert",
 //   "Dairy",
 //   "Pudding",
@@ -105,4 +99,16 @@ export default AddRecipeForm;
 //     "$numberLong": "1679514447710"
 //   }
 // },
-// "ingredients": [
+//  "ingredients": [
+//       {
+//         "id": {
+//           "$oid": "640c2dd963a319ea671e372e"
+//         },
+//         "measure": "2"
+//       },
+//       {
+//         "id": {
+//           "$oid": "640c2dd963a319ea671e372c"
+//         },
+//         "measure": "1tbsp"
+//       },

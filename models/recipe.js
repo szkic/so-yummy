@@ -3,35 +3,35 @@ import { Schema, model, models } from "mongoose";
 const RecipeSchema = new Schema({
   title: {
     type: String,
-    required: true,
+    required: [true, "Please provide a title"],
   },
   category: {
     type: String,
-    required: true,
+    required: [true, "Please provide a category"],
   },
   area: {
     type: String,
-    required: true,
+    default: null,
   },
   instructions: {
     type: String,
-    required: true,
+    required: [true, "Please provide instructions"],
   },
   description: {
     type: String,
-    required: true,
+    required: [true, "Please provide a description"],
   },
   thumb: {
     type: String,
-    required: true,
+    default: null,
   },
   preview: {
     type: String,
-    required: true,
+    default: null,
   },
   time: {
     type: String,
-    required: true,
+    required: [true, "Please provide a time"],
   },
   favorites: {
     type: [String],
@@ -39,32 +39,37 @@ const RecipeSchema = new Schema({
   },
   youtube: {
     type: String,
-    required: true,
+    default: null,
   },
   tags: {
     type: [String],
+    default: [],
+  },
+  // createdAt: {
+  //   type: Date,
+  //   default: Date.now,
+  // },
+  // updatedAt: {
+  //   type: Date,
+  //   default: Date.now,
+  // },
+  // ingredients: [
+  //   {
+  //     id: {
+  //       type: Schema.Types.ObjectId,
+  //       required: true,
+  //     },
+  //     measure: {
+  //       type: String,
+  //       required: true,
+  //     },
+  //   },
+  // ],
+  ingredients: {
+    type: Array,
     required: true,
+    ref: "Ingredient",
   },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-  updatedAt: {
-    type: Date,
-    default: Date.now,
-  },
-  ingredients: [
-    {
-      id: {
-        type: Schema.Types.ObjectId,
-        required: true,
-      },
-      measure: {
-        type: String,
-        required: true,
-      },
-    },
-  ],
 });
 
 const Recipe = models.Recipe || model("Recipe", RecipeSchema);
