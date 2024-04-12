@@ -9,6 +9,7 @@ import PopularRecipe from "./PopularRecipe";
 import { nanoid } from "nanoid";
 import { useTheme } from "next-themes";
 import axios from "axios";
+import { useSession } from "next-auth/react";
 
 const AddRecipeForm = () => {
   const [recipeInfo, setRecipeInfo] = useState({
@@ -26,7 +27,8 @@ const AddRecipeForm = () => {
     },
   ]);
   const [instructions, setInstructions] = useState("");
-  const { theme } = useTheme(); // Access the current theme
+  const { theme } = useTheme();
+  const { data: session } = useSession();
 
   const recipeToAdd = {
     ...recipeInfo,
@@ -35,7 +37,10 @@ const AddRecipeForm = () => {
   };
 
   const handleAddRecipe = () => {
-    return axios.post("/api/own-recipes", recipeToAdd);
+    return axios.post("/api/own-recipes", {
+      recipe: recipeToAdd,
+      user: session.user.email,
+    });
   };
 
   console.log("recipe", recipeToAdd);
