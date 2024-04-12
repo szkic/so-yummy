@@ -65,3 +65,15 @@ export const fetchShoppingList = async (data) => {
     throw error;
   }
 };
+
+export const fetchOwnRecipes = async (user) => {
+  try {
+    const response = await axios.put("/api/own-recipes", { user });
+    const ownRecipes = response.data;
+
+    return ownRecipes;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};

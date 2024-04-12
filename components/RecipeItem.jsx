@@ -1,19 +1,30 @@
 import { FaRegTrashAlt } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
+import PLACEHOLDER_IMAGE from "../public/assets/images/img_placeholder.png";
 
 const RecipeItem = ({ recipe, theme, onDelete }) => {
   return (
     <div className="rounded-lg bg-input-primary px-3.5 py-2.5 dark:bg-secondary-light-color tablet:px-6 tablet:py-7 desktop:p-10 ">
       <div className="relative flex gap-4  tablet:gap-6 desktop:gap-14">
         <Link href={`/recipe/${recipe._id}`}>
-          <Image
-            src={recipe.thumb}
-            width={124}
-            height={124}
-            alt="img"
-            className="h-auto rounded-lg tablet:w-[228px] desktop:w-[318px]"
-          />
+          {!recipe.thumb ? (
+            <Image
+              src={PLACEHOLDER_IMAGE}
+              width={124}
+              height={124}
+              alt="img"
+              className="h-auto rounded-lg tablet:w-[228px] desktop:w-[318px]"
+            />
+          ) : (
+            <Image
+              src={recipe.thumb}
+              width={124}
+              height={124}
+              alt="img"
+              className="h-auto rounded-lg tablet:w-[228px] desktop:w-[318px]"
+            />
+          )}
         </Link>
         <div
           className={`absolute right-0 top-0 rounded  ${
