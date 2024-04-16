@@ -57,3 +57,22 @@ export const PUT = async (req, res) => {
     return new Response("Failed to fetch user recipes", { status: 500 });
   }
 };
+
+export const DELETE = async (req, res) => {
+  const { recipeId, userEmail } = await req.json();
+
+  try {
+    await connectToDB();
+
+    await Recipe.findByIdAndDelete(recipeId);
+    await User.findOneAndUpdate(
+      { email: userEmail },
+      { $pull: { myRecipes: recipeId } },
+      { new: true },
+    );
+
+    return new Response("Recipe deleted", { status: 200 });
+  } catch (error) {
+    return new Response("Failed to delete recipe", { status: 500 });
+  }
+};

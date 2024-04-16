@@ -94,7 +94,7 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients, theme }) => {
     const ingredientId = ingredientsTitleWithId.find(
       (ingredient) => ingredient.ttl === ingredientTitle,
     );
-    return ingredientId._id;
+    return ingredientId?._id;
   };
 
   const ingredientsFormItem = ingredients.map((ingredient) => (
