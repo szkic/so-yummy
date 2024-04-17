@@ -10,7 +10,6 @@ import {
 import { useEffect, useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import { fetchIngredients } from "@utils/fetchers";
-import { nanoid } from "nanoid";
 
 const MEASURES = ["tbs", "tsp", "kg", "g"];
 

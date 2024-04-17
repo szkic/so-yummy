@@ -1,5 +1,4 @@
 import Image from "next/image";
-import image from "../public/assets/images/bowl.png";
 import PLACEHOLDER_IMAGE from "../public/assets/images/img_placeholder.png";
 
 const RecipePreparation = ({ instructions, preview }) => {

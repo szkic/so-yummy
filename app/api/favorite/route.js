@@ -51,7 +51,7 @@ export const DELETE = async (req, res) => {
       { $pull: { favorites: id } },
     );
 
-    console.log(deleteFavorite);
+    // console.log(deleteFavorite);
 
     return new Response(JSON.stringify(deleteFavorite), { status: 200 });
   } catch (error) {

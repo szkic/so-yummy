@@ -1,7 +1,6 @@
 import User from "@models/user";
 import { connectToDB } from "@utils/database";
 import bcrypt from "bcrypt";
-import { connect } from "mongoose";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
@@ -34,7 +33,7 @@ export async function POST(req) {
 
   try {
     const savedUser = await newUser.save();
-    console.log("User created:", savedUser);
+    // console.log("User created:", savedUser);
 
     return new NextResponse("User created successfully", { status: 200 });
   } catch (error) {

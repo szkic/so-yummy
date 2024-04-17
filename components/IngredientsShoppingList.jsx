@@ -27,10 +27,10 @@ const IngredientsShoppingList = () => {
     return <Loader />;
   }
 
-  console.log("data", data);
+  // console.log("data", data);
 
   const handleDeleteIngredient = async (id) => {
-    console.log("id", id);
+    // console.log("id", id);
 
     try {
       const response = await axios.delete("/api/shopping-list", {
@@ -52,7 +52,7 @@ const IngredientsShoppingList = () => {
   return (
     <>
       <div className="relative overflow-x-auto">
-        <table className="w-full  border-spacing-y-4 text-left text-sm text-gray-500 rtl:text-right  tablet:border-spacing-y-6">
+        <table className="w-full  border-spacing-y-4 text-left text-sm text-gray-500 tablet:border-spacing-y-6  rtl:text-right">
           <thead className="bg-primary-color text-xs text-primary-text-color">
             <tr>
               <th

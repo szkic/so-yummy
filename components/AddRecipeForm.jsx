@@ -6,7 +6,6 @@ import RecipeIngredientsFields from "./RecipeIngredientsFields";
 import RecipePreparationFields from "./RecipePreparationFields";
 import FollowUs from "./FollowUs";
 import PopularRecipe from "./PopularRecipe";
-import { nanoid } from "nanoid";
 import { useTheme } from "next-themes";
 import axios from "axios";
 import { useSession } from "next-auth/react";
@@ -43,7 +42,7 @@ const AddRecipeForm = () => {
     });
   };
 
-  console.log("recipe", recipeToAdd);
+  // console.log("recipe", recipeToAdd);
 
   return (
     <div className="flex flex-col desktop:flex-row desktop:justify-between desktop:gap-32">

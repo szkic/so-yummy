@@ -78,14 +78,14 @@ const SubscribeForm = () => {
                   className="absolute text-xs text-input-error"
                 />
               </div>
-              <Button
+              <button
                 type="submit"
                 className=" h-[38px] w-full rounded-md bg-primary-color text-sm text-primary-text-color transition-colors
                   duration-300 ease-in-out hover:bg-[#6c8828] dark:bg-secondary-dark-color tablet:h-[50px] tablet:w-[187px] tablet:text-base desktop:h-[60px] desktop:w-full"
                 aria-label="Subscribe"
               >
                 Subscribe
-              </Button>
+              </button>
             </Form>
           );
         }}

@@ -4,11 +4,11 @@ import Header from "@components/Header";
 import Footer from "@components/Footer";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
-import Loader from "./Loader";
+// import Loader from "./Loader";
 
 const SharedElements = ({ children }) => {
   const { status } = useSession();
-  console.log("status", status);
+  // console.log("status", status);
 
   // if (status === "loading" || !status) return <Loader />;
 

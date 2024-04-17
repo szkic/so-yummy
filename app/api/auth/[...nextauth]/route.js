@@ -14,7 +14,7 @@ export const authOptions = {
         email: { label: "Email", type: "text" },
       },
       async authorize(credentials) {
-        console.log("Credentials:", credentials);
+        // console.log("Credentials:", credentials);
         // check if email & password are valid
         if (!credentials.email || !credentials.password) {
           return { error: "Invalid credentials" };
@@ -25,7 +25,7 @@ export const authOptions = {
 
           // check if user exists
           const user = await User.findOne({ email: credentials.email });
-          console.log("User:", user);
+          // console.log("User:", user);
 
           if (!user) {
             return null;
@@ -36,7 +36,7 @@ export const authOptions = {
             credentials.password,
             user.password,
           );
-          console.log("Password match:", passwordMatch);
+          // console.log("Password match:", passwordMatch);
 
           if (!passwordMatch) {
             return null;

@@ -30,7 +30,7 @@ const CategoryNamePage = () => {
   const categories = results[0].data;
   const { isPending, isError, data, error } = results[1];
 
-  console.log(data);
+  // console.log(data);
 
   if (!categories.includes(capitalizeFirstLetter(categoryName))) {
     return <NotFoundPage />;

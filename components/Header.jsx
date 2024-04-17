@@ -9,6 +9,7 @@ import Image from "next/image";
 
 const Header = () => {
   const [isActive, setIsActive] = useState(false);
+
   const handleOpenMenu = () =>
     setTimeout(() => {
       setIsActive(!isActive);

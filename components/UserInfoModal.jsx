@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Button } from "@material-tailwind/react";
-import { PencilIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import {
   FormControl,
@@ -19,7 +18,7 @@ const UserInfoModal = ({ handleClose, handlePopover }) => {
 
   const user = session.user.email;
 
-  console.log("session", session);
+  // console.log("session", session);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

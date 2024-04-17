@@ -42,7 +42,7 @@ export const POST = async (req, res) => {
 export const PUT = async (req, res) => {
   const { user } = await req.json();
 
-  console.log("user", user);
+  // console.log("user", user);
 
   try {
     await connectToDB();

@@ -3,11 +3,10 @@ import vegetables from "../public/assets/images/vegetables.png";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import axios from "axios";
 import { useSession } from "next-auth/react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { useQuery } from "@tanstack/react-query";
 import { fetchFavorites } from "@utils/fetchers";
 import { useEffect, useState } from "react";
-import { set } from "mongoose";
 
 const RecipePageHero = ({ title, description, time, id }) => {
   const [isFavorite, setIsFavorite] = useState(false);

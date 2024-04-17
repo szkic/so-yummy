@@ -10,7 +10,7 @@ export const GET = async () => {
       .map(({ _id, ttl }) => ({ _id, ttl }))
       .sort();
 
-    console.log(ingredientsList);
+    // console.log(ingredientsList);
 
     return new Response(JSON.stringify(ingredientsList), { status: 200 });
   } catch (error) {
