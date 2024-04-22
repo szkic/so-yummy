@@ -14,8 +14,6 @@ const UserLogo = () => {
   const [open, setOpen] = useState(false);
   const { data: session } = useSession();
 
-  // // console.log("session", session);
-
   const handleOpen = () => setOpen(!open);
   const handleClose = () => setOpen(false);
 

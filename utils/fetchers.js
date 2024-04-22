@@ -17,8 +17,8 @@ export const fetchCategories = async () =>
 
 export const fetchMainPage = async () => fetcher("/api/recipes/main-page");
 
-export const fetchCategoriesPage = async (categoryName) =>
-  fetcher(`/api/recipes/category/${categoryName}`);
+export const fetchCategoriesPage = async (categoryName, page) =>
+  fetcher(`/api/recipes/category/${categoryName}?page=${page}`);
 
 export const fetchIngredients = async () => fetcher("/api/ingredients/list");
 
