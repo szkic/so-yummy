@@ -9,9 +9,9 @@ export const GET = async (req, { params }) => {
   const page = parseInt(currentPage) || 1;
   const pageSize = 8;
 
-  console.log("currentPage", currentPage);
+  // console.log("currentPage", currentPage);
   console.log("page", page);
-  console.log("pageSize", pageSize);
+  // console.log("pageSize", pageSize);
 
   try {
     await connectToDB();
@@ -20,11 +20,18 @@ export const GET = async (req, { params }) => {
 
     const recipesByCategory = await Recipe.find({
       category: capitalizeCategory,
-    })
-      .skip(skip)
-      .limit(pageSize);
+    });
+    // .skip(skip)
+    // .limit(pageSize);
 
-    return new Response(JSON.stringify(recipesByCategory), { status: 200 });
+    const data = {
+      data: recipesByCategory.slice(skip, skip + pageSize),
+      currentPage: page,
+      nextPage:
+        page + 1 < recipesByCategory.length / pageSize ? page + 1 : null,
+    };
+
+    return new Response(JSON.stringify(data), { status: 200 });
   } catch (error) {
     return new Response("Failed to fetch all recipes", { status: 500 });
   }
