@@ -62,7 +62,7 @@ const CategoryNamePage = () => {
 
   return (
     <div className="mt-8 tablet:mt-12">
-      <RecipeCard data={data} displayAll={true} />
+      <RecipeCard data={data} displayAll={true} pagination={true} />
       <div className="mt-10 flex items-center justify-center">
         {hasNextPage && (
           <button
