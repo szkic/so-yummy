@@ -55,7 +55,7 @@ const RecipeItem = ({ recipe, theme, onDelete }) => {
             </p>
           </div>
           <span className="absolute bottom-0 left-0 text-[10px] tablet:text-sm">
-            20 min
+            {recipe.time} min
           </span>
         </div>
         <Link href={`/recipe/${recipe._id}`}>
