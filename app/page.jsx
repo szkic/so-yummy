@@ -1,13 +1,14 @@
 import Main from "@components/Main";
 import Image from "next/image";
 import React from "react";
+import BG2 from "../public/assets/images/bg2.png";
 
 const MainPage = () => {
   return (
     <>
       {/* do poprawnienia obrazki na tablet i desktop - za mała rozdzielczość */}
       <Image
-        src="/../assets/images/bg2.png"
+        src={BG2}
         width={269}
         height={678}
         alt="bg1"
