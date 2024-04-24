@@ -26,6 +26,8 @@ const SearchPage = () => {
     enabled: false,
   });
 
+  // console.log("searchtype", searchType);
+
   if (isError) {
     return <p>Error: {error.message}</p>;
   }

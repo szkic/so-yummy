@@ -3,7 +3,7 @@
 import FavoritesList from "@components/FavoritesList";
 import Loader from "@components/Loader";
 import MainTitle from "@components/MainTitle";
-import Paginator from "@components/Paginator";
+// import Paginator from "@components/Paginator";
 import { useQuery } from "@tanstack/react-query";
 import { fetchFavorites } from "@utils/fetchers";
 import { useSession } from "next-auth/react";
@@ -37,7 +37,7 @@ const FavoritePage = () => {
           <FavoritesList data={data} refetch={refetch} />
         </div>
       )}
-      <Paginator />
+      {/* <Paginator /> */}
     </section>
   );
 };

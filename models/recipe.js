@@ -53,23 +53,23 @@ const RecipeSchema = new Schema({
   //   type: Date,
   //   default: Date.now,
   // },
-  // ingredients: [
-  //   {
-  //     id: {
-  //       type: Schema.Types.ObjectId,
-  //       required: true,
-  //     },
-  //     measure: {
-  //       type: String,
-  //       required: true,
-  //     },
-  //   },
-  // ],
-  ingredients: {
-    type: Array,
-    required: true,
-    ref: "Ingredient",
-  },
+  ingredients: [
+    {
+      id: {
+        type: Schema.Types.ObjectId,
+        required: true,
+      },
+      measure: {
+        type: String,
+        required: true,
+      },
+    },
+  ],
+  // ingredients: {
+  //   type: Array,
+  //   required: true,
+  //   ref: "Ingredient",
+  // },
 });
 
 const Recipe = models.Recipe || model("Recipe", RecipeSchema);

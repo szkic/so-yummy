@@ -20,8 +20,6 @@ export const POST = async (req, res) => {
     ingredients: correctedIngredients,
   };
 
-  // console.log("correctedRecipe", correctedRecipe);
-
   try {
     await connectToDB();
 
@@ -41,8 +39,6 @@ export const POST = async (req, res) => {
 
 export const PUT = async (req, res) => {
   const { user } = await req.json();
-
-  // console.log("user", user);
 
   try {
     await connectToDB();

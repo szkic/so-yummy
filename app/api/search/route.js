@@ -24,17 +24,13 @@ export const GET = async (req) => {
       });
 
       // search for ingredient IDs
-      const targetIngredientId = searchIngredient.map((id) => id.id.toString());
-
-      // return all Recipes with ingredients searched by IDs
-      const recipesWithIngredient = await Promise.all(
-        targetIngredientId.map(
-          async (id) =>
-            await Recipe.find({
-              "ingredients.id": id,
-            }),
-        ),
+      const targetIngredientIds = searchIngredient.map((id) =>
+        id.id.toString(),
       );
+
+      const recipesWithIngredient = await Recipe.find({
+        "ingredients.id": { $in: targetIngredientIds },
+      });
 
       const flatRecipesWithIngredient = recipesWithIngredient.flat();
 
