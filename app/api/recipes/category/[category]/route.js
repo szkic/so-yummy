@@ -28,7 +28,9 @@ export const GET = async (req, { params }) => {
       data: recipesByCategory.slice(skip, skip + pageSize),
       currentPage: page,
       nextPage:
-        page + 1 < recipesByCategory.length / pageSize ? page + 1 : null,
+        page + 1 <= Math.ceil(recipesByCategory.length / pageSize)
+          ? page + 1
+          : null,
     };
 
     return new Response(JSON.stringify(data), { status: 200 });
