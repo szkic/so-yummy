@@ -6,6 +6,8 @@ import Navigation from "./Navigation";
 import UserLogo from "./UserLogo";
 import ThemeToggler from "./ThemeToggler";
 import Image from "next/image";
+import MODAL_MOBILE from "../public/assets/images/modal_mobile.png";
+import MODAL_TABLET from "../public/assets/images/modal_tablet.png";
 
 const Header = () => {
   const [isActive, setIsActive] = useState(false);
@@ -95,14 +97,14 @@ const Header = () => {
           <ThemeToggler />
         </div>
         <Image
-          src="/../assets/images/modal_mobile.png"
+          src={MODAL_MOBILE}
           width={360}
           height={550}
           alt="leaves"
           className="fixed bottom-0 right-0 -z-10 tablet:hidden"
         />
         <Image
-          src="/../assets/images/modal_tablet.png"
+          src={MODAL_TABLET}
           width={558}
           height={852}
           alt="leaves"
