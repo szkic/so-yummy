@@ -80,39 +80,3 @@ const AddRecipeForm = () => {
 };
 
 export default AddRecipeForm;
-
-// "title": "New York cheesecake", ✅
-// "category": "Dessert", ✅
-// "area": "American",
-// "instructions":
-// "description": "A classic dessert made with cream cheese and a graham cracker crust, creamy and indulgent.", ✅
-// "thumb": "https://www.themealdb.com/images/media/meals/swttys15✅
-//   "Desert",
-//   "Dairy",
-//   "Pudding",
-//   "Cake",
-//   "Breakfast"
-// ],
-// "createdAt": {
-//   "$date": {
-//     "$numberLong": "1678562733242"
-//   }
-// },
-// "updatedAt": {
-//   "$date": {
-//     "$numberLong": "1679514447710"
-//   }
-// },
-//  "ingredients": [
-//       {
-//         "id": {
-//           "$oid": "640c2dd963a319ea671e372e"
-//         },
-//         "measure": "2"
-//       },
-//       {
-//         "id": {
-//           "$oid": "640c2dd963a319ea671e372c"
-//         },
-//         "measure": "1tbsp"
-//       },

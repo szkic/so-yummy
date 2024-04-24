@@ -2,6 +2,8 @@ import Main from "@components/Main";
 import Image from "next/image";
 import React from "react";
 import BG2 from "../public/assets/images/bg2.png";
+import SPINACH from "../public/assets/images/pasta-spinach.png";
+import SPINACH2 from "../public/assets/images/pasta-spinach-2.png";
 
 const MainPage = () => {
   return (
@@ -15,14 +17,14 @@ const MainPage = () => {
         className="absolute right-0 z-[-2] tablet:top-[-0px] tablet:h-[640px] tablet:w-[332px] desktop:h-[689px] desktop:w-[725px]"
       />
       <Image
-        src="/../assets/images/pasta-spinach.png"
+        src={SPINACH}
         width={40}
         height={40}
         alt="spinach"
         className="absolute left-0 top-[10px] z-[-2] h-auto w-auto tablet:top-0 tablet:h-[300px] tablet:w-[50px]"
       />
       <Image
-        src="/../assets/images/pasta-spinach-2.png"
+        src={SPINACH2}
         width={519}
         height={792}
         alt="spinach2"

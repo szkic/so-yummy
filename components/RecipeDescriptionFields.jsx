@@ -10,6 +10,7 @@ import {
 import { fetchCategories } from "@utils/fetchers";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import IMAGE_PLACEHOLDER from "../public/assets/images/image_placeholder.png";
 
 const cookingTime = [];
 for (let i = 5; i <= 120; i += 5) {
@@ -77,7 +78,7 @@ const RecipeDescriptionFields = ({ setRecipeInfo, theme }) => {
     <>
       <div className="flex flex-col items-center gap-8 tablet:flex-row desktop:items-start desktop:gap-12">
         <Image
-          src="/../assets/images/image_placeholder.png"
+          src={IMAGE_PLACEHOLDER}
           width={279}
           height={268}
           alt="image placeholder"
