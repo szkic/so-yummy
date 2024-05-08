@@ -1,5 +1,6 @@
 import Image from "next/image";
 import RecipeCard from "./RecipeCard";
+import PropTypes from "prop-types";
 
 const SearchedRecipesList = ({ data }) => {
   return (
@@ -25,6 +26,10 @@ const SearchedRecipesList = ({ data }) => {
       </div>
     </>
   );
+};
+
+SearchedRecipesList.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default SearchedRecipesList;

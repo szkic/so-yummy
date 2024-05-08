@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import { useQuery } from "@tanstack/react-query";
 import { fetchFavorites } from "@utils/fetchers";
 import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 
 const RecipePageHero = ({ title, description, time, id }) => {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -97,6 +98,13 @@ const RecipePageHero = ({ title, description, time, id }) => {
       </div>
     </>
   );
+};
+
+RecipePageHero.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  time: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default RecipePageHero;

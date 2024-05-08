@@ -2,7 +2,7 @@
 
 import { Button } from "@material-tailwind/react";
 import React from "react";
-import { signOut } from "next-auth/react";
+import PropTypes from "prop-types";
 
 const LogoutBtn = ({ handleClose, handlePopover }) => {
   return (
@@ -54,6 +54,11 @@ const LogoutBtn = ({ handleClose, handlePopover }) => {
       </div>
     </>
   );
+};
+
+LogoutBtn.propTypes = {
+  handleClose: PropTypes.func.isRequired,
+  handlePopover: PropTypes.func.isRequired,
 };
 
 export default LogoutBtn;

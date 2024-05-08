@@ -10,6 +10,8 @@ import {
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import axios from "axios";
 import { useSession } from "next-auth/react";
+import PropTypes from "prop-types";
+
 
 const UserInfoModal = ({ handleClose, handlePopover }) => {
   const [newName, setNewName] = useState("");
@@ -152,6 +154,11 @@ const UserInfoModal = ({ handleClose, handlePopover }) => {
       </div>
     </form>
   );
+};
+
+UserInfoModal.propTypes = {
+  handleClose: PropTypes.func.isRequired,
+  handlePopover: PropTypes.func.isRequired,
 };
 
 export default UserInfoModal;

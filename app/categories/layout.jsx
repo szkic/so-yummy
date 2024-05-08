@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchCategories } from "@utils/fetchers";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import PropTypes from "prop-types";
 
 const active = "text-primary-color border-b-2 pb-5 px-1 border-primary-color";
 
@@ -57,6 +58,10 @@ const CategoriesLayout = ({ children }) => {
       </section>
     </>
   );
+};
+
+CategoriesLayout.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default CategoriesLayout;

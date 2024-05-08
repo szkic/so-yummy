@@ -4,6 +4,7 @@ import { ArrowRightIcon } from "@heroicons/react/20/solid";
 import { PencilIcon } from "@heroicons/react/24/outline";
 import UserInfoModal from "./UserInfoModal";
 import LogoutBtn from "./LogoutBtn";
+import PropTypes from "prop-types";
 
 const UserLogoModal = ({ handlePopover }) => {
   const [openEdit, setOpenEdit] = useState(false);
@@ -61,6 +62,10 @@ const UserLogoModal = ({ handlePopover }) => {
       </Dialog>
     </>
   );
+};
+
+UserLogoModal.propTypes = {
+  handlePopover: PropTypes.func.isRequired,
 };
 
 export default UserLogoModal;

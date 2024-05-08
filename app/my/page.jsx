@@ -6,7 +6,7 @@ const MyRecipesPage = () => {
   return (
     <section>
       <MainTitle name="My recipes" />
-      <MyRecipesList theme="my" />
+      <MyRecipesList />
       {/* <Paginator /> */}
     </section>
   );

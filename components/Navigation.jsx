@@ -2,6 +2,7 @@ import Link from "next/link";
 import React from "react";
 import { usePathname } from "next/navigation";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
+import PropTypes from "prop-types";
 
 const active = "font-semibold text-primary-color";
 
@@ -69,6 +70,10 @@ const Navigation = ({ handleOpenMenu }) => {
       </li>
     </ul>
   );
+};
+
+Navigation.propTypes = {
+  handleOpenMenu: PropTypes.func.isRequired,
 };
 
 export default Navigation;

@@ -4,6 +4,8 @@ import Header from "@components/Header";
 import Footer from "@components/Footer";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
+import PropTypes from "prop-types";
+
 // import Loader from "./Loader";
 
 const SharedElements = ({ children }) => {
@@ -64,6 +66,10 @@ const SharedElements = ({ children }) => {
       )}
     </div>
   );
+};
+
+SharedElements.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default SharedElements;

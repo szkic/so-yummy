@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import PLACEHOLDER_IMAGE from "../public/assets/images/img_placeholder.png";
+import PropTypes from "prop-types";
 
 const RecipeCard = ({ data, displayAll, pagination }) => {
   const displayHideCategories = (index) => {
@@ -53,6 +54,12 @@ const RecipeCard = ({ data, displayAll, pagination }) => {
         : data.map((el, index) => renderRecipeCard(el, index))}
     </div>
   );
+};
+
+RecipeCard.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  displayAll: PropTypes.bool,
+  pagination: PropTypes.bool,
 };
 
 export default RecipeCard;

@@ -10,6 +10,7 @@ import {
 import { useEffect, useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import { fetchIngredients } from "@utils/fetchers";
+import PropTypes from "prop-types";
 
 const MEASURES = ["tbs", "tsp", "kg", "g"];
 
@@ -293,6 +294,19 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients, theme }) => {
       {ingredientsFormItem}
     </>
   );
+};
+
+RecipeIngredientsFields.propTypes = {
+  ingredients: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      ingredient: PropTypes.string,
+      quantity: PropTypes.string,
+      measure: PropTypes.string,
+    }),
+  ).isRequired,
+  setIngredients: PropTypes.func.isRequired,
+  theme: PropTypes.string.isRequired,
 };
 
 export default RecipeIngredientsFields;

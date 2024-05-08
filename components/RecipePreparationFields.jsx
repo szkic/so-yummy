@@ -1,5 +1,6 @@
 import { TextField } from "@mui/material";
 import React from "react";
+import PropTypes from "prop-types";
 
 const RecipePreparationFields = ({ instructions, setInstructions, theme }) => {
   const formStyling = {
@@ -7,11 +8,11 @@ const RecipePreparationFields = ({ instructions, setInstructions, theme }) => {
       color: theme === "dark" ? "white" : "inherit",
     },
     "& .MuiOutlinedInput-notchedOutline": {
-      borderColor: theme === "dark" ? "white !important" : "black", 
+      borderColor: theme === "dark" ? "white !important" : "black",
       opacity: "30%",
     },
     "& .MuiInputLabel-root": {
-      color: theme === "dark" ? "white" : "inherit", 
+      color: theme === "dark" ? "white" : "inherit",
     },
   };
 
@@ -31,6 +32,12 @@ const RecipePreparationFields = ({ instructions, setInstructions, theme }) => {
       />
     </div>
   );
+};
+
+RecipePreparationFields.propTypes = {
+  instructions: PropTypes.string.isRequired,
+  setInstructions: PropTypes.func.isRequired,
+  theme: PropTypes.string.isRequired,
 };
 
 export default RecipePreparationFields;

@@ -3,6 +3,7 @@ import RecipeItem from "./RecipeItem";
 import { useSession } from "next-auth/react";
 import { useMutation } from "@tanstack/react-query";
 import { ToastContainer, toast } from "react-toastify";
+import PropTypes from "prop-types";
 
 const FavoritesList = ({ data, refetch }) => {
   const { data: session } = useSession();
@@ -43,6 +44,11 @@ const FavoritesList = ({ data, refetch }) => {
       <ToastContainer />
     </>
   );
+};
+
+FavoritesList.propTypes = {
+  data: PropTypes.array.isRequired,
+  refetch: PropTypes.func.isRequired,
 };
 
 export default FavoritesList;

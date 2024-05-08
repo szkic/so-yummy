@@ -2,6 +2,7 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
 import PLACEHOLDER_IMAGE from "../public/assets/images/img_placeholder.png";
+import PropTypes from "prop-types";
 
 const RecipeItem = ({ recipe, theme, onDelete }) => {
   return (
@@ -74,6 +75,12 @@ const RecipeItem = ({ recipe, theme, onDelete }) => {
       </div>
     </div>
   );
+};
+
+RecipeItem.propTypes = {
+  recipe: PropTypes.object.isRequired,
+  theme: PropTypes.string.isRequired,
+  onDelete: PropTypes.func,
 };
 
 export default RecipeItem;

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import PLACEHOLDER_IMAGE from "../public/assets/images/img_placeholder.png";
+import PropTypes from "prop-types";
 
 const RecipePreparation = ({ instructions, preview }) => {
   const instructionsArr = instructions.split("\r");
@@ -45,6 +46,11 @@ const RecipePreparation = ({ instructions, preview }) => {
       </div>
     </div>
   );
+};
+
+RecipePreparation.propTypes = {
+  instructions: PropTypes.string.isRequired,
+  preview: PropTypes.string,
 };
 
 export default RecipePreparation;

@@ -11,6 +11,7 @@ import { fetchCategories } from "@utils/fetchers";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import IMAGE_PLACEHOLDER from "../public/assets/images/image_placeholder.png";
+import PropTypes from "prop-types";
 
 const cookingTime = [];
 for (let i = 5; i <= 120; i += 5) {
@@ -176,6 +177,11 @@ const RecipeDescriptionFields = ({ setRecipeInfo, theme }) => {
       </div>
     </>
   );
+};
+
+RecipeDescriptionFields.propTypes = {
+  setRecipeInfo: PropTypes.func.isRequired,
+  theme: PropTypes.string.isRequired,
 };
 
 export default RecipeDescriptionFields;

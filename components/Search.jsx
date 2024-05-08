@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
+import PropTypes from "prop-types";
 
 const Search = ({ btnColor, searchType, queryValues }) => {
   const [searchValue, setSearchValue] = useState(queryValues || "");
@@ -73,6 +74,12 @@ const Search = ({ btnColor, searchType, queryValues }) => {
       </div>
     </form>
   );
+};
+
+Search.propTypes = {
+  btnColor: PropTypes.string,
+  searchType: PropTypes.string.isRequired,
+  queryValues: PropTypes.string,
 };
 
 export default Search;

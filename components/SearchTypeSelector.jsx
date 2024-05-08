@@ -1,4 +1,5 @@
 import { MenuItem, Select } from "@mui/material";
+import PropTypes from "prop-types";
 
 const selectItems = ["Title", "Ingredient"];
 
@@ -20,6 +21,11 @@ const SearchTypeSelector = ({ searchType, setSearchType }) => {
       </Select>
     </div>
   );
+};
+
+SearchTypeSelector.propTypes = {
+  searchType: PropTypes.string.isRequired,
+  setSearchType: PropTypes.func.isRequired,
 };
 
 export default SearchTypeSelector;

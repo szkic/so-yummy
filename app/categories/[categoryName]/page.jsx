@@ -60,6 +60,8 @@ const CategoryNamePage = () => {
     return <Loader />;
   }
 
+  console.log("data", typeof data);
+
   return (
     <div className="mt-8 tablet:mt-12">
       <RecipeCard data={data} displayAll={true} pagination={true} />

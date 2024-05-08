@@ -6,6 +6,7 @@ import { Checkbox } from "@mui/material";
 import { useSession } from "next-auth/react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import PropTypes, { object } from "prop-types";
 
 const RecipeInngredientsList = ({ ingredients, id }) => {
   const { data: session } = useSession();
@@ -73,7 +74,7 @@ const RecipeInngredientsList = ({ ingredients, id }) => {
   return (
     <>
       <div className="relative overflow-x-auto">
-        <table className="w-full border-separate border-spacing-y-4 text-left text-sm rtl:text-right tablet:border-spacing-y-6">
+        <table className="w-full border-separate border-spacing-y-4 text-left text-sm tablet:border-spacing-y-6 rtl:text-right">
           <thead className="bg-primary-color text-xs text-primary-text-color ">
             <tr>
               <th
@@ -147,6 +148,11 @@ const RecipeInngredientsList = ({ ingredients, id }) => {
       <ToastContainer />
     </>
   );
+};
+
+RecipeInngredientsList.propTypes = {
+  ingredients: PropTypes.arrayOf(PropTypes.object).isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default RecipeInngredientsList;
