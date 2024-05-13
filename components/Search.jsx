@@ -78,7 +78,7 @@ const Search = ({ btnColor, searchType, queryValues }) => {
 
 Search.propTypes = {
   btnColor: PropTypes.string,
-  searchType: PropTypes.string.isRequired,
+  searchType: PropTypes.string,
   queryValues: PropTypes.string,
 };
 

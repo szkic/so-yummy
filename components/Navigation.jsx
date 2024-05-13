@@ -73,7 +73,7 @@ const Navigation = ({ handleOpenMenu }) => {
 };
 
 Navigation.propTypes = {
-  handleOpenMenu: PropTypes.func.isRequired,
+  handleOpenMenu: PropTypes.func,
 };
 
 export default Navigation;
