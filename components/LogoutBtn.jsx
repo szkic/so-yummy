@@ -3,6 +3,7 @@
 import { Button } from "@material-tailwind/react";
 import React from "react";
 import PropTypes from "prop-types";
+import { signOut } from "next-auth/react";
 
 const LogoutBtn = ({ handleClose, handlePopover }) => {
   return (
