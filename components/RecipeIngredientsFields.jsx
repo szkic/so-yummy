@@ -11,10 +11,16 @@ import { useEffect, useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import { fetchIngredients } from "@utils/fetchers";
 import PropTypes from "prop-types";
+import { nanoid } from "nanoid";
 
 const MEASURES = ["tbs", "tsp", "kg", "g"];
 
-const RecipeIngredientsFields = ({ ingredients, setIngredients, theme }) => {
+const RecipeIngredientsFields = ({
+  ingredients,
+  setIngredients,
+  theme,
+  formik,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [options, setOptions] = useState([]);
   const [ingredientsTitleWithId, setIngredientsTitleWithId] = useState([]);
@@ -24,6 +30,7 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients, theme }) => {
 
   // console.log("options", options);
   // console.log("ingredientsTitleWithId", ingredientsTitleWithId);
+  console.log("formik", formik.values);
 
   const formStyling = {
     "& .MuiInputBase-input": {
@@ -73,13 +80,20 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients, theme }) => {
     setIngredients((prev) => [
       ...prev,
       {
-        id: "",
+        id: nanoid(),
         ingredient: "",
         quantity: "",
         measure: "",
       },
     ]);
   };
+
+  useEffect(() => {
+    formik.setValues((prevValues) => ({
+      ...prevValues,
+      ingredients: ingredients,
+    }));
+  }, [ingredients]);
 
   const handleRemoveIngredient = (id) => {
     setIngredients((prev) => prev.filter((ingredient) => ingredient.id !== id));
@@ -97,11 +111,12 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients, theme }) => {
     return ingredientId?._id;
   };
 
-  const ingredientsFormItem = ingredients.map((ingredient) => (
+  const ingredientsFormItem = ingredients.map((ingredient, index) => (
     <div className="mt-6 flex items-center justify-between" key={ingredient.id}>
-      <FormControl className="w-40 tablet:w-96" size="small">
+      <div className="w-40 tablet:w-96" size="small">
         <Autocomplete
-          id={ingredient.id}
+          id={`ingredients.${index}.ingredient`}
+          name={`ingredients.${index}.ingredient`}
           size="small"
           value={ingredient.ingredient || ""}
           onOpen={() => {
@@ -116,7 +131,7 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients, theme }) => {
             setOpenStates(newOpenStates);
             setIsOpen(false);
           }}
-          onChange={(_, newValue) =>
+          onChange={(_, newValue) => {
             setIngredients((prev) =>
               prev.map((item) => {
                 if (item.id === ingredient.id) {
@@ -129,8 +144,23 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients, theme }) => {
 
                 return item;
               }),
-            )
-          }
+            );
+
+            // formik.setValues((prevValues) => ({
+            //   ...prevValues,
+            //   ingredients: prevValues.ingredients.map((item) => {
+            //     if (item.id === ingredient.id) {
+            //       return {
+            //         ...item,
+            //         id: findIngredientId(newValue),
+            //         ingredient: newValue,
+            //       };
+            //     }
+
+            //     return item;
+            //   }),
+            // }));
+          }}
           isOptionEqualToValue={(option, value) => option === value}
           getOptionLabel={(option) => option}
           options={options}
@@ -151,14 +181,32 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients, theme }) => {
                 ),
               }}
               sx={formStyling}
+              onBlur={formik.handleBlur}
+              error={
+                formik.touched.ingredients &&
+                formik.touched.ingredients[index] &&
+                Boolean(
+                  formik.errors.ingredients &&
+                    formik.errors.ingredients[index] &&
+                    formik.errors.ingredients[index].ingredient,
+                )
+              }
+              helperText={
+                formik.touched.ingredients &&
+                formik.touched.ingredients[index] &&
+                formik.errors.ingredients &&
+                formik.errors.ingredients[index] &&
+                formik.errors.ingredients[index].ingredient
+              }
             />
           )}
         />
-      </FormControl>
-      <FormControl className="w-16 tablet:w-28">
+      </div>
+      <div className="w-16 tablet:w-28">
         <TextField
-          id="quantity"
-          value={ingredient.quantity || ""}
+          id={`ingredients.${index}.quantity`}
+          name={`ingredients.${index}.quantity`}
+          // value={ingredient.quantity || ""}
           label="Quantity"
           onChange={(e) => {
             const regex = /^[0-9]*(\.[0-9]{0,2})?$/;
@@ -166,20 +214,64 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients, theme }) => {
               setIngredients((prev) =>
                 prev.map((item) => {
                   if (item.id === ingredient.id) {
-                    return { ...item, quantity: e.target.value };
+                    return {
+                      ...item,
+                      quantity: e.target.value,
+                    };
                   }
                   return item;
                 }),
               );
             }
+
+            // formik.setValues((prevValues) => ({
+            //   ...prevValues,
+            //   ingredients: prevValues.ingredients.map((item) => {
+            //     if (item.id === ingredient.id) {
+            //       return {
+            //         ...item,
+            //         quantity: e.target.value,
+            //       };
+            //     }
+            //     return item;
+            //   }),
+            // }));
           }}
           size="small"
           sx={formStyling}
+          onBlur={formik.handleBlur}
+          error={
+            formik.touched.ingredients &&
+            formik.touched.ingredients[index] &&
+            Boolean(
+              formik.errors.ingredients &&
+                formik.errors.ingredients[index] &&
+                formik.errors.ingredients[index].quantity,
+            )
+          }
+          helperText={
+            formik.touched.ingredients &&
+            formik.touched.ingredients[index] &&
+            formik.errors.ingredients &&
+            formik.errors.ingredients[index] &&
+            formik.errors.ingredients[index].quantity
+          }
         />
-      </FormControl>
-      <FormControl className="w-16 tablet:w-28" size="small">
+      </div>
+      <div className="w-16 tablet:w-28" size="small">
         <InputLabel
-          id="measure"
+          id={`ingredients.${index}.measure`}
+          name={`ingredients.${index}.measure`}
+          onBlur={formik.handleBlur}
+          error={
+            formik.touched.ingredients &&
+            formik.touched.ingredients[index] &&
+            Boolean(
+              formik.errors.ingredients &&
+                formik.errors.ingredients[index] &&
+                formik.errors.ingredients[index].measure,
+            )
+          }
           sx={{
             color: theme === "dark" ? "white" : "inherit", // Set color to white in dark mode
           }}
@@ -188,10 +280,11 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients, theme }) => {
         </InputLabel>
         <Select
           labelId="measure"
-          id="measure"
+          id={`ingredients.${index}.measure`}
+          name={`ingredients.${index}.measure`}
           value={ingredient.measure || ""}
           label="Measure"
-          onChange={(e) =>
+          onChange={(e) => {
             setIngredients((prev) =>
               prev.map((item) => {
                 if (item.id === ingredient.id) {
@@ -199,9 +292,37 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients, theme }) => {
                 }
                 return item;
               }),
+            );
+
+            // formik.setValues((prevValues) => ({
+            //   ...prevValues,
+            //   ingredients: prevValues.ingredients.map((item) => {
+            //     if (item.id === ingredient.id) {
+            //       return { ...item, measure: e.target.value };
+            //     }
+            //     return item;
+            //   }),
+            // }));
+          }}
+          sx={formStyling}
+          onBlur={formik.handleBlur}
+          error={
+            formik.touched.ingredients &&
+            formik.touched.ingredients[index] &&
+            Boolean(
+              formik.errors.ingredients &&
+                formik.errors.ingredients[index] &&
+                formik.errors.ingredients[index].measure,
             )
           }
-          sx={formStyling}
+          // ------- NIE USUWAĆ -------
+          // helperText={
+          //   formik.touched.ingredients &&
+          //   formik.touched.ingredients[index] &&
+          //   formik.errors.ingredients &&
+          //   formik.errors.ingredients[index] &&
+          //   formik.errors.ingredients[index].measure
+          // }
         >
           {MEASURES.map((measure) => (
             <MenuItem key={measure} value={measure}>
@@ -209,7 +330,7 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients, theme }) => {
             </MenuItem>
           ))}
         </Select>
-      </FormControl>
+      </div>
       <CloseIcon
         className="ml-2"
         fontSize="small"
@@ -223,11 +344,11 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients, theme }) => {
       <div className="mt-11 flex items-center justify-between tablet:mt-24">
         <h3 className="text-2xl font-semibold">Ingredients</h3>
 
-        <form className="w-[92px] tablet:w-[110px]">
-          <label
+        <div className="w-[92px] tablet:w-[110px]">
+          {/* <label
             htmlFor="quantity-input"
             className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-          ></label>
+          ></label> */}
           <div className="relative flex max-w-[8rem] items-center">
             <button
               type="button"
@@ -288,7 +409,7 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients, theme }) => {
               </svg>
             </button>
           </div>
-        </form>
+        </div>
       </div>
 
       {ingredientsFormItem}

@@ -12,6 +12,8 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import IMAGE_PLACEHOLDER from "../public/assets/images/image_placeholder.png";
 import PropTypes from "prop-types";
+import { Formik, Form, Field, ErrorMessage, useFormik } from "formik";
+import * as Yup from "yup";
 
 const cookingTime = [];
 for (let i = 5; i <= 120; i += 5) {
@@ -30,7 +32,26 @@ export const MenuProps = {
   },
 };
 
-const RecipeDescriptionFields = ({ setRecipeInfo, theme }) => {
+// const descriptionFieldsSchema = Yup.object().shape({
+//   title: Yup.string().required("Title is required"),
+//   description: Yup.string().required("Description is required"),
+//   category: Yup.string().required("Category is required"),
+//   time: Yup.string().required("Time is required"),
+// });
+
+// const recipeDescriptionFields = {
+//   title: "",
+//   description: "",
+//   category: "",
+//   time: "",
+// };
+
+const RecipeDescriptionFields = ({
+  setRecipeInfo,
+  theme,
+  tempHandleAddRecipe,
+  formik,
+}) => {
   const [open, setOpen] = useState(false);
   const [options, setOptions] = useState([]);
   const loading = open && options.length === 0;
@@ -75,6 +96,14 @@ const RecipeDescriptionFields = ({ setRecipeInfo, theme }) => {
     };
   }, [loading]);
 
+  // const formik = useFormik({
+  //   initialValues: recipeDescriptionFields,
+  //   validationSchema: descriptionFieldsSchema,
+  //   onSubmit: (values) => {
+  //     tempHandleAddRecipe();
+  //   },
+  // });
+
   return (
     <>
       <div className="flex flex-col items-center gap-8 tablet:flex-row desktop:items-start desktop:gap-12">
@@ -86,34 +115,52 @@ const RecipeDescriptionFields = ({ setRecipeInfo, theme }) => {
           className="h-auto desktop:w-[357px]"
         />
 
-        <FormControl className="flex w-[343px] flex-col gap-6 tablet:w-[393px] tablet:gap-8 desktop:gap-10">
+        <div
+          className="flex w-[343px] flex-col gap-6 tablet:w-[393px] tablet:gap-8 desktop:gap-10"
+          // onSubmit={tempHandleAddRecipe}
+        >
           <TextField
-            required
-            id="item-title"
+            // required
+            id="title"
+            name="title"
             label="Enter item title"
-            defaultValue=""
+            // defaultValue=""
             variant="standard"
-            onChange={(e) =>
-              setRecipeInfo((prev) => ({ ...prev, title: e.target.value }))
-            }
+            onChange={(e) => {
+              setRecipeInfo((prev) => ({ ...prev, title: e.target.value }));
+              formik.handleChange(e);
+            }}
             sx={formStyling}
+            value={formik.values.title}
+            error={formik.touched.title && Boolean(formik.errors.title)}
+            helperText={formik.touched.title && formik.errors.title}
+            onBlur={formik.handleBlur}
           />
           <TextField
-            required
-            id="about-recipe"
+            // required
+            id="description"
+            name="description"
             label="Enter about recipe"
-            defaultValue=""
+            // defaultValue=""
             variant="standard"
-            onChange={(e) =>
+            onChange={(e) => {
               setRecipeInfo((prev) => ({
                 ...prev,
                 description: e.target.value,
-              }))
-            }
+              }));
+              formik.handleChange(e);
+            }}
             sx={formStyling}
+            value={formik.values.description}
+            error={
+              formik.touched.description && Boolean(formik.errors.description)
+            }
+            helperText={formik.touched.description && formik.errors.description}
+            onBlur={formik.handleBlur}
           />
           <Autocomplete
             id="category"
+            name="category"
             open={open}
             onOpen={() => {
               setOpen(true);
@@ -125,15 +172,18 @@ const RecipeDescriptionFields = ({ setRecipeInfo, theme }) => {
             getOptionLabel={(option) => option}
             options={options}
             loading={loading}
-            onChange={(e, newValue) =>
+            onChange={(e, newValue) => {
               setRecipeInfo((prev) => ({
                 ...prev,
                 category: newValue,
-              }))
-            }
+              }));
+              formik.setFieldValue("category", newValue);
+            }}
             renderInput={(params) => (
               <TextField
                 {...params}
+                id="category"
+                name="category"
                 label="Category"
                 variant="standard"
                 InputProps={{
@@ -148,24 +198,36 @@ const RecipeDescriptionFields = ({ setRecipeInfo, theme }) => {
                   ),
                 }}
                 sx={formStyling}
+                value={formik.values.category}
+                error={
+                  formik.touched.category && Boolean(formik.errors.category)
+                }
+                helperText={formik.touched.category && formik.errors.category}
+                onBlur={formik.handleBlur}
               />
             )}
           />
           <TextField
-            id="recipe-cooking-time"
+            id="time"
+            name="time"
             select
             label="Cooking time"
             variant="standard"
-            defaultValue=""
-            required
+            // defaultValue=""
+            // require d
             SelectProps={{ MenuProps }}
-            onChange={(e) =>
+            onChange={(e) => {
               setRecipeInfo((prev) => ({
                 ...prev,
                 time: e.target.value,
-              }))
-            }
+              }));
+              formik.handleChange(e);
+            }}
             sx={formStyling}
+            value={formik.values.time}
+            error={formik.touched.time && Boolean(formik.errors.time)}
+            helperText={formik.touched.time && formik.errors.time}
+            onBlur={formik.handleBlur}
           >
             {cookingTime.map((option) => (
               <MenuItem key={option} value={option}>
@@ -173,7 +235,7 @@ const RecipeDescriptionFields = ({ setRecipeInfo, theme }) => {
               </MenuItem>
             ))}
           </TextField>
-        </FormControl>
+        </div>
       </div>
     </>
   );
