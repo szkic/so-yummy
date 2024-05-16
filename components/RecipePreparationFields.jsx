@@ -1,13 +1,7 @@
 import { TextField } from "@mui/material";
-import React from "react";
 import PropTypes from "prop-types";
 
-const RecipePreparationFields = ({
-  instructions,
-  setInstructions,
-  theme,
-  formik,
-}) => {
+const RecipePreparationFields = ({ theme, formik }) => {
   const formStyling = {
     "& .MuiInputBase-input": {
       color: theme === "dark" ? "white" : "inherit",
@@ -32,11 +26,7 @@ const RecipePreparationFields = ({
         rows={5}
         fullWidth
         className="mt-6"
-        onChange={(e) => {
-          setInstructions(e.target.value);
-          formik.handleChange(e);
-        }}
-        // value={instructions}
+        onChange={(e) => formik.handleChange(e)}
         sx={formStyling}
         value={formik.values.instructions}
         error={
@@ -50,9 +40,8 @@ const RecipePreparationFields = ({
 };
 
 RecipePreparationFields.propTypes = {
-  instructions: PropTypes.string.isRequired,
-  setInstructions: PropTypes.func.isRequired,
   theme: PropTypes.string.isRequired,
+  formik: PropTypes.object.isRequired,
 };
 
 export default RecipePreparationFields;

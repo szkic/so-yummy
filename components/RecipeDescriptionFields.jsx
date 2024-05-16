@@ -3,7 +3,6 @@
 import {
   Autocomplete,
   CircularProgress,
-  FormControl,
   MenuItem,
   TextField,
 } from "@mui/material";
@@ -12,8 +11,6 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import IMAGE_PLACEHOLDER from "../public/assets/images/image_placeholder.png";
 import PropTypes from "prop-types";
-import { Formik, Form, Field, ErrorMessage, useFormik } from "formik";
-import * as Yup from "yup";
 
 const cookingTime = [];
 for (let i = 5; i <= 120; i += 5) {
@@ -32,26 +29,7 @@ export const MenuProps = {
   },
 };
 
-// const descriptionFieldsSchema = Yup.object().shape({
-//   title: Yup.string().required("Title is required"),
-//   description: Yup.string().required("Description is required"),
-//   category: Yup.string().required("Category is required"),
-//   time: Yup.string().required("Time is required"),
-// });
-
-// const recipeDescriptionFields = {
-//   title: "",
-//   description: "",
-//   category: "",
-//   time: "",
-// };
-
-const RecipeDescriptionFields = ({
-  setRecipeInfo,
-  theme,
-  tempHandleAddRecipe,
-  formik,
-}) => {
+const RecipeDescriptionFields = ({ theme, formik }) => {
   const [open, setOpen] = useState(false);
   const [options, setOptions] = useState([]);
   const loading = open && options.length === 0;
@@ -96,14 +74,6 @@ const RecipeDescriptionFields = ({
     };
   }, [loading]);
 
-  // const formik = useFormik({
-  //   initialValues: recipeDescriptionFields,
-  //   validationSchema: descriptionFieldsSchema,
-  //   onSubmit: (values) => {
-  //     tempHandleAddRecipe();
-  //   },
-  // });
-
   return (
     <>
       <div className="flex flex-col items-center gap-8 tablet:flex-row desktop:items-start desktop:gap-12">
@@ -115,21 +85,13 @@ const RecipeDescriptionFields = ({
           className="h-auto desktop:w-[357px]"
         />
 
-        <div
-          className="flex w-[343px] flex-col gap-6 tablet:w-[393px] tablet:gap-8 desktop:gap-10"
-          // onSubmit={tempHandleAddRecipe}
-        >
+        <div className="flex w-[343px] flex-col gap-6 tablet:w-[393px] tablet:gap-8 desktop:gap-10">
           <TextField
-            // required
             id="title"
             name="title"
             label="Enter item title"
-            // defaultValue=""
             variant="standard"
-            onChange={(e) => {
-              setRecipeInfo((prev) => ({ ...prev, title: e.target.value }));
-              formik.handleChange(e);
-            }}
+            onChange={(e) => formik.handleChange(e)}
             sx={formStyling}
             value={formik.values.title}
             error={formik.touched.title && Boolean(formik.errors.title)}
@@ -137,19 +99,11 @@ const RecipeDescriptionFields = ({
             onBlur={formik.handleBlur}
           />
           <TextField
-            // required
             id="description"
             name="description"
             label="Enter about recipe"
-            // defaultValue=""
             variant="standard"
-            onChange={(e) => {
-              setRecipeInfo((prev) => ({
-                ...prev,
-                description: e.target.value,
-              }));
-              formik.handleChange(e);
-            }}
+            onChange={(e) => formik.handleChange(e)}
             sx={formStyling}
             value={formik.values.description}
             error={
@@ -172,13 +126,9 @@ const RecipeDescriptionFields = ({
             getOptionLabel={(option) => option}
             options={options}
             loading={loading}
-            onChange={(e, newValue) => {
-              setRecipeInfo((prev) => ({
-                ...prev,
-                category: newValue,
-              }));
-              formik.setFieldValue("category", newValue);
-            }}
+            onChange={(e, newValue) =>
+              formik.setFieldValue("category", newValue)
+            }
             renderInput={(params) => (
               <TextField
                 {...params}
@@ -213,16 +163,8 @@ const RecipeDescriptionFields = ({
             select
             label="Cooking time"
             variant="standard"
-            // defaultValue=""
-            // require d
             SelectProps={{ MenuProps }}
-            onChange={(e) => {
-              setRecipeInfo((prev) => ({
-                ...prev,
-                time: e.target.value,
-              }));
-              formik.handleChange(e);
-            }}
+            onChange={(e) => formik.handleChange(e)}
             sx={formStyling}
             value={formik.values.time}
             error={formik.touched.time && Boolean(formik.errors.time)}
@@ -242,8 +184,8 @@ const RecipeDescriptionFields = ({
 };
 
 RecipeDescriptionFields.propTypes = {
-  setRecipeInfo: PropTypes.func.isRequired,
   theme: PropTypes.string.isRequired,
+  formik: PropTypes.object.isRequired,
 };
 
 export default RecipeDescriptionFields;

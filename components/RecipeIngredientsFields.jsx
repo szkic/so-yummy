@@ -1,7 +1,6 @@
 import {
   Autocomplete,
   CircularProgress,
-  FormControl,
   InputLabel,
   MenuItem,
   Select,
@@ -15,22 +14,21 @@ import { nanoid } from "nanoid";
 
 const MEASURES = ["tbs", "tsp", "kg", "g"];
 
-const RecipeIngredientsFields = ({
-  ingredients,
-  setIngredients,
-  theme,
-  formik,
-}) => {
+const RecipeIngredientsFields = ({ theme, formik }) => {
+  const [ingredients, setIngredients] = useState([
+    {
+      id: "",
+      ingredient: "",
+      quantity: "",
+      measure: "",
+    },
+  ]);
   const [isOpen, setIsOpen] = useState(false);
   const [options, setOptions] = useState([]);
   const [ingredientsTitleWithId, setIngredientsTitleWithId] = useState([]);
   const [openStates, setOpenStates] = useState(
     Array(ingredients.length).fill(false),
   );
-
-  // console.log("options", options);
-  // console.log("ingredientsTitleWithId", ingredientsTitleWithId);
-  console.log("formik", formik.values);
 
   const formStyling = {
     "& .MuiInputBase-input": {
@@ -145,21 +143,6 @@ const RecipeIngredientsFields = ({
                 return item;
               }),
             );
-
-            // formik.setValues((prevValues) => ({
-            //   ...prevValues,
-            //   ingredients: prevValues.ingredients.map((item) => {
-            //     if (item.id === ingredient.id) {
-            //       return {
-            //         ...item,
-            //         id: findIngredientId(newValue),
-            //         ingredient: newValue,
-            //       };
-            //     }
-
-            //     return item;
-            //   }),
-            // }));
           }}
           isOptionEqualToValue={(option, value) => option === value}
           getOptionLabel={(option) => option}
@@ -206,7 +189,7 @@ const RecipeIngredientsFields = ({
         <TextField
           id={`ingredients.${index}.quantity`}
           name={`ingredients.${index}.quantity`}
-          // value={ingredient.quantity || ""}
+          value={ingredient.quantity || ""}
           label="Quantity"
           onChange={(e) => {
             const regex = /^[0-9]*(\.[0-9]{0,2})?$/;
@@ -223,19 +206,6 @@ const RecipeIngredientsFields = ({
                 }),
               );
             }
-
-            // formik.setValues((prevValues) => ({
-            //   ...prevValues,
-            //   ingredients: prevValues.ingredients.map((item) => {
-            //     if (item.id === ingredient.id) {
-            //       return {
-            //         ...item,
-            //         quantity: e.target.value,
-            //       };
-            //     }
-            //     return item;
-            //   }),
-            // }));
           }}
           size="small"
           sx={formStyling}
@@ -293,16 +263,6 @@ const RecipeIngredientsFields = ({
                 return item;
               }),
             );
-
-            // formik.setValues((prevValues) => ({
-            //   ...prevValues,
-            //   ingredients: prevValues.ingredients.map((item) => {
-            //     if (item.id === ingredient.id) {
-            //       return { ...item, measure: e.target.value };
-            //     }
-            //     return item;
-            //   }),
-            // }));
           }}
           sx={formStyling}
           onBlur={formik.handleBlur}
@@ -345,10 +305,6 @@ const RecipeIngredientsFields = ({
         <h3 className="text-2xl font-semibold">Ingredients</h3>
 
         <div className="w-[92px] tablet:w-[110px]">
-          {/* <label
-            htmlFor="quantity-input"
-            className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-          ></label> */}
           <div className="relative flex max-w-[8rem] items-center">
             <button
               type="button"
@@ -418,16 +374,8 @@ const RecipeIngredientsFields = ({
 };
 
 RecipeIngredientsFields.propTypes = {
-  ingredients: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      ingredient: PropTypes.string,
-      quantity: PropTypes.string,
-      measure: PropTypes.string,
-    }),
-  ).isRequired,
-  setIngredients: PropTypes.func.isRequired,
   theme: PropTypes.string.isRequired,
+  formik: PropTypes.object.isRequired,
 };
 
 export default RecipeIngredientsFields;
