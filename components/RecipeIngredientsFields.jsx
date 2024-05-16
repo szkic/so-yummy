@@ -111,7 +111,7 @@ const RecipeIngredientsFields = ({ theme, formik }) => {
 
   const ingredientsFormItem = ingredients.map((ingredient, index) => (
     <div className="mt-6 flex items-center justify-between" key={ingredient.id}>
-      <div className="w-40 tablet:w-96" size="small">
+      <div className="w-32 tablet:w-96" size="small">
         <Autocomplete
           id={`ingredients.${index}.ingredient`}
           name={`ingredients.${index}.ingredient`}
@@ -229,7 +229,7 @@ const RecipeIngredientsFields = ({ theme, formik }) => {
         />
       </div>
       <div className="w-16 tablet:w-28" size="small">
-        <InputLabel
+        {/* <InputLabel
           id={`ingredients.${index}.measure`}
           name={`ingredients.${index}.measure`}
           onBlur={formik.handleBlur}
@@ -247,13 +247,15 @@ const RecipeIngredientsFields = ({ theme, formik }) => {
           }}
         >
           Measure
-        </InputLabel>
-        <Select
-          labelId="measure"
+        </InputLabel> */}
+        <TextField
           id={`ingredients.${index}.measure`}
           name={`ingredients.${index}.measure`}
           value={ingredient.measure || ""}
           label="Measure"
+          size="small"
+          select
+          fullWidth
           onChange={(e) => {
             setIngredients((prev) =>
               prev.map((item) => {
@@ -275,21 +277,20 @@ const RecipeIngredientsFields = ({ theme, formik }) => {
                 formik.errors.ingredients[index].measure,
             )
           }
-          // ------- NIE USUWAĆ -------
-          // helperText={
-          //   formik.touched.ingredients &&
-          //   formik.touched.ingredients[index] &&
-          //   formik.errors.ingredients &&
-          //   formik.errors.ingredients[index] &&
-          //   formik.errors.ingredients[index].measure
-          // }
+          helperText={
+            formik.touched.ingredients &&
+            formik.touched.ingredients[index] &&
+            formik.errors.ingredients &&
+            formik.errors.ingredients[index] &&
+            formik.errors.ingredients[index].measure
+          }
         >
           {MEASURES.map((measure) => (
             <MenuItem key={measure} value={measure}>
               {measure}
             </MenuItem>
           ))}
-        </Select>
+        </TextField>
       </div>
       <CloseIcon
         className="ml-2"

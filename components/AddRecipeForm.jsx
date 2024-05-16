@@ -10,7 +10,6 @@ import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { ToastContainer, toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 
 const initialValues = {
@@ -65,7 +64,7 @@ const AddRecipeForm = () => {
             }
           });
       } catch (error) {
-        toast.error("Failed to add recipe");
+        console.log("error", error);
       }
     },
   });
@@ -83,7 +82,6 @@ const AddRecipeForm = () => {
           className="mt-4 rounded-bl-[35px] rounded-br-[15px] rounded-tl-[15px] rounded-tr-[35px] bg-secondary-color px-12 py-3 text-sm text-primary-text-color tablet:mt-8 tablet:rounded-bl-[70px] tablet:rounded-br-[30px] tablet:rounded-tl-[30px] tablet:rounded-tr-[70px] tablet:px-16 tablet:py-3.5 tablet:text-base desktop:mt-11"
           aria-label="Add recipe"
           type="submit"
-          onClick={() => toast.success("Recipe added successfully")}
         >
           Add
         </button>
@@ -97,7 +95,6 @@ const AddRecipeForm = () => {
           <PopularRecipe />
         </div>
       </div>
-      <ToastContainer />
     </div>
   );
 };
