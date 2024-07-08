@@ -57,7 +57,7 @@ const RecipeCard = ({ data, displayAll, pagination }) => {
 };
 
 RecipeCard.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  data: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   displayAll: PropTypes.bool,
   pagination: PropTypes.bool,
 };
