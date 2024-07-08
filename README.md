@@ -36,3 +36,11 @@ SoYummy is a web app created to assist users in discovering, saving, and organiz
 ## Authors
 
 - [@Bartosz Szkiłądź](https://www.github.com/szkic)
+
+## Currently working on
+
+- adding images to recipes
+- adding JWT key authorization to backend
+- adding skeletons to UI elements
+- improve performance
+- improvements to element placement and overall UI
