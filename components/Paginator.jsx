@@ -1,22 +1,28 @@
-import { Pagination, Stack } from "@mui/material";
 import React from "react";
 
-const Paginator = () => {
+const Paginator = ({
+  hasNextPage,
+  isFetchingNextPage,
+  currentPage,
+  setCurrentPage,
+  fetchNextPage,
+}) => {
   return (
     <>
-      <div className="mx-auto mt-10 max-w-max rounded-[26px] bg-input-primary px-7 py-4 shadow-md tablet:mt-12">
-        <Stack spacing={2}>
-          <Pagination
-            count={10}
-            boundaryCount={0}
-            sx={{
-              "& .MuiPaginationItem-root.Mui-selected": {
-                backgroundColor: "#EBF3D4",
-              },
-            }}
-          />
-        </Stack>
-      </div>
+      <button
+        className="rounded-lg rounded-bl-[35px] rounded-br-[15px] rounded-tl-[15px] rounded-tr-[35px] bg-primary-color px-4 py-1.5 text-[10px] text-white hover:bg-secondary-light-color focus:outline-none tablet:px-8 tablet:py-3 tablet:text-sm desktop:px-11 desktop:py-4 desktop:text-base"
+        onClick={() => {
+          setCurrentPage((prev) => prev + 1);
+          fetchNextPage({ pageParam: currentPage + 1 });
+        }}
+        disabled={!hasNextPage || isFetchingNextPage}
+      >
+        {isFetchingNextPage
+          ? "Loading more..."
+          : hasNextPage
+            ? "Load More"
+            : "Nothing more to load"}
+      </button>
     </>
   );
 };

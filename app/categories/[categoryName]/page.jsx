@@ -2,6 +2,7 @@
 
 import NotFoundPage from "@app/not-found";
 import Loader from "@components/Loader";
+import Paginator from "@components/Paginator";
 import RecipeCard from "@components/RecipeCard";
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { capitalizeFirstLetter } from "@utils/capitalizeFirstLetter";
@@ -67,21 +68,15 @@ const CategoryNamePage = () => {
       <RecipeCard data={data} displayAll={true} pagination={true} />
       <div className="mt-10 flex items-center justify-center">
         {hasNextPage && (
-          <button
-            className="rounded-lg rounded-bl-[35px] rounded-br-[15px] rounded-tl-[15px] rounded-tr-[35px] bg-primary-color px-4 py-1.5 text-[10px] text-white hover:bg-secondary-light-color focus:outline-none tablet:px-8 tablet:py-3 tablet:text-sm desktop:px-11 desktop:py-4 desktop:text-base"
-            onClick={() => {
-              setCurrentPage((prev) => prev + 1);
-              fetchNextPage({ pageParam: currentPage + 1 });
-            }}
-            disabled={!hasNextPage || isFetchingNextPage}
-          >
-            {isFetchingNextPage
-              ? "Loading more..."
-              : hasNextPage
-                ? "Load More"
-                : "Nothing more to load"}
-          </button>
+          <Paginator
+            hasNextPage={hasNextPage}
+            isFetchingNextPage={isFetchingNextPage}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            fetchNextPage={fetchNextPage}
+          />
         )}
+
         <div>{isFetching && !isFetchingNextPage ? "Fetching..." : null}</div>
       </div>
     </div>
