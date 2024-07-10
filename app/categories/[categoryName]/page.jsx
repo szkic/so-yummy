@@ -33,6 +33,7 @@ const CategoryNamePage = () => {
     isFetchingNextPage,
     status,
     isFetching,
+    isPending,
   } = useInfiniteQuery({
     queryKey: ["categoriesPage"],
     queryFn: ({ pageParam = 1 }) =>
@@ -56,11 +57,11 @@ const CategoryNamePage = () => {
     return <p>Error: {categoriesError.message}</p>;
   }
 
-  if (isFetching || categoriesPending || status === "loading") {
+  if ((isPending && isFetching) || categoriesPending || status === "loading") {
     return <Loader />;
   }
 
-  console.log("data", typeof data);
+  console.log("data", data);
 
   return (
     <div className="mt-8 tablet:mt-12">
