@@ -30,7 +30,6 @@ const CategoryNamePage = () => {
     error,
     fetchNextPage,
     hasNextPage,
-    isPending,
     isFetchingNextPage,
     status,
     isFetching,
@@ -57,7 +56,7 @@ const CategoryNamePage = () => {
     return <p>Error: {categoriesError.message}</p>;
   }
 
-  if (isPending || categoriesPending || status === "loading") {
+  if (isFetching || categoriesPending || status === "loading") {
     return <Loader />;
   }
 
