@@ -23,6 +23,7 @@ const RecipeIngredientsFields = ({ theme, formik }) => {
       measure: "",
     },
   ]);
+  const [ingredientCount, setIngredientCount] = useState(1);
   const [isOpen, setIsOpen] = useState(false);
   const [options, setOptions] = useState([]);
   const [ingredientsTitleWithId, setIngredientsTitleWithId] = useState([]);
@@ -295,7 +296,10 @@ const RecipeIngredientsFields = ({ theme, formik }) => {
       <CloseIcon
         className="ml-2"
         fontSize="small"
-        onClick={() => handleRemoveIngredient(ingredient.id)}
+        onClick={() => {
+          handleRemoveIngredient(ingredient.id);
+          setIngredientCount((prevCount) => prevCount - 1);
+        }}
       />
     </div>
   ));
@@ -312,7 +316,10 @@ const RecipeIngredientsFields = ({ theme, formik }) => {
               id="decrement-button"
               data-input-counter-decrement="quantity-input"
               className="flex h-7 items-center rounded-s-3xl border border-r-0 border-gray-300 p-3  focus:outline-none  dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 tablet:h-8"
-              onClick={handleRemoveLastIngredient}
+              onClick={() => {
+                handleRemoveLastIngredient();
+                setIngredientCount((prevCount) => prevCount - 1);
+              }}
               aria-label="Decrement recipe ingredient"
             >
               <svg
@@ -331,22 +338,18 @@ const RecipeIngredientsFields = ({ theme, formik }) => {
                 />
               </svg>
             </button>
-            <input
-              type="text"
-              id="quantity-input"
-              data-input-counter
-              aria-describedby="helper-text-explanation"
-              className="block h-7 w-full border border-x-0 border-gray-300 bg-gray-50 py-2.5 text-center text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 tablet:h-8 tablet:text-base"
-              placeholder="999"
-              required
-              defaultValue={ingredients.length}
-            />
+            <div className="flex h-7 w-full items-center justify-center border border-x-0 border-gray-300 bg-gray-50 py-2.5 text-center text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 tablet:h-8 tablet:text-base">
+              {ingredientCount}
+            </div>
             <button
               type="button"
               id="increment-button"
               data-input-counter-increment="quantity-input"
               className="flex h-7 items-center rounded-e-3xl border border-l-0 border-gray-300 p-3  focus:outline-none   dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 tablet:h-8"
-              onClick={handleAddIngredient}
+              onClick={() => {
+                handleAddIngredient();
+                setIngredientCount((prevCount) => prevCount + 1);
+              }}
               aria-label="Increment recipe ingredient"
             >
               <svg
