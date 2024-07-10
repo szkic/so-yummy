@@ -27,6 +27,7 @@ SoYummy is a web app created to assist users in discovering, saving, and organiz
 - **Tailwind**
 - **Material UI**
 - **Axios**
+- **Tanstack Query**
 - **Formik**
 - **Yup**
 - **MongoDB**
