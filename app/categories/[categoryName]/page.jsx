@@ -35,7 +35,7 @@ const CategoryNamePage = () => {
     isFetching,
     isPending,
   } = useInfiniteQuery({
-    queryKey: ["categoriesPage"],
+    queryKey: ["categoriesPage", categoryName],
     queryFn: ({ pageParam = 1 }) =>
       fetchCategoriesPage(categoryName, pageParam),
     initialPageParam: 1,
@@ -57,7 +57,7 @@ const CategoryNamePage = () => {
     return <p>Error: {categoriesError.message}</p>;
   }
 
-  if ((isPending && isFetching) || categoriesPending || status === "loading") {
+  if (isPending || categoriesPending || status === "loading") {
     return <Loader />;
   }
 
@@ -77,7 +77,7 @@ const CategoryNamePage = () => {
           />
         )}
 
-        <div>{isFetching && !isFetchingNextPage ? "Fetching..." : null}</div>
+        <div>{isFetching && !isFetchingNextPage ? <Loader /> : null}</div>
       </div>
     </div>
   );
