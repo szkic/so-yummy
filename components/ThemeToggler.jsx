@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useTheme } from "next-themes";
-import { set } from "mongoose";
 
 const ThemeToggler = () => {
   const { setTheme } = useTheme();
